@@ -1,0 +1,53 @@
+﻿@model ScopoHR.Core.ViewModels.ReportFilteringViewModel
+@{
+    ViewBag.Title = "OverTimeReport";
+}
+
+
+<div class="col-sm-12">
+    <section class="box box-solid">
+        <header class="box-header with-border">
+            <h3 class="box-title">Over Time Report</h3>
+        </header>
+        <div class="box-body">
+            <div class="form-horizontal">
+
+                @using (Html.BeginForm("GetOverTimeReport", "Report", FormMethod.Post, new { target = "_blank" }))
+                {
+                    <div class="form-group">
+                        <label class="col-sm-1">From Date</label>
+                        <div class="col-sm-2">
+                            @Html.TextBoxFor(model => model.FromDate, new { @class = "form-control default-datepicker required", autocomplete = "off" })
+                            @Html.ValidationMessageFor(model => model.FromDate)
+                        </div>
+                        <label class="col-sm-1">To Date</label>
+                        <div class="col-sm-2">
+                            @Html.TextBoxFor(model => model.ToDate, new { @class = "form-control default-datepicker required", autocomplete = "off" })
+                            @Html.ValidationMessageFor(model => model.ToDate)
+                        </div>
+                        
+                            <label class="col-sm-1">Shift</label>
+                            <div class="col-sm-2">
+                                @Html.DropDownListFor(model => model.ShiftId, ViewBag.shiftList as SelectList, "Select Shift", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ShiftId)
+                            </div>
+                     
+                        <label class="col-sm-1">Floor</label>
+                        <div class="col-sm-2">
+                            @Html.DropDownList("Floor", ViewBag.floorList as SelectList, "Select Floor", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Floor)
+                        </div>
+
+                        
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-sm-1">
+                            <input type="submit" formtarget="_blank" class="btn btn-block btn-success" value="Get Report" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+    </section>
+</div>

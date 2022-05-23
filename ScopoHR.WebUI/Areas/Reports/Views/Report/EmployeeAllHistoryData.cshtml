@@ -1,0 +1,32 @@
+﻿@model ScopoHR.Core.ViewModels.ReportFilteringViewModel
+@{
+    ViewBag.Title = "EmployeeAllHistoryData";
+}
+
+<div class="col-sm-12">
+    <section class="box box-solid">
+        <header class="box-header with-border">
+            <h3 class="box-title">Service Book</h3>
+        </header>
+        <div class="box-body">
+            <div class="form-horizontal">
+
+                @using (Html.BeginForm("GetEmployeeAllHistoryData", "Report", FormMethod.Post, new { target = "_blank" }))
+                {
+                    <div class="form-group">                      
+                        <div class="col-sm-2">
+                            @Html.TextBoxFor(x => x.CardNo, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CardNo)
+                        </div>
+
+                        <div class="col-sm-1">
+                            <input type="submit" formtarget="_blank" class="btn btn-block btn-success" value="Get Report" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+    </section>
+</div>
+

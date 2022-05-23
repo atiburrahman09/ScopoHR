@@ -1,0 +1,151 @@
+﻿<div class="row" ng-controller="loanCtrl" ng-init="init()" ng-cloak>
+    <div class="col-md-4 column">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">Loan Details</h3>
+            </div>
+            <br />
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <div class="has-feedback">
+                        <input type="text" ng-model="employee.CardNo"
+                               placeholder="Enter name or card no"
+                               uib-typeahead="emp as emp.EmployeeName + ' : '+ emp.CardNo for emp in getEmployeeByKeyword($viewValue)"
+                               typeahead-on-select="employeeSelected($item, $model, $label)"
+                               class="form-control">
+                        <span class="glyphicon glyphicon-search form-control-feedback text-muted"></span>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
+            <div class="box-body no-padding">
+                <ul class="nav nav-pills nav-stacked" style="height:700px; overflow:auto">
+                    <li ng-repeat="l in loanList | filter : searchList" ng-class="{active:l.selected}">
+                        <a href="" ng-click="loanSelected(l)">
+                            <ul class="nav">
+                                <li><i class="fa fa-money" ng-class="{'text-blue':!l.selected}"></i>Amount: {{l.LoanAmount}}</li>
+                                <li><i class="glyphicon glyphicon-calendar" ng-class="{'text-blue':!l.selected}"></i>Date:{{l.DisbursementDate}}</li>
+                                <li><i class="glyphicon glyphicon-time" ng-class="{'text-blue':!l.selected}"></i>Duration:{{l.Duration}}</li>
+                            </ul>
+                        </a>
+                    </li>
+                </ul>
+                @*<table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Card No</th>
+                            <th>Advance</th>
+                            <th>Year</th>
+                            <th>Month</th>
+                            <th>Advance Taken</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="s in employeeAdvanceSalaryList">
+                            <td>
+                                {{s.CardNo}}
+                            </td>
+                            <td>
+                                {{s.Advance}}
+                            </td>
+                            <td>
+                                {{s.Year}}
+                            </td>
+                            <td>
+                                {{s.Month}}
+                            </td>
+                            <td>
+                                {{s.AdvanceTaken}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>*@
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8 column">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">Loan</h3>
+            </div>
+            <form class="form-horizontal" name="loanForm" novalidate ng-submit="saveInformation()">
+                <div class="box-body">
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <label class="col-lg-12">Date</label>
+                            <div class="col-lg-12 input-group">
+                                <input id="DisbursementDate" type="text" class="form-control default-datepicker"
+                                       ng-model="loan.DisbursementDate"
+                                       ng-blur="bind('DisbursementDate','loan')"
+                                       required>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="col-lg-12">Loan Amount</label>
+                            <div class="col-lg-12">
+                                <input type="number" placeholder="Amount" class="form-control" ng-model="loan.LoanAmount" required />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="col-lg-12">Starts From</label>
+                            <div class="col-lg-12">
+                                <select class="form-control" ng-model="loan.StartsFrom"
+                                        ng-options="month.MonthId as month.MonthName for month in monthList" required>
+                                    <option value="">Select Month</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="col-lg-12">Duration</label>
+                            <div class="col-lg-12">
+                                <input type="number" placeholder="Duration" class="form-control" ng-model="loan.Duration" required />
+                            </div>
+                        </div>
+
+                    </div>
+                    @*<div class="form-group">
+                        <div class="col-sm-2 pull-right">
+                            <button class="btn btn-info" type="button" ng-click="generateLoanDetails(loan)"><i class="fa fa-floppy-o"> </i> Generate Loan Details</button>
+                        </div>
+                    </div>*@
+
+                    <div class="box-body" ng-show="loanDetailsDiv">
+                        <table class="table table-bordered table-condensed table-fixed-header no-wrap" id="loanTable">
+                            <thead>
+                                <tr>
+                                    <th>Repayment Amount</th>
+                                    <th>Repayment Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="l in loanDetailsList track by $index">
+                                    <td>
+                                        {{l.RepaymentAmount}}
+                                    </td>
+                                    <td>
+                                        {{l.RepaymentDate}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+                <div class="footer">
+                    <div class="form-group col-md-12">
+                        <div class="col-sm-offset-6 col-sm-6">
+                            <div class="pull-right">
+                                <button type="reset" class="btn btn-warning btn-flat btn-sm"><i class="fa fa-close"></i> Reset</button>
+                                <button type="submit" class="btn btn-success btn-flat btn-sm"><i class="fa fa-save"></i> Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

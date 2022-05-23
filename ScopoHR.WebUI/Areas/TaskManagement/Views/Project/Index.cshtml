@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row" ng-controller="projectController" ng-init="init()" ng-cloak>
+    <div class="col-md-3 column">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">Projects</h3>
+            </div>
+            <div class="box-body no-padding">
+                <ul class="nav nav-pills nav-stacked" style="height:700px; overflow:auto">
+                    <li ng-repeat="p in projectList" ng-class="{active:p.selected}">
+                        <a href="" ng-click="projectSelected(p,$index)">
+                            <ul class="nav">
+                                <li><i class="glyphicon glyphicon-file" ng-class="{'text-blue':!p.selected}"></i> {{p.ProjectName}}</li>
+                            </ul>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-9 column">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">Project</h3>
+                <button class="btn btn-sm btn-flat btn-default" ng-click="resetForm()" style="float:right">
+                    <i class="glyphicon glyphicon-plus text-green"></i> New
+                </button>
+            </div>
+            <form class="form-horizontal" name="projectSetupForm" novalidate ng-submit="saveClicked()">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label class="col-sm-3">Project Name</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" ng-model="project.ProjectName" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3">Project Description</label>
+                        <div class="col-sm-9">
+                            <textarea class="form-control" ng-model="project.ProjectDesc"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3">Status</label>
+                        <div class="col-sm-3">
+                            <select name="projectStatus" ng-model="project.Status" class="form-control" ng-options="obj.Value as obj.Text for obj in statusList"></select>
+                        </div>
+
+                        <label class="col-sm-3">Budget</label>
+                        <div class="col-sm-3">
+                            <input type="number" class="form-control" ng-model="project.Budget" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3">Delivary Date</label>
+                        <div class="col-sm-3">
+                            <input id="DelivaryDate" type="text" class="form-control default-datepicker"
+                                   ng-model="project.DelivaryDate"
+                                   ng-blur="bindDate('DelivaryDate', 'project')" />
+                        </div>
+
+                        <label class="col-sm-3">Client</label>
+                        <div class="col-sm-3">
+                            <select ng-model="project.ClientID" class="form-control" ng-options="client.ClientID as client.ClientName for client in clientList">
+                                <option value="">Select Client</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box-footer">
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-warning btn-flat btn-sm" ng-click="resetForm()"><i class="fa fa-close"></i> Reset</button>
+                        <button type="submit" class="btn btn-success btn-flat btn-sm"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

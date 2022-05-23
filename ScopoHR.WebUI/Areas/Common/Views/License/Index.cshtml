@@ -1,0 +1,111 @@
+﻿
+<div class="row" ng-controller="licenseCtrl" ng-init="init()" ng-cloak>
+    <div class="col-sm-3 column">
+        <div class="box box-solid">
+            <header class="box-header with-border">
+                <h3 class="box-title">License List</h3>
+            </header>
+            <div class="box-body">
+                <div class="has-feedback">
+                    <input type="text" placeholder="Search" class="form-control margin-bottom" ng-model="search" />
+                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                </div>
+
+                <ul class="nav nav-pills nav-stacked" style="height:741px;overflow:auto">
+                    <li ng-repeat="l in licenseList | filter:search track by $index" ng-class="{active:l.selected}">
+                        <a href="#" ng-click="selectedLicense(l)">
+                            <i class="fa fa-shirtsinbulk" aria-hidden="true"></i>{{l.LicenseNo}}- {{l.LicenseName}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    <div class="col-sm-9 column">
+        <form name="licenseForm" class="form-horizontal" ng-submit="saveLicense()" novalidate>
+            <div class="box box-solid">
+                <header class="box-header with-border">
+                    <h3 class="box-title">Save License</h3>
+                </header>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label class="col-sm-2">License No</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" ng-model="license.LicenseNo"
+                                   placeholder="License No" />
+                        </div>
+                        <label class="col-sm-2">License Name</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" ng-model="license.LicenseName"
+                                   placeholder="License Name" />
+                        </div>
+                        <label class="col-sm-2">License Fee</label>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" ng-model="license.LicenseFee"
+                                   placeholder="License Fee" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2">Tips</label>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" ng-model="license.Tips"
+                                   placeholder="Tips" />
+                        </div>
+                        <label class="col-sm-2">Budget Amount</label>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" ng-model="license.BudgetAmount"
+                                   placeholder="Budget Amount" />
+                        </div>
+                        <label class="col-sm-2">Budget Date</label>
+                        <div class="col-sm-2">
+                            <input id="BudgetDate" type="text" class="form-control default-datepicker"
+                                   ng-model="license.BudgetDate"
+                                   ng-blur="bind('BudgetDate','license')"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2">Renewed Date</label>
+                        <div class="col-sm-2">
+                            <input id="RenewedDate" type="text" class="form-control default-datepicker"
+                                   ng-model="license.RenewedDate"
+                                   ng-blur="bind('RenewedDate','license')"
+                                   required>
+                        </div>
+                        <label class="col-sm-2">License Validity (In Months)</label>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" ng-model="license.LicenseValidity"
+                                   placeholder="LicenseValidity" ng-change="getExpiryDate(license.LicenseValidity)"/>
+                        </div>
+
+                        <label class="col-sm-2">License Expiry Date</label>
+                        <div class="col-sm-2">
+                            <input id="RenewedDate" type="text" class="form-control default-datepicker"
+                                   ng-model="license.ExpiryDate"
+                                   >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2">Remarks</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" ng-model="license.Remarks"
+                                   placeholder="Remarks" />
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-default btn-sm btn-flat bg-orange" ng-click="resetForm()"><i class="fa fa-close "></i>Reset</button>
+                        <button class="btn btn-default btn-sm btn-flat bg-green" type="submit"><i class="fa fa-floppy-o"> </i> Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

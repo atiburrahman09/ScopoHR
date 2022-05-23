@@ -1,0 +1,72 @@
+﻿@model ScopoHR.Core.ViewModels.ReportFilteringViewModel
+@{
+    ViewBag.Title = "EmployeeBioData";
+}
+@{
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    listItems.Add(new SelectListItem
+    {
+        Text = "Personal Information Verification",
+        Value = "1"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Job Circular",
+        Value = "2"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Confessional Statement",
+        Value = "3"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Oath Of Honor",
+        Value = "4"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Medical Record",
+        Value = "5"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Application For Job",
+        Value = "6"
+    });
+}
+
+<div class="col-sm-12">
+    <section class="box box-solid">
+        <header class="box-header with-border">
+            <h3 class="box-title">Employee Bio Data Report</h3>
+        </header>
+        <div class="box-body">
+            <div class="form-horizontal">
+
+                @using (Html.BeginForm("GetEmployeeBioDataReport", "Report", FormMethod.Post, new { target = "_blank" }))
+                {
+                    <div class="form-group">
+
+                        <label class="col-sm-12">Card No</label>
+                        <div class="col-sm-2">
+                            @Html.TextBoxFor(x => x.CardNo, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CardNo)
+                        </div>
+                        <label class="col-sm-12">Select Report</label>
+                        <div class="col-sm-2">
+                           @Html.DropDownListFor(x => x.ReportType,listItems, "-- Select Report Type --", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ReportType)
+                        </div>
+
+                        <div class="col-sm-1">
+                            <input type="submit" formtarget="_blank" class="btn btn-block btn-success" value="Get Report" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+    </section>
+</div>
+

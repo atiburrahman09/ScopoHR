@@ -1,0 +1,53 @@
+﻿@model ScopoHR.Core.ViewModels.ReportFilteringViewModel
+@{
+    ViewBag.Title = "DropOutReport";
+}
+
+<div class="col-sm-12">
+    <section class="box box-solid">
+        <header class="box-header with-border">
+            <h3 class="box-title">Drop Out Report</h3>
+        </header>
+        <div class="box-body">
+            <div class="form-horizontal">
+
+                @using (Html.BeginForm("GetDropOutReport", "Report", FormMethod.Post, new { target = "_blank" }))
+                {
+                    <div class="form-group">
+                        <label class="col-sm-1">Date</label>
+                        <div class="col-sm-2">
+                            @Html.TextBoxFor(model => model.FromDate, new { @class = "form-control default-datepicker required", @required = true, autocomplete = "off" })
+                            @Html.ValidationMessageFor(model => model.FromDate)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1">Shift</label>
+                        <div class="col-sm-2">
+                            @Html.DropDownListFor(model => model.ShiftId, ViewBag.shiftList as SelectList, "Select Shift", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ShiftId)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1">Floor</label>
+                        <div class="col-sm-2">
+                            @Html.DropDownListFor(model => model.Floor, ViewBag.floorList as SelectList, "Select Floor", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ProductionFloorLineID)
+                        </div>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1">Days</label>
+                        <div class="col-sm-2">
+                            @Html.DropDownListFor(model => model.Days, ViewBag.dayList as SelectList, "Select Days", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Days)
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="submit" formtarget="_blank" class="btn btn-block btn-success" value="Get Report" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+    </section>
+</div>

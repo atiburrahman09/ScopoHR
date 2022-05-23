@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+<br />
+
+<div class="row" ng-app="ScopoHR" ng-controller="homeCtrl" ng-init="init()" novalidate ng-cloak>
+    <section class="">
+        <div class="row">
+            <div class="col-lg-3 col-xs-6">
+                <div class="small-box bg-aqua">
+                    <div class="inner">
+                        <h3>{{data.TotalEmployee}}</h3>
+                        <p>Total Employees</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-yellow-active">
+                    <div class="inner">
+                        <h3>{{data.NewJoin}}</h3>
+                        <p>New Join</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person-add"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-red-gradient">
+                    <div class="inner">
+                        <h3>{{data.DropOut}}</h3>
+                        <p>Drop Out</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-warning"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-green-gradient">
+                    <div class="inner">
+                        <h3>{{data.LeaveApplied}}</h3>
+                        <p>Leave Applied</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-flag-o"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br />
+
+    <section class="">
+        <div class="row">
+            <div class="col-lg-3 col-xs-6">
+                <a href="~/EmployeeManagement/Employees/Index" class="btn bg-blue btn-lg btn-block">
+                    <i class="fa fa-user"></i> Employee Setup
+                </a>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+                <a href="~/EmployeeManagement/Attendance/Index" class="btn bg-teal btn-lg btn-block">
+                    <i class="fa fa-bar-chart"></i> Attendance
+                </a>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+                <a href="~/Notice/Notice/NoticeAssign" class="btn bg-purple btn-lg btn-block">
+                    <i class="fa fa-file"></i> Notice
+                </a>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+                <a href="~/LeaveManagement/LeaveApplications/Index" class="btn bg-fuchsia btn-lg btn-block">
+                    <i class="fa fa-flag-o"></i> Leave
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+

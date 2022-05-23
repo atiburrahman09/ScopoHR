@@ -1,0 +1,245 @@
+﻿<div class="row" ng-controller="securityGuardCtrl" ng-init="init()">
+    <div class="box box-solid">
+        <div class="box-header">
+            <h3 class="box-title">Security Guard Attendance &amp; Roster</h3>
+        </div>
+        <form class="form-horizontal" name="sgForm" ng-submit="saveRoster()" novalidate>
+            
+            <div class="box-body">
+
+                <div class="col-sm-12" style="padding-right: 0px !important">
+                    <div class="pull-left">
+                        <div class="mailbox-controls">
+                            <div class="pull-left"></div>
+                        </div>
+                    </div>
+                    <div class="pull-right">
+                        <div class="mailbox-controls">
+                            <div class="pull-right">      
+                                <input type="date" ng-model="rosterDate" class="datepicker form-control input-sm" style="display:inline!important;width:auto !important;" />
+                                <button class="btn btn-default btn-sm btn-flat bg-yellow" type="button" ng-click="searchRoster()"><i class="fa fa-search"> </i> Search</button>
+                                <div class="btn-group">                                   
+                                    <button type="button" class="btn btn-primary btn-sm"
+                                            ng-click="searchPrev(searchAt);">
+                                        <i class="fa fa-chevron-left"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-primary btn-sm"
+                                            ng-click="searchNext()">
+                                        <i class="fa fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                                <button type="submit" class="btn btn-default btn-sm btn-flat bg-green" >
+                                    <i class="fa fa-save"></i>
+                                    Save
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-body">
+                <h3>Shift: SG-A (00:00 - 08:00)</h3>
+                <div class="table-responsive">
+                    <table class="table table-striped table-condensed">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Card No</th>
+                                <th>Designation</th>
+                                <th>Name</th>
+                                <th>Place</th>
+                                <th>Remarks</th>                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="x in shiftA">
+                                <td>
+                                    <button type="button" ng-click="removeItem(shiftA, $index)" class="btn btn-sm btn-warning">x</button>
+                                </td>
+                                <td>
+                                    <div class="has-feedback">
+                                        <input type="text" ng-model="x.CardNo"
+                                               placeholder="Search Employee"
+                                               uib-typeahead="emp.CardNo as (emp.CardNo +' - ' + emp.EmployeeName) for emp in guardsList | filter:$viewValue"
+                                               typeahead-on-select="setDetail(shiftA, $index, x.CardNo)"
+                                               class="form-control" required>
+                                        <span class="glyphicon glyphicon-search form-control-feedback text-muted"></span>
+                                    </div>
+                                    @*<select class="form-control input-sm" required
+                                            ng-options="e.EmployeeID as e.CardNo for e in guardsList" ng-model="x.EmployeeID"
+                                            ng-change="setDetail(shiftA, $index, x.EmployeeID)"                                            
+                                            >
+                                        <option value="">Select Employee</option>
+                                    </select>*@
+                                </td>
+                                <td>{{x.DesignationName}}</td>
+                                <td>{{x.EmployeeName}}</td>
+                                <td>
+                                    <select class="form-control input-sm" ng-model="x.PlaceOfDuty" 
+                                            ng-options="p as p for p in placesOfDuty"
+                                            >
+                                        <option value="">Select Place</option>
+                                    </select>
+                                </td>
+                                <td><textarea class="form-control input-sm" rows="1" ng-model="x.Remarks"></textarea></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button type="button" class="btn btn-sm btn-primary" ng-click="addItem(shiftA, 3)">+</button>
+            </div>
+            <div class="box-body">
+                <h3>Shift: SG-B (08:00 - 16:00)</h3>
+                <div class="table-responsive">
+                    <table class="table table-striped table-condensed">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Card No</th>
+                                <th>Designation</th>
+                                <th>Name</th>
+                                <th>Place</th>
+                                <th>Remarks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="x in shiftB">
+                                <td>
+                                    <button type="button" ng-click="removeItem(shiftB, $index)" class="btn btn-sm btn-warning">x</button>
+                                </td>
+                                <td>
+                                    @*<select class="form-control input-sm" required
+                                            ng-options="e.EmployeeID as e.CardNo for e in guardsList" ng-model="x.EmployeeID"
+                                            ng-change="setDetail(shiftB, $index, x.EmployeeID)">
+                                        <option value="">Select Employee</option>
+                                    </select>*@
+                                    <div class="has-feedback">
+                                        <input type="text" ng-model="x.CardNo"
+                                               placeholder="Search Employee"
+                                                uib-typeahead="emp.CardNo as (emp.CardNo +' - ' + emp.EmployeeName) for emp in guardsList | filter:$viewValue"
+                                               typeahead-on-select="setDetail(shiftB, $index, x.CardNo)"
+                                               class="form-control" required>
+                                        <span class="glyphicon glyphicon-search form-control-feedback text-muted"></span>
+                                    </div>
+                                </td>
+                                <td>{{x.DesignationName}}</td>
+                                <td>{{x.EmployeeName}}</td>
+                                <td>
+                                    <select class="form-control input-sm" ng-model="x.PlaceOfDuty" 
+                                            ng-options="p as p for p in placesOfDuty"
+                                            >
+                                        <option value="">Select Place</option>
+                                    </select>
+                                </td>
+                                <td><textarea class="form-control input-sm" rows="1" ng-model="x.Remarks"></textarea></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button type="button" class="btn btn-sm btn-primary" ng-click="addItem(shiftB, 4)">+</button>
+            </div>
+            <div class="box-body">
+                <h3>Shift: SG-C (16:00 - 00:00)</h3>
+                <div class="table-responsive">
+                    <table class="table table-striped table-condensed">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>CardNo</th>
+                                <th>Designation</th>
+                                <th>Employee Name</th>
+                                <th>Place</th>
+                                <th>Remarks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="x in shiftC">
+                                <td>
+                                    <button type="button" ng-click="removeItem(shiftC, $index)" class="btn btn-sm btn-warning">x</button>
+                                </td>
+                                <td>
+                                    @*<select class="form-control input-sm" required
+                                            ng-options="e.EmployeeID as e.CardNo for e in guardsList" ng-model="x.EmployeeID"
+                                            ng-change="setDetail(shiftC, $index, x.EmployeeID)">
+                                        <option value="">Select Employee</option>
+                                    </select>*@
+                                    <div class="has-feedback">
+                                        <input type="text" ng-model="x.CardNo"
+                                               placeholder="Search Employee"
+                                                uib-typeahead="emp.CardNo as (emp.CardNo +' - ' + emp.EmployeeName) for emp in guardsList | filter:$viewValue"
+                                               typeahead-on-select="setDetail(shiftC, $index, x.CardNo)"
+                                               class="form-control" required>
+                                        <span class="glyphicon glyphicon-search form-control-feedback text-muted"></span>
+                                    </div>
+                                </td>
+                                <td>{{x.DesignationName}}</td>
+                                <td>{{x.EmployeeName}}</td>
+                                <td>
+                                    <select class="form-control input-sm" ng-model="x.PlaceOfDuty" 
+                                            ng-options="p as p for p in placesOfDuty"
+                                            >
+                                        <option value="">Select Place</option>
+                                    </select>
+                                </td>
+                                <td><textarea class="form-control input-sm" rows="1" ng-model="x.Remarks"></textarea></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button type="button" class="btn btn-sm btn-primary" ng-click="addItem(shiftC, 5)">+</button>
+            </div>
+            <div class="box-body">
+                <h3>Shift: SG-D (08:30 - 17:30)</h3>
+                <div class="table-responsive">
+                    <table class="table table-striped table-condensed">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Card No</th>
+                                <th>Designation</th>
+                                <th>Name</th>
+                                <th>Place</th>
+                                <th>Remarks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="x in shiftD">
+                                <td>
+                                    <button type="button" ng-click="removeItem(shiftD, $index)" class="btn btn-sm btn-warning">x</button>
+                                </td>
+                                <td>
+                                    @*<select class="form-control input-sm" required
+                                            ng-options="e.EmployeeID as e.CardNo for e in guardsList" ng-model="x.EmployeeID"
+                                            ng-change="setDetail(shiftD, $index, x.EmployeeID)">
+                                        <option value="">Select Employee</option>
+                                    </select>*@
+                                    <div class="has-feedback">
+                                        <input type="text" ng-model="x.CardNo"
+                                               placeholder="Search Employee"
+                                                uib-typeahead="emp.CardNo as (emp.CardNo +' - ' + emp.EmployeeName) for emp in guardsList | filter:$viewValue"
+                                               typeahead-on-select="setDetail(shiftD, $index, x.CardNo)"
+                                               class="form-control" required>
+                                        <span class="glyphicon glyphicon-search form-control-feedback text-muted"></span>
+                                    </div>
+                                   
+                                  
+                                </td>
+                                <td>{{x.DesignationName}}</td>
+                                <td>{{x.EmployeeName}}</td>
+                                <td>
+                                    <select class="form-control input-sm" ng-model="x.PlaceOfDuty"
+                                            ng-options="p as p for p in placesOfDuty"
+                                            >
+                                        <option value="">Select Place</option>
+                                    </select>
+                                </td>
+                                <td><textarea class="form-control input-sm" rows="1" ng-model="x.Remarks"></textarea></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button type="button" class="btn btn-sm btn-primary" ng-click="addItem(shiftD, 6)">+</button>
+            </div>
+        </form>
+    </div>
+</div>

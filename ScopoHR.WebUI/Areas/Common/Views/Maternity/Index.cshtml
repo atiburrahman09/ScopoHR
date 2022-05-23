@@ -1,0 +1,182 @@
+﻿<div class="row" ng-controller="maternityCtrl" ng-init="init()" ng-cloak>
+    <div class="col-md-4 column">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">Employee Maternity Details</h3>
+            </div>
+            <br />
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <div class="has-feedback">
+                        <input type="text" ng-model="employee.ReportToModel"
+                               placeholder="Enter name or card no"
+                               uib-typeahead="emp as emp.EmployeeName + ' : '+ emp.CardNo for emp in getEmployeeByKeyword($viewValue)"
+                               typeahead-on-select="employeeSelected($item, $model, $label)"
+                               class="form-control" required>
+                        <span class="glyphicon glyphicon-search form-control-feedback text-muted"></span>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
+            <div class="box-body no-padding">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Card No</th>
+                            <th>Employee Name</th>
+                            <th>1st Installment Date</th>
+                            <th>2nd Installment Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @*<tr href="" ng-click="designationSelected(designationList.indexOf(dg))" ng-repeat="dg in designationList" ng-class="{active:dg.selected}">*@
+                        <tr href="" ng-click="selectedMaternity(employeeMaternityData.indexOf(m))" ng-repeat="m in employeeMaternityData" ng-class="{active:m.selected}">
+                            <td>
+                                {{m.CardNo}}
+                            </td>
+                            <td>
+                                {{m.EmployeeName}}
+                            </td>
+                            <td>
+                                {{m.FirstInstallmentDate}}
+                            </td>
+                            <td>
+                                {{m.SecondInstallmentDate}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-8 column">
+        <form name="maternityForm" class="form-horizontal" ng-submit="saveMaternity()" novalidate>
+            <div class="box box-solid">
+                <header class="box-header with-border">
+                    <h3 class="box-title">Save Maternity</h3>
+                </header>
+                <div class="box-body">
+                    @*First Installment Starts*@
+                    <div class="form-group">
+                        <label class="col-sm-2">First Installment Date</label>
+                        <div class="col-sm-2">
+                            <input id="FirstInstallmentDate" type="text" class="form-control default-datepicker"
+                                   ng-model="maternity.FirstInstallmentDate"
+                                   ng-blur="bind('FirstInstallmentDate','maternity')"
+                                   >
+                        </div>
+                        <label class="col-sm-2">First Installment Amount</label>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" ng-model="maternity.FirstInstallmentAmount"
+                                   placeholder="First Installment Amount" />
+                        </div>
+                        <label class="col-sm-2">First Payment Date</label>
+                        <div class="col-sm-2">
+                            <input id="FirstPaymentDate" type="text" class="form-control default-datepicker"
+                                   ng-model="maternity.FirstPaymentDate"
+                                   ng-blur="bind('FirstPaymentDate','maternity')"
+                                   >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2">First Requisition Date</label>
+                        <div class="col-sm-2">
+                            <input id="FirstRequisitionDate" type="text" class="form-control default-datepicker"
+                                   ng-model="maternity.FirstRequisitionDate"
+                                   ng-blur="bind('FirstRequisitionDate','maternity')"
+                                   >
+                        </div>
+                        <label class="col-sm-2">First Requisition Amount</label>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" ng-model="maternity.FirstRequisitionAmount"
+                                   placeholder="First Requisition Amount" />
+                        </div>
+                        <label class="col-sm-2">First Received Date</label>
+                        <div class="col-sm-2">
+                            <input id="FirstReceivedDate" type="text" class="form-control default-datepicker"
+                                   ng-model="maternity.FirstReceivedDate"
+                                   ng-blur="bind('FirstReceivedDate','maternity')"
+                                   >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2">MT.Leave Date</label>
+                        <div class="col-sm-2">
+                            <input id="MaternityLeaveDate" type="text" class="form-control default-datepicker"
+                                   ng-model="maternity.MaternityLeaveDate"
+                                   ng-blur="bind('MaternityLeaveDate','maternity')"
+                                   >
+                        </div>
+                        <label class="col-sm-2">Maternity Duration</label>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" ng-model="maternity.MaternityDuration"
+                                   placeholder="Maternity Duration" />
+                        </div>
+                    </div>
+                    @*First Installment Ends*@
+                    <br />
+                    @*Second Installment Starts*@
+                    <div class="form-group">
+                        <label class="col-sm-2">Second Installment Date</label>
+                        <div class="col-sm-2">
+                            <input id="SecondInstallmentDate" type="text" class="form-control default-datepicker"
+                                   ng-model="maternity.SecondInstallmentDate"
+                                   ng-blur="bind('SecondInstallmentDate','maternity')"
+                                   >
+                        </div>
+                        <label class="col-sm-2">Second Installment Amount</label>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" ng-model="maternity.SecondInstallmentAmount"
+                                   placeholder="Second Installment Amount" />
+                        </div>
+                        <label class="col-sm-2">Second Payment Date</label>
+                        <div class="col-sm-2">
+                            <input id="SecondPaymentDate" type="text" class="form-control default-datepicker"
+                                   ng-model="maternity.SecondPaymentDate"
+                                   ng-blur="bind('SecondPaymentDate','maternity')"
+                                   >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2">Second Requisition Date</label>
+                        <div class="col-sm-2">
+                            <input id="SecondRequisitionDate" type="text" class="form-control default-datepicker"
+                                   ng-model="maternity.SecondRequisitionDate"
+                                   ng-blur="bind('SecondRequisitionDate','maternity')"
+                                   >
+                        </div>
+                        <label class="col-sm-2">Second Requisition Amount</label>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" ng-model="maternity.SecondRequisitionAmount"
+                                   placeholder="Second Requisition Amount" />
+                        </div>
+                        <label class="col-sm-2">Second Received Date</label>
+                        <div class="col-sm-2">
+                            <input id="SecondReceivedDate" type="text" class="form-control default-datepicker"
+                                   ng-model="maternity.SecondReceivedDate"
+                                   ng-blur="bind('SecondReceivedDate','maternity')"
+                                   >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2">Appx. Delivary Date</label>
+                        <div class="col-sm-2">
+                            <input id="Appx_DelivaryDate" type="text" class="form-control default-datepicker"
+                                   ng-model="maternity.Appx_DelivaryDate"
+                                   ng-blur="bind('Appx_DelivaryDate','maternity')">
+                        </div>
+                    </div>
+                    @*Second Installment Ends*@
+                    <div class="box-footer">
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-default btn-sm btn-flat bg-orange" ng-click="resetForm()"><i class="fa fa-close "></i>Reset</button>
+                            <button class="btn btn-default btn-sm btn-flat bg-green" type="submit"><i class="fa fa-floppy-o"> </i> Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

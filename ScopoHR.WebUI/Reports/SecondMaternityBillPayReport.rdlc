@@ -1,0 +1,724 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <ReportItems>
+      <Textbox Name="Textbox2">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>তারিখ: </Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Globals!ExecutionTime</Value>
+                <Style>
+                  <FontFamily>turagMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <Format>MM/dd/yyyy</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>বরাবর,
+উপ-ব্যবস্থাপনা পরিচালক
+অরুনিমা স্পোর্টসওয়ার লি:
+জিরাবো, সাভার, ঢাকা। 
+
+বিষয় : মাতৃত্বকালীন  ২য় কিস্তির বিলের জন্য আবেদন।  
+
+জনাব, 
+
+       বিনীত নিবেদন এই যে,</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=First(Fields!EmployeeName.Value, "FirstMaternityBillPayData")</Value>
+                <Style>
+                  <FontFamily>verdana</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value> কার্ড নং- </Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=First(Fields!CardNo.Value, "FirstMaternityBillPayData")</Value>
+                <Style>
+                  <FontFamily>turagMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value> একজন </Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=First(Fields!Designation.Value, "FirstMaternityBillPayData")</Value>
+                <Style>
+                  <FontFamily>verdana</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>।  সে </Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=First(Fields!JoiningDate.Value, "FirstMaternityBillPayData")</Value>
+                <Style>
+                  <FontFamily>turagMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <Format>MM/dd/yyyy</Format>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>  ইং তারিখ থেকে অত্র প্রতিষ্ঠানে কর্মরত আছে।  ডাক্তারী কাগজপত্র অনুসারে তাহার সন্তান প্রসবের তারিখ </Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=First(Fields!Appx_DelivaryDate.Value, "FirstMaternityBillPayData")</Value>
+                <Style>
+                  <FontFamily>turagMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <Format>MM/dd/yyyy</Format>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value> ইং বাংলাদেশ শ্রম আইন ২০০৬ এর ৪৫-৫০ ধারা মোতাবেক তার আবেদনের পরিপ্রেক্ষিতে সে এই মুহূর্তে ৮ সপ্তাহের মজুরী পাবে , যার পরিমান = </Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=ROUND(((Sum(Fields!TotalPay.Value, "FirstMaternityBillPayData") / Sum(Fields!PresentDays.Value, "FirstMaternityBillPayData")) * 112) / 2 ,0)</Value>
+                <Style>
+                  <FontFamily>turagMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>/=টাকা (মোট মুজুরী  </Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Last(Fields!GrossSalary.Value, "FirstMaternityBillPayData")</Value>
+                <Style>
+                  <FontFamily>turagMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <Format>#,0;(#,0)</Format>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>/= টাকা হিসাবে)। তার পুনরায় কাজে যোগদানের তারিখ </Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=First(Fields!ReJoiningDate.Value, "FirstMaternityBillPayData")</Value>
+                <Style>
+                  <FontFamily>turagMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <Format>MM/dd/yyyy</Format>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve"> </Value>
+                <Style>
+                  <FontFamily>turagMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <Format>MM/dd/yyyy</Format>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>ইং।  প্রসবকারী শ্রমিকের পাওনা টাকার হিসাব নিম্নরূপ।  
+
+
+</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox2</rd:DefaultName>
+        <Top>0.025in</Top>
+        <Left>0.0125in</Left>
+        <Height>2.75in</Height>
+        <Width>7.26875in</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox29">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>অতএব, সবিনয় প্রার্থনা এই যে, উপরোক্ত শ্রমিকের মাতৃত্বকালীন ২য় কিস্তির বিল প্রদান করিতে মর্জি হয়। </Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox29</rd:DefaultName>
+        <Top>4.24319in</Top>
+        <Height>0.25in</Height>
+        <Width>7.16547in</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox31">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>প্রস্তুতকারীর স্বাক্ষর</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox31</rd:DefaultName>
+        <Top>4.63417in</Top>
+        <Left>0.025in</Left>
+        <Height>0.25in</Height>
+        <Width>1.53467in</Width>
+        <ZIndex>2</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox32">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>চেক বাই</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox31</rd:DefaultName>
+        <Top>4.63417in</Top>
+        <Left>1.88928in</Left>
+        <Height>0.25in</Height>
+        <Width>1.53467in</Width>
+        <ZIndex>3</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox33">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>সীন বাই</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox31</rd:DefaultName>
+        <Top>4.63417in</Top>
+        <Left>3.75662in</Left>
+        <Height>0.25in</Height>
+        <Width>1.53467in</Width>
+        <ZIndex>4</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox34">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>অনুমোদিত</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox31</rd:DefaultName>
+        <Top>4.63417in</Top>
+        <Left>5.5433in</Left>
+        <Height>0.25in</Height>
+        <Width>1.53467in</Width>
+        <ZIndex>5</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox35">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>রুমা আক্তার 
+সহকারী কল্যাণ কর্মকর্তা </Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox31</rd:DefaultName>
+        <Top>5.42125in</Top>
+        <Left>0.025in</Left>
+        <Height>0.44792in</Height>
+        <Width>1.53467in</Width>
+        <ZIndex>6</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox36">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>সৈয়দ মাজেদুল করিম 
+কল্যাণ কর্মকর্তা</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox31</rd:DefaultName>
+        <Top>5.42125in</Top>
+        <Left>1.92798in</Left>
+        <Height>0.44792in</Height>
+        <Width>1.53467in</Width>
+        <ZIndex>7</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox37">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>মো: আব্দুল রহিম 
+সহকারী ম্যানেজার কমপ্লায়েন্স</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox31</rd:DefaultName>
+        <Top>5.42125in</Top>
+        <Left>3.79532in</Left>
+        <Height>0.44792in</Height>
+        <Width>1.53467in</Width>
+        <ZIndex>8</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox38">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>মো: ফারুকুল ইসলাম 
+উপ-ব্যাবস্থাপনা পরিচালক</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox31</rd:DefaultName>
+        <Top>5.42125in</Top>
+        <Left>5.582in</Left>
+        <Height>0.44792in</Height>
+        <Width>1.53467in</Width>
+        <ZIndex>9</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox39">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>গ্রহণকারীর স্বাক্ষর</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox39</rd:DefaultName>
+        <Top>6.02167in</Top>
+        <Left>0.025in</Left>
+        <Height>0.22917in</Height>
+        <Width>1.53467in</Width>
+        <ZIndex>10</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox40">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!EmployeeName.Value, "FirstMaternityBillPayData")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox40</rd:DefaultName>
+        <Top>6.64458in</Top>
+        <Left>0.13417in</Left>
+        <Height>0.25in</Height>
+        <Width>7.0575in</Width>
+        <ZIndex>11</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox41">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>কার্ড নং- </Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=First(Fields!CardNo.Value, "FirstMaternityBillPayData")</Value>
+                <Style>
+                  <FontFamily>turagMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox41</rd:DefaultName>
+        <Top>6.90847in</Top>
+        <Left>0.13417in</Left>
+        <Height>0.25in</Height>
+        <Width>7.0575in</Width>
+        <ZIndex>12</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+    </ReportItems>
+    <Height>8.42583in</Height>
+    <Style />
+  </Body>
+  <Width>7.28125in</Width>
+  <Page>
+    <PageHeight>11.69in</PageHeight>
+    <PageWidth>8.27in</PageWidth>
+    <LeftMargin>0.25in</LeftMargin>
+    <RightMargin>0.25in</RightMargin>
+    <TopMargin>0.25in</TopMargin>
+    <BottomMargin>0.25in</BottomMargin>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="ScopoHRDataSet">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>ca5ed1c2-4752-4af1-920d-0441c9ee41ec</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="FirstMaternityBillPayData">
+      <Query>
+        <DataSourceName>ScopoHRDataSet</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="CardNo">
+          <DataField>CardNo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Designation">
+          <DataField>Designation</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="EmployeeName">
+          <DataField>EmployeeName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="JoiningDate">
+          <DataField>JoiningDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="BasicSalary">
+          <DataField>BasicSalary</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="GrossSalary">
+          <DataField>GrossSalary</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="PresentDays">
+          <DataField>PresentDays</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TotalHolidays">
+          <DataField>TotalHolidays</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TWD">
+          <DataField>TWD</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Appx_DelivaryDate">
+          <DataField>Appx_DelivaryDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ReJoiningDate">
+          <DataField>ReJoiningDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Bonus">
+          <DataField>Bonus</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="TotalPay">
+          <DataField>TotalPay</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="AbsentDays">
+          <DataField>AbsentDays</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Month">
+          <DataField>Month</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Year">
+          <DataField>Year</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="RowNum">
+          <DataField>RowNum</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>ScopoHRDataSet</rd:DataSetName>
+        <rd:SchemaPath>D:\Atib\Projects\Arunima\ScopoHR\ScopoHR.WebUI\Reports\ScopoHRDataSet1.xsd</rd:SchemaPath>
+        <rd:TableName>MaternityReportData</rd:TableName>
+        <rd:TableAdapterFillMethod />
+        <rd:TableAdapterGetDataMethod />
+        <rd:TableAdapterName />
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>80f950eb-fe22-4d81-a9c9-d30d172c6c45</rd:ReportID>
+</Report>

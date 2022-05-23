@@ -1,0 +1,96 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" ng-controller="yearBudgetCtrl" ng-init="initial()">
+    <div class="col-md-9 column">
+        <div class="box box-solid">
+            <header class="box-header with-border">
+                <h3 class="box-title">Budget List</h3>
+                <div class="box-tools">
+                    <div class="form-group">
+                        <input type="text" placeholder="Search Budget" class="form-control margin-bottom" ng-model="searchList" />
+                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                    </div>
+                </div>
+            </header>
+            <div class="box-body no-padding" style="height:750px">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Account</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr href="" ng-click="selected($index)" ng-repeat="b in budgetList | filter : searchList" ng-class="{active:b.selected}">
+                            <td>
+                                {{b.Year}}
+                            </td>
+                            <td>
+                                {{b.AccountID}}
+                            </td>
+                            <td>
+                                {{b.Amount}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3 column">
+        <section class="box box-solid">
+            <header class="box-header with-border">
+                <h3 class="box-title">Year Budget</h3>
+            </header>
+            <div class="box-body">
+                <form class="form-horizontal" ng-submit="createYearBudget(budget)" novalidate name="budgetForm">
+                    <div class="box-body" style="height:675px">
+
+                        <div class="form-group">
+                            <label class="col-lg-12">Year</label>
+                            <div class="col-lg-12">
+                                <select class="form-control" ng-model="budget.Year"
+                                        ng-options="year.YearId as year.YearName for year in yearList" ng-disabled="yearTxtBx" required ng-init="yearTxtBx=false">
+                                    <option value="">Select Year</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-lg-12">Account</label>
+                            <div class="col-lg-12">
+                                <select class="form-control" ng-model="budget.AccountID"
+                                        ng-options="account.AccountID as account.AccountName for account in accountList" ng-disabled="accountTxtBx" required ng-init="accountTxtBx=false">
+                                    <option value="">Select Account</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-12">Amount</label>
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control" ng-model="budget.Amount" required />
+                            </div>
+                        </div>
+
+                        <input type="hidden" class="form-control" ng-model="budget.YearBudgetID" />
+                    </div>
+                    <div class="box-footer">
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-warning btn-flat btn-sm" ng-click="Reset()"><i class="fa fa-close"></i> Reset</button>
+                            <button type="submit" class="btn btn-success btn-flat btn-sm"><i class="fa fa-save"></i> Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+
+</div>
+
+

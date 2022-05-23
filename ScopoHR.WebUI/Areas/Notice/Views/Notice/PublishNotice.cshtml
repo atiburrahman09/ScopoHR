@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "PublishNotice";
+}
+
+<div class="row" ng-controller="publishNoticeCtrl" ng-init="init()">
+    
+    <div class="col-md-3 column">
+        <div class="form-group">
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title">User List</h3>
+                </div>
+                <div class="box-body" style="height:697px;overflow:auto">
+                    <div class="has-feedback">
+                        <input type="text" placeholder="Search Employee" class="form-control margin-bottom" ng-model="searchListUser" />
+                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                        <label ng-hide="emptyUser" class="col-md-offset-5"><b class="text-bold text-red">No User Found</b></label>
+                    </div>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li ng-repeat="u in userList | filter : searchListUser" ng-class="{active:u.selected}">
+                            <a href="#" ng-click="selectedUser($index)">
+                                <i class="fa fa-file-text-o"></i> {{u.EmployeeName}}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="box-footer">
+                    <div class="pull-right">
+                        <input class="btn btn-success btn-block pull-right" type="submit" value="Publish" ng-click="publishNotice(nID, userArray)" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

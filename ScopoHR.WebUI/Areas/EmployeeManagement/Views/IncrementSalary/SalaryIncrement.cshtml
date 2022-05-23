@@ -1,0 +1,113 @@
+﻿<div class="row" ng-controller="salaryIncrementCtrl" ng-init="init()" ng-cloak>
+    <div class="col-md-4 column">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">Employee Increment Details</h3>
+            </div>
+            <br />
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <div class="has-feedback">
+                        <input type="text" ng-model="employee.ReportToModel"
+                               placeholder="Enter name or card no"
+                               uib-typeahead="emp as emp.EmployeeName + ' : '+ emp.CardNo for emp in getEmployeeByKeyword($viewValue)"
+                               typeahead-on-select="employeeSelected($item, $model, $label)"
+                               class="form-control">
+                        <span class="glyphicon glyphicon-search form-control-feedback text-muted"></span>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
+            <div class="box-body no-padding">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Card No</th>
+                            <th>Increment Date</th>
+                            <th>Increment Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="s in employeeIncrementData">
+                            <td>
+                                {{s.CardNo}}
+                            </td>
+                            <td>
+                                {{s.IncrementDate}}
+                            </td>
+                            <td>
+                                {{s.IncrementAmount}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+
+        @*<ul class="nav nav-pills nav-stacked" style="height:700px; overflow:auto">
+                <li ng-repeat="e in employeeList | filter : searchList" ng-class="{active:e.selected}">
+                    <a href="" ng-click="employeeSelected(e)">
+                        <ul class="nav">
+                            <li><i class="glyphicon glyphicon-user" ng-class="{'text-blue':!e.selected}"></i> {{e.EmployeeName}}</li>
+                            <li>Card No: {{e.CardNo}}</li>
+                        </ul>
+                    </a>
+                </li>
+            </ul>*@
+
+
+    </div>
+
+    <div class="col-md-8 column">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">Salary Increment</h3>
+            </div>
+            <form class="form-horizontal" name="salaryIncrementForm" novalidate ng-submit="saveInformation()">
+                <div class="box-body">
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <label class="col-lg-4">Increment Date</label>
+                            <div class="col-lg-8 input-group">
+                                <input id="IncrementDate" type="text" class="form-control default-datepicker" autocomplete="off"
+                                       ng-model="employeeIncrement.IncrementDate"
+                                       ng-blur="bind('IncrementDate','employeeIncrement')"
+                                       required>
+                                @*<input id="IncrementDate" placeholder="Date" type="text"
+                                           class="form-control default-datepicker"
+                                           ng-blur="bindDate('IncrementDate', 'increment')"
+                                           ng-model="increment.IncrementDate" required />
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>*@
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="col-lg-4">Increment Amount</label>
+                            <div class="col-lg-8">
+                                <input type="number" placeholder="Amount" class="form-control" ng-model="employeeIncrement.IncrementAmount" required />
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="footer">
+                    <div class="form-group col-md-12">
+                        <div class="col-sm-offset-6 col-sm-6">
+                            <div class="pull-right">
+                                <button type="reset" class="btn btn-warning btn-flat btn-sm"><i class="fa fa-close"></i> Reset</button>
+                                <button type="submit" class="btn btn-success btn-flat btn-sm"><i class="fa fa-save"></i> Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

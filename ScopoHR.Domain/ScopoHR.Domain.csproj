@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EAF6016E-0BCE-46A5-9A89-BE19CF819E7F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ScopoHR.Domain</RootNamespace>
+    <AssemblyName>ScopoHR.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IdentityModels\AspNetRoles.cs" />
+    <Compile Include="IdentityModels\AspNetUserClaims.cs" />
+    <Compile Include="IdentityModels\AspNetUserLogins.cs" />
+    <Compile Include="IdentityModels\AspNetUserRoles.cs" />
+    <Compile Include="IdentityModels\AspNetUsers.cs" />
+    <!--<Compile Include="Migrations\201807190923322_int.cs" />
+    <Compile Include="Migrations\201807190923322_int.Designer.cs">
+      <DependentUpon>201807190923322_int.cs</DependentUpon>
+    <Compile Include="Migrations\201809241110493_initial.cs" />
+    <Compile Include="Migrations\201809241110493_initial.Designer.cs">
+      <DependentUpon>201809241110493_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809241119400_seed.cs" />
+    <Compile Include="Migrations\201809241119400_seed.Designer.cs">
+      <DependentUpon>201809241119400_seed.cs</DependentUpon>
+    </Compile>-->
+    <Compile Include="Migrations\201811261011180_init2.cs" />
+    <Compile Include="Migrations\201811261011180_init2.Designer.cs">
+      <DependentUpon>201811261011180_init2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811270621221_init3.cs" />
+    <Compile Include="Migrations\201811270621221_init3.Designer.cs">
+      <DependentUpon>201811270621221_init3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811281033556_prescription.cs" />
+    <Compile Include="Migrations\201811281033556_prescription.Designer.cs">
+      <DependentUpon>201811281033556_prescription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\AdvanceSalary.cs" />
+    <Compile Include="Models\Attendance.cs" />
+    <Compile Include="Models\BankSalary.cs" />
+    <Compile Include="Models\BiometricDevice.cs" />
+    <Compile Include="Models\Branch.cs" />
+    <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\Document.cs" />
+    <Compile Include="Models\Fine.cs" />
+    <Compile Include="Models\Holiday.cs" />
+    <Compile Include="Models\InactiveEmployee.cs" />
+    <Compile Include="Models\License.cs" />
+    <Compile Include="Models\Loan.cs" />
+    <Compile Include="Models\LoanDetails.cs" />
+    <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\Maternity.cs" />
+    <Compile Include="Models\Medicine.cs" />
+    <Compile Include="Models\MonthlySalary.cs" />
+    <Compile Include="Models\OfficeTiming.cs" />
+    <Compile Include="Models\Prescription.cs" />
+    <Compile Include="Models\ProductionFloorLine.cs" />
+    <Compile Include="Models\BaseEntity.cs" />
+    <Compile Include="Models\Project.cs" />
+    <Compile Include="Models\Promotion.cs" />
+    <Compile Include="Models\SalaryIncrement.cs" />
+    <Compile Include="Models\Section.cs" />
+    <Compile Include="Models\SecurityGuardRoster.cs" />
+    <Compile Include="Models\Sys_AttendanceBonus.cs" />
+    <Compile Include="Models\Sys_DocumentTypes.cs" />
+    <Compile Include="Models\Sys_Grace.cs" />
+    <Compile Include="Models\Tax.cs" />
+    <Compile Include="Models\UserBranch.cs" />
+    <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\Designation.cs" />
+    <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\Gender.cs" />
+    <Compile Include="Models\JobApplication.cs" />
+    <Compile Include="Models\JobCircular.cs" />
+    <Compile Include="Models\LeaveApplication.cs" />
+    <Compile Include="Models\LeaveMapping.cs" />
+    <Compile Include="Models\LeaveType.cs" />
+    <Compile Include="Models\ManpowerPlanning.cs" />
+    <Compile Include="Models\Notice.cs" />
+    <Compile Include="Models\PublishNotice.cs" />
+    <Compile Include="Models\SalaryMapping.cs" />
+    <Compile Include="Models\SalaryType.cs" />
+    <Compile Include="Models\ScopoContext.cs" />
+    <Compile Include="Models\Tasks.cs" />
+    <Compile Include="Models\UserLoginAudit.cs" />
+    <Compile Include="Models\WorkerBus.cs" />
+    <Compile Include="Models\WorkingShift.cs" />
+    <Compile Include="Models\YearMapping.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\UnitOfWork.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SP\Scaler-Valued_Function\CalculateOverTime.sql" />
+    <Content Include="SP\Scaler-Valued_Function\GetComparableTime.sql" />
+    <Content Include="SP\Scaler-Valued_Function\getDesignationName.sql" />
+    <Content Include="SP\Scaler-Valued_Function\GetHolidayIdByDate.sql" />
+    <Content Include="SP\Scaler-Valued_Function\GetHolidayStatus.sql" />
+    <Content Include="SP\Scaler-Valued_Function\IsHoliday.sql" />
+    <Content Include="SP\Stored_Procedures\AbsentReport.sql" />
+    <Content Include="SP\Stored_Procedures\After_Eid_Get_Attendance_Data_SP.sql" />
+    <Content Include="SP\Stored_Procedures\Archive_Data_Sql.sql" />
+    <Content Include="SP\Stored_Procedures\AuditReportDetail.sql" />
+    <Content Include="SP\Stored_Procedures\AuditReportTotalHourAndNoOfWorker.sql" />
+    <Content Include="SP\Stored_Procedures\Batch_Leave_Entry_Sql.sql" />
+    <Content Include="SP\Stored_Procedures\Before_Eid_Get_Attendance_Data_SP.sql" />
+    <Content Include="SP\Stored_Procedures\CalculateSalary.sql" />
+    <Content Include="SP\Stored_Procedures\GetALLEmployeeDetails.sql" />
+    <Content Include="SP\Stored_Procedures\GetAttendanceData.sql" />
+    <Content Include="SP\Stored_Procedures\GetAttendanceReport.sql" />
+    <Content Include="SP\Stored_Procedures\GetAttendanceSummary.sql" />
+    <Content Include="SP\Stored_Procedures\GetComparetiveStatement.sql" />
+    <Content Include="SP\Stored_Procedures\GetDropedNewJoinEmployeeInfoList.sql" />
+    <Content Include="SP\Stored_Procedures\GetDropOutEmployeeList.sql" />
+    <Content Include="SP\Stored_Procedures\GetDropOutList.sql" />
+    <Content Include="SP\Stored_Procedures\GetEarnedLeaveCalculationReport.sql" />
+    <Content Include="SP\Stored_Procedures\GetEarnedLeaveData.sql" />
+    <Content Include="SP\Stored_Procedures\GetEmployeeAttendanceDetails.sql" />
+    <Content Include="SP\Stored_Procedures\GetEmployeeBioData.sql" />
+    <Content Include="SP\Stored_Procedures\GetEmployeeCardInfo.sql" />
+    <Content Include="SP\Stored_Procedures\GetHolidayBillData.sql" />
+    <Content Include="SP\Stored_Procedures\GetIncrementData.sql" />
+    <Content Include="SP\Stored_Procedures\GetLeaveDetailsByEmployees.sql" />
+    <Content Include="SP\Stored_Procedures\GetLeavePostingDetails.sql" />
+    <Content Include="SP\Stored_Procedures\GetMinimumWorkTime.sql" />
+    <Content Include="SP\Stored_Procedures\GetNewRecruitmentList.sql" />
+    <Content Include="SP\Stored_Procedures\GetNightBillData.sql" />
+    <Content Include="SP\Stored_Procedures\GetOneTimePunchReport.sql" />
+    <Content Include="SP\Stored_Procedures\GetOverTimeReport.sql" />
+    <Content Include="SP\Stored_Procedures\GetProgressiveReport.sql" />
+    <Content Include="SP\Stored_Procedures\GetSalaryPad.sql" />
+    <Content Include="SP\Stored_Procedures\GetSalarySheet.sql" />
+    <Content Include="SP\Stored_Procedures\GetTiffinBillData.sql" />
+    <Content Include="SP\Stored_Procedures\Leave_Approval_Sql.sql" />
+    <Content Include="SP\Stored_Procedures\UpdateAttendanceForLocation.sql" />
+    <Content Include="SP\Table-Valued_Function\GetMonthlyOverTime.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201811261011180_init2.resx">
+      <DependentUpon>201811261011180_init2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811270621221_init3.resx">
+      <DependentUpon>201811270621221_init3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811281033556_prescription.resx">
+      <DependentUpon>201811281033556_prescription.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

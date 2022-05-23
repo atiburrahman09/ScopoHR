@@ -1,0 +1,165 @@
+﻿@model ScopoHR.Core.ViewModels.ReportFilteringViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row" ng-controller="prescriptionCtrl" ng-init="init()">
+    <div class="col-md-3 column">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">List</h3>
+            </div>
+            <div class="box-body ">
+                <div class="has-feedback">
+                    <input type="text" placeholder="Search Prescription By Employee Name Or Card No" class="form-control margin-bottom" ng-model="searchList"
+                           ng-keyup="advancePrescriptionSearch(searchList)" />
+                </div>
+                <ul class="nav nav-pills nav-stacked" style="height:678px;overflow:auto">
+                    <li ng-repeat="p in prescriptionList | filter : searchList" ng-class="{active:p.selected}">
+                        <a href="" ng-click="selected(p,$index)">
+                            <i class="fa fa-user"></i>{{p.EmployeeName}} - {{p.CardNo}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-9 column">
+        <section class="box box-solid">
+            <header class="box-header with-border">
+                <h3 class="box-title">Prescription</h3>
+                <button class="btn btn-sm btn-flat btn-default" ng-click="newMode()" style="float:right"> <i class="glyphicon glyphicon-plus text-green"></i> New</button>
+            </header>
+            <form class="form-horizontal" name="prescriptionForm" novalidate>
+                <div class="box-body" style="height:697px;">
+                    <div class="col-md-12">
+                        <h4 class="col-sm-2">Employee Name</h4>
+                        <div class="col-sm-4">
+                            <div class="has-feedback">
+                                <input type="text" ng-model="CardNo"
+                                       placeholder="Enter name or card no"
+                                       uib-typeahead="emp as emp.EmployeeName + ' : ' + emp.CardNo for emp in getEmployeeByKeyword($viewValue)"
+                                       typeahead-on-select="typeaheadOnSelect($item, $model, $label)"
+                                       class="form-control">
+                                <span class="glyphicon glyphicon-search form-control-feedback text-muted"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="text" ng-model="prescription.EmployeeName" readonly required />
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <h4 class="col-sm-2">Patient Statement</h4>
+                        <div class="col-sm-10">
+                            <textarea class="text" rows="3" cols="156" ng-model="prescription.PatientStatement"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12"></div>
+                    <div class="col-sm-12">
+                        <h4 class="col-sm-1">Pulse</h4>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" ng-model="prescription.Pulse"/>
+                        </div>
+                        <h4 class="col-sm-1">BP</h4>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" ng-model="prescription.BP" />
+                        </div>
+                        <h4 class="col-sm-1">Respiration</h4>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" ng-model="prescription.Respiration" />
+                        </div>
+                        <h4 class="col-sm-1">Temperature</h4>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" ng-model="prescription.Temperature" />
+                        </div>
+                    </div>
+                    <div class="col-sm-12">                        
+                        <h4 class="col-sm-1">Heart</h4>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" ng-model="prescription.Heart" />
+                        </div>
+                        <h4 class="col-sm-1">Lungs</h4>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" ng-model="prescription.Lungs" />
+                        </div>
+                        <h4 class="col-sm-1">Anaemia</h4>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" ng-model="prescription.Anaemia" />
+                        </div>
+                        <h4 class="col-sm-1">Jaundice</h4>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" ng-model="prescription.Jaundice" />
+                        </div>
+                    </div>
+                    <div class="col-sm-12"> 
+                        <h4 class="col-sm-1">Oedema</h4>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" ng-model="prescription.Oedema" />
+                        </div>
+                        <h4 class="col-sm-1">Dehydretion</h4>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" ng-model="prescription.Dehydretion" />
+                        </div>
+                        <h4 class="col-sm-1">Skin</h4>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" ng-model="prescription.Skin" />
+                        </div>
+                        <h4 class="col-sm-1">Eyes</h4>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" ng-model="prescription.Eyes" />
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <h4 class="col-sm-1">P / Abdomen</h4>
+                        <div class="col-sm-5">
+                            <input class="form-control" type="text" ng-model="prescription.PAbdomen" />
+                        </div>
+                        <h4 class="col-sm-1">Others</h4>
+                        <div class="col-sm-5">
+                            <input class="form-control" type="text" ng-model="prescription.Others" />
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <h4 style="font-weight:bold;">Prescription Details</h4>
+                        <textarea type="text" Columns=60 Rows=10 class="ckeditor form-control" ng-model="prescription.Description" required></textarea>
+                    </div>
+
+                </div>
+                <div class="box-footer col-md-12">
+                    <input type="button" value="Save" class="btn btn-success pull-right" ng-click="createUpdateNotice(prescription)" />
+                    @*<input type="button" id="print" value="Print" class="btn btn-primary pull-right" />*@
+                </div>
+            </form>
+            <div class="form-group">
+                @using (Html.BeginForm("../../Reports/Report/GetPrescriptionReport", "Report", FormMethod.Post, new { target = "_blank" }))
+                {
+                    <div class="box-footer">
+                        <input type="hidden" name="PrescriptionID" value="{{prescription.PrescriptionID}}" />
+                        <input type="submit" formtarget="_blank" class="btn btn-primary pull-right" value="Get Report" />
+                    </div>
+
+                }
+            </div>
+        </section>
+
+
+        <!-- /. box -->
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        $("#print").click(function () {
+            var scope = angular.element(document.getElementById('prescriptionID')).scope();
+            console.log(scope.prescription.PrescriptionID);
+            $.ajax({
+                type: "POST",
+                url: "../../Reports/Report/GetPrescriptionReport",
+                data: { PrescriptionID: scope.prescription.PrescriptionID }
+            });
+        });
+    });
+</script>

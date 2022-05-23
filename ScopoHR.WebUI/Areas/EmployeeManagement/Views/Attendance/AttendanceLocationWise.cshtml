@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "AttendanceLocationWise";
+}
+
+<div class="row" ng-controller="locationAttendanceCtrl" ng-init="initial()" ng-cloak>
+    <div class="col-md-8 column">
+        <form class="form-horizontal" name="updateAttendanceForm">
+            <div class="box box-solid">     
+                <div class="box-header with-border">
+                    <h3 class="box-title">Attendance Update For Location</h3>
+                </div>          
+                <div class="box-body">
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <label class="col-lg-12">Bus Location</label>
+                            <div class="col-lg-12">
+                                <select class="form-control" ng-model="at.LocationID"
+                                        ng-options="bus.Value as bus.Text for bus in busList" ng-change="getEmpList(at.LocationID)"
+                                        required>
+                                    <option value="">Select Bus</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="col-lg-12">In Time Date</label>
+                            <div class="col-md-12 input-group">
+                                <input id="InTimeDate" placeholder="Date" type="text"
+                                       class="form-control default-datepicker" autocomplete="off"
+                                       ng-blur="bindDate('InTimeDate', 'at')"
+                                       ng-model="at.InTimeDate" required />
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="col-lg-12">In Time</label>
+                            <div class="input-group col-md-12">
+                                <input type="text" class="form-control timepicker-picker usetwentyfour" ng-model="at.InTime" data-provide="timepicker" data-date-format="HH:mm" data-date-showmeridian="false"
+                                       data-date-useseconds="false" showMeridian="false" required>
+                                <div class="input-group-addon">
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="footer">
+                    <div class="form-group col-md-12">
+                        <div class="col-sm-offset-6 col-sm-6">
+                            <div class="pull-right">
+                                <button type="reset" class="btn btn-warning btn-flat btn-sm"><i class="fa fa-close"></i> Reset</button>
+                                <button type="button" class="btn btn-success btn-flat btn-sm" ng-click="saveInformation()"><i class="fa fa-save"></i> Save Attendance</button>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+    <div class="col-md-4 column">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">Employee List For Bus</h3>
+            </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label class="col-lg-12">Employee List</label>
+                        <div class="col-md-10">
+                            <ui-select multiple sortable="true" ng-model="at.empList" theme="bootstrap"
+                                       class="form-control" title="Choose a person">
+                                <ui-select-match placeholder="Select or search a Employee">{{$item.StringValue}}</ui-select-match>
+                                <ui-select-choices repeat="item.StringValue as item in empList | filter:$select.search" value="{{$select.selected.StringValue}}">
+                                    <div ng-bind-html="item.StringValue | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="form-group col-md-12">
+                    <div class="col-sm-offset-6 col-sm-6">
+                        <div class="pull-right">
+                            <button type="submit" class="btn btn-primary btn-flat btn-sm" ng-click="saveList()"><i class=""></i> Save List</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>
+

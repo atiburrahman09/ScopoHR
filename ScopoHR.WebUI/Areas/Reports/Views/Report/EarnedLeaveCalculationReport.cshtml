@@ -1,0 +1,48 @@
+﻿@model ScopoHR.Core.ViewModels.ReportFilteringViewModel
+@{
+    ViewBag.Title = "EarnedLeaveCalculationReport";
+}
+
+<div class="col-sm-12">
+    <section class="box box-solid">
+        <header class="box-header with-border">
+            <h3 class="box-title">Earned Leave Calculation</h3>
+        </header>
+        <div class="box-body">
+            <div class="form-horizontal">
+
+                @using (Html.BeginForm("GetEarnedLeaveCalculationReport", "Report", FormMethod.Post, new { target = "_blank" }))
+                {
+                    <div class="form-group">
+                        <label class="col-sm-1">Year</label>
+                        <div class="col-sm-2">
+                            @Html.DropDownListFor(model => model.Year, ViewBag.yearList as SelectList, "Select Year", new { @class = "form-control", required = "required" })
+                            @Html.ValidationMessageFor(model => model.Year)
+                        </div>
+                        <label class="col-sm-1">Month</label>
+                        <div class="col-sm-2">
+                            @Html.DropDownListFor(model => model.Month, ViewBag.MonthList as SelectList, "Select Month", new { @class = "form-control", required = "required" })
+                            @Html.ValidationMessageFor(model => model.Month)
+                        </div>
+
+                        <label class="col-sm-1">Floor</label>
+                        <div class="col-sm-2">
+                            @Html.DropDownListFor(model => model.Floor, ViewBag.floorList as SelectList, "Select Floor", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ProductionFloorLineID)
+                        </div>
+                        <label class="col-sm-1">Select Employee Type</label>
+                        <div class="col-sm-2">
+                            @Html.DropDownListFor(model => model.EmployeeType, ViewBag.employeeTypeList as SelectList, "Select Employee Type", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.EmployeeType)
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="submit" formtarget="_blank" class="btn btn-block btn-success" value="Get Report" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+    </section>
+</div>
+

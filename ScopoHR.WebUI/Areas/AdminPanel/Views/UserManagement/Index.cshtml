@@ -1,0 +1,167 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="row" ng-controller="userController" ng-init="init()" ng-cloak>
+    <div class="col-lg-3 col-sm-3 column">
+        <div class="box box-solid">
+            <header class="box-header with-border">
+                <h3 class="box-title">Application Users</h3>
+            </header>
+            <div class="box-body no-padding">
+                <div class="has-feedback">
+                    <input type="search" placeholder="Search" class="form-control margin-bottom" ng-model="searchUser" />
+                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                </div>
+                <div style="height:760px; overflow: auto;">
+                    <ul class="nav nav-pills nav-stacked"
+                        ng-repeat="u in users | filter:searchUser">
+                        <li ng-class="{active:u.selected}"
+                            ng-click="selectUser(u)">
+                            <a href="">
+                                <ul class="nav">
+                                    <li>
+                                        <i class="glyphicon glyphicon-user"></i> {{u.EmployeeName}}
+                                    </li>
+                                    <li class="text-bold">&#64;{{u.UserName}}</li>
+                                </ul>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9 col-sm-9 column">
+        <form class="form-horizontal" name="userForm" ng-submit="handleFormSubmission()" novalidate>
+            <div class="box box-solid">
+                <header class="box-header with-border">
+                    <h3 class="box-title">Activity</h3>
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-sm btn-flat btn-default" ng-click="newUser()">
+                            <i class="glyphicon glyphicon-user text-blue"></i>
+                            New
+                        </button>
+                    </div>
+                </header>
+                <div class="box-body" style="height: 783px;">
+                    <div class="col-lg-offset-2 col-lg-8" ng-if="edit">
+                        
+                        <div class="form-group" ng-if="!new">
+                            <label class="col-sm-4">Card Number</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" ng-model="user.UserName" disabled />
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="new">
+                            <label class="col-sm-4">Password</label>
+                            <div class="col-sm-8">
+                                <input type="password" class="form-control" ng-model="user.Password" required />
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="new">
+                            <label class="col-sm-4">Confirm Password</label>
+                            <div class="col-sm-8">
+                                <input type="password" class="form-control" ng-model="user.ConfirmPassword" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4">User Role(s)</label>
+                            <div class="col-sm-8">
+                                <ui-select multiple sortable="true" ng-model="user.Roles" theme="bootstrap"
+                                           class="form-control" title="Choose a person">
+                                    <ui-select-match placeholder="Select or search a Role">{{$item.Name}}</ui-select-match>
+                                    <ui-select-choices repeat="item.Name as item in roles" value="{{$select.selected.Name}}">
+                                        <div ng-bind-html="item.Name | highlight: $select.search"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4">Branch(es)</label>
+                            <div class="col-sm-8">
+                                <ui-select multiple sortable="true" ng-model="user.BranchIDs" theme="bootstrap"
+                                           class="form-control" title="Choose a person" required>
+                                    <ui-select-match placeholder="Select or search a Branch">{{$item.Text}}</ui-select-match>
+                                    <ui-select-choices repeat="item.Value as item in branchDropDown" value="{{$select.selected.Value}}">
+                                        <div ng-bind-html="item.Text | highlight: $select.search"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-offset-2 col-lg-8" ng-if="new">
+                        <div class="form-group">
+                            <div class="col-sm-12 no-padding">
+                                <label class="col-sm-4">Employee Name</label>
+                                <div class="col-sm-4">
+                                    <div class="has-feedback">
+                                        <input type="text" ng-model="user.UserModel"
+                                               placeholder="Enter name or card no"
+                                               uib-typeahead="emp as emp.EmployeeName + ' : '+ emp.CardNo for emp in getEmployeeByKeyword($viewValue)"
+                                               typeahead-on-select="typeaheadOnSelect($item, $model, $label)"
+                                               class="form-control">
+                                        <span class="glyphicon glyphicon-search form-control-feedback text-muted"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="text" readonly required ng-model="user.EmployeeName" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4">Password</label>
+                            <div class="col-sm-8">
+                                <input type="password" class="form-control" ng-model="user.Password" required placeholder="At least 6 character"/>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="new">
+                            <label class="col-sm-4">Confirm Password</label>
+                            <div class="col-sm-8">
+                                <input type="password" class="form-control" ng-model="user.ConfirmPassword" 
+                                       placeholder="At least 6 character" required 
+                                       name="confirmPassword"                                       
+                                       />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4">User Role(s)</label>
+                            <div class="col-sm-8">
+                                <ui-select multiple sortable="true" ng-model="user.Roles" theme="bootstrap"
+                                           class="form-control" title="Choose a person">
+                                    <ui-select-match placeholder="Select or search a Role">{{$item.Name}}</ui-select-match>
+                                    <ui-select-choices repeat="item.Name as item in roles" value="{{$select.selected.Name}}">
+                                        <div ng-bind-html="item.Name | highlight: $select.search"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4">Branch(es)</label>
+                            <div class="col-sm-8">
+                                <ui-select multiple sortable="true" ng-model="user.BranchIDs" theme="bootstrap"
+                                           class="form-control" title="Choose a person" required>
+                                    <ui-select-match placeholder="Select or search a Branch">{{$item.Text}}</ui-select-match>
+                                    <ui-select-choices repeat="item.Value as item in branchDropDown" value="{{$select.selected.Value}}">
+                                        <div ng-bind-html="item.Text | highlight: $select.search"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <div class="pull-right">
+                        <input type="button" class="btn btn-default btn-sm btn-flat bg-orange" 
+                               ng-click="resetForm()" value="Reset"
+                               ng-disabled="edit"
+                               />
+                        <button type="submit" class="btn btn-default btn-sm btn-flat bg-green"> Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

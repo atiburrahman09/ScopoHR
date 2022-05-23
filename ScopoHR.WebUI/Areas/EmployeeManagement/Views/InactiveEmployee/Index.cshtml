@@ -1,0 +1,110 @@
+﻿<div class="row" ng-controller="inActiveEmployeeCtrl" ng-init="init()" ng-cloak>
+    @*<div class="col-md-3 column">
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title">In Active Employee List</h3>
+                    <div class="box-tools pull-right">
+                        <div class="has-feedback">
+                            <input type="text" placeholder="Search Employee" class="form-control margin-bottom" ng-model="searchList"
+                                   ng-keyup="getEmployeeByKeyword(searchList)" />
+                            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body no-padding">
+
+                    <ul class="nav nav-pills nav-stacked" style="height:700px; overflow:auto">
+                        <li ng-repeat="e in employeeList | filter : searchList" ng-class="{active:e.selected}">
+                            <a href="" ng-click="employeeSelected(e)">
+                                <ul class="nav">
+                                    <li><i class="glyphicon glyphicon-user" ng-class="{'text-blue':!e.selected}"></i> {{e.EmployeeName}}</li>
+                                    <li>Card No: {{e.CardNo}}</li>
+                                </ul>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>*@
+
+    <div class="col-sm-12 column">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">In Active Employee</h3>
+            </div>
+            <form class="form-horizontal" name="inActiveEmployeeForm" novalidate ng-submit="saveInformation()">
+                <div class="box-body">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label class="col-md-2">Select Employee</label>
+                            <div class="col-md-4">
+                                <div class="has-feedback">
+                                    <input type="text" ng-model="inactiveEmployee.CardNo"
+                                           placeholder="Enter name or card no"
+                                           uib-typeahead="emp as emp.EmployeeName + ' : '+ emp.CardNo for emp in getEmployeeByKeyword($viewValue)"
+                                           typeahead-on-select="employeeSelect($item, $model, $label)"
+                                           class="form-control" required>
+                                    <span class="glyphicon glyphicon-search form-control-feedback text-muted"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label class="col-md-2">Inactive From</label>
+                            <div class="col-md-4">
+                                <input id="ApplicableDate" placeholder="Date" type="text"
+                                       class="form-control default-datepicker"
+                                       ng-blur="bindDate('ApplicableDate', 'inactiveEmployee')"
+                                       ng-model="inactiveEmployee.ApplicableDate" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label class="col-md-2">Type</label>
+                            <div class="col-md-4">
+                                <select class="form-control" ng-model="inactiveEmployee.InActiveType"
+                                        ng-options="a.InActiveType as a.name for a in inactivetypes" ng-change="getReasonDiv(inactiveEmployee.InActiveType)"
+                                        required>
+                                    <option value="">Select InActive Type</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-show="dropOutReason">
+                        <div class="col-md-12">
+                            <label class="col-md-2">Reasons</label>
+                            <div class="col-md-4">
+                                <select class="form-control" ng-model="inactiveEmployee.Reason"
+                                        ng-options="a.name as a.name for a in reasonTypes"
+                                        required>
+                                    <option value="">Select Reason</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-show="dismissedReason">
+                        <div class="col-md-12">
+                            <label class="col-md-2">Reason</label>
+                            <div class="col-md-2">
+                                <textarea rows="4" cols="81" ng-model="inactiveEmployee.Reason" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="form-group col-md-12">
+                        <div class="col-md-offset-5 col-sm-6">
+                            <div class="">
+                                <button type="reset" class="btn btn-warning btn-flat btn-sm"><i class="fa fa-close"></i> Reset</button>
+                                <button type="submit" class="btn btn-success btn-flat btn-sm"><i class="fa fa-save"></i> Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

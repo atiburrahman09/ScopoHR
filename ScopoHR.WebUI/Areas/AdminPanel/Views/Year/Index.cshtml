@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 column" ng-controller="yearCtrl" ng-init="init()">
+    <section class="box box-solid">
+        <header class="box-header with-border">
+            <h3 class="box-title">Year Closing</h3>
+        </header>
+        <div class="box-body">
+            <form name="yearForm" ng-submit="closeYear(year)" novalidate>
+                <div class="col-lg-offset-4 col-lg-4">
+                    <div class="form-group">
+                        <label class="control-label">Current Year</label>
+                        <input type="text" ng-model="year" class="form-control" disabled="disabled" required />
+                    </div>
+                    <div class="form-group pull-right">
+                        <input type="submit" class="btn btn-block btn-success btn-flat btn-sm" value="Close Current Year & Open Next Year" />
+                    </div>
+                </div>
+                <div class="form-horizontal">
+                    <div class="col-sm-2 pull-right">
+
+                        
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>

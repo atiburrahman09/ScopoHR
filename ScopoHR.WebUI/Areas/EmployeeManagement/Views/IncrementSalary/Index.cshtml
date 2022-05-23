@@ -1,0 +1,163 @@
+﻿
+<div class="row" ng-controller="salaryIncrementCtrl" ng-init="init()">
+
+    <div class="content-wrapper">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-3 column">
+                    <section class="box box-solid">
+                        <header class="box-header with-border">
+                            <h3 class="box-title">Salary Increment</h3>
+                        </header>
+                        <div class="box-body">
+                            <form class="form-horizontal" ng-submit="getSalaryIncrement()" novalidate name="salaryIncrementForm">
+                                <div class="box-body">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label class="col-lg-5">From Date</label>
+                                            <div class="col-lg-7">
+                                                <input id="FromDate" type="text" class="form-control default-datepicker" autocomplete="off"
+                                                       ng-blur="bindDate('FromDate', 'increment')"
+                                                       ng-model="increment.FromDate" required />
+                                                @*<input type="text" class="form-control default-datepicker" ng-model="dReport.Date" />*@
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-5">To Date</label>
+                                            <div class="col-lg-7">
+                                                <input id="ToDate" type="text" class="form-control default-datepicker" autocomplete="off"
+                                                       ng-blur="bindDate('ToDate', 'increment')"
+                                                       ng-model="increment.ToDate" required />
+                                                @*<input type="text" class="form-control default-datepicker" ng-model="dReport.Date" />*@
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-5">Shift </label>
+                                            <div class="col-lg-7">
+                                                <select class="form-control" ng-model="increment.ShiftId"
+                                                        ng-options="shift.Value as shift.Text for shift in workingShiftList">
+                                                    <option value="">Select Shift</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-5">Floor</label>
+                                            <div class="col-lg-7">
+                                                <select class="form-control" ng-model="increment.Floor"
+                                                        ng-options="floor.Floor as floor.Floor for floor in productionFloorList">
+                                                    <option value="">Select Floor</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-5">Employee Type</label>
+                                            <div class="col-lg-7">
+                                                <select class="form-control" ng-model="increment.EmployeeType"
+                                                        ng-options="e.EmployeeTypeID as e.EmployeeTypeName for e in employeeType"
+                                                        required>
+                                                    <option value="">Select Employee Type</option>
+                                                </select>
+                                            </div>
+                                        </div>  
+
+                                    </div>
+                                </div>
+
+                                <div class="box-footer">
+                                    <div class="col-lg-12">
+                                        <div class="pull-right">
+                                            <input type="submit" class="btn btn-flat btn-success" value="Get Report" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+
+                        </div>
+                    </section>
+                </div>
+
+                <div class="col-md-9 column" id="incrementData">
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <button type="button" class="btn btn-success btn-flat btn-sm" ng-click="saveSalaryIncrement()"><i class="fa fa-save"></i> Save</button>
+                            @*<h3 class="box-title"><button class="btn btn-flat btn-default" ng-click="saveSalaryIncrement()"> <i class="glyphicon glyphicon-floppy-disk text-green"></i> Save</button></h3>*@
+                            @*<h3 class="box-title"><button class="btn btn-flat btn-default" ng-click="downloadPDF()"> <i class="glyphicon glyphicon-download text-green"></i> Download PDF</button></h3>*@
+
+                            <div class="box-tools pull-right">
+                                <div class="has-feedback">
+                                    <input type="text" class="form-control input-sm" placeholder="Search" ng-model="searchList">
+                                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="box-body" id="data" style="overflow:auto;max-height:1000px;">
+                            <table class="table table-bordered table-striped table-hover" id="incrementTable">
+                                <thead>
+                                    <tr>
+                                        <th><input type="checkbox" ng-model="selectedAll" ng-click="selectAll()" /></th>
+                                        <th>Card No</th>
+                                        <th>Employee Name</th>
+                                        <th>Designation</th>
+                                        <th>Joining Date</th>
+                                        <th>Prev.Increment Date</th>
+                                        <th>Prev.Increment Amount</th>
+                                        <th>Present Salary</th>
+                                        <th>Proposed Amount</th>
+                                        <th>Increment Date</th>
+                                        <th>Remarks</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="i in incrementList | filter : searchList">
+                                        <td><input type="checkbox" ng-model="i.Selected" ng-click="checkIfAllSelected()" /></td>
+                                        <td>
+                                            {{i.CardNo}}
+                                        </td>
+                                        <td>
+                                            {{i.EmployeeName}}
+                                        </td>
+                                        <td>
+                                            {{i.Designation}}
+                                        </td>
+
+                                        <td>
+                                            {{i.JoiningDate}}
+                                        </td>
+                                        <td>
+                                            {{i.PreviousIncrementDate}}
+                                        </td>
+                                        <td>
+                                            {{i.PreviousIncrementAmount}}
+                                        </td>
+                                        <td>
+                                            {{i.Gross}}
+                                        </td>
+                                        <td>
+                                            <input type="number" class="form-control" ng-model="i.IncrementAmount"/>
+                                        </td>
+                                        <td>
+                                            <input id="IncrementDate" type="text" class="form-control default-datepicker" autocomplete="off"
+                                                   ng-blur="bindDateWithIndex('IncrementDate', 'increment',$index)"
+                                                   ng-model="i.IncrementDate" required />
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control" ng-model="i.Remarks" />
+                                        </td>
+                                        
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+</div>

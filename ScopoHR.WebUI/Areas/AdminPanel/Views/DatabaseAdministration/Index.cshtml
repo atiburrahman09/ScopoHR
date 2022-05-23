@@ -1,0 +1,141 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row" ng-controller="databaseAdminCtrl" ng-init="init()">
+    <div class="col-sm-offset-2 col-sm-8">
+        <table class="table table-condensed table-striped">
+            <thead>
+                <tr>
+                    <th>Shift Name</th>
+                    <th>Last Updated</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Day 08:30 - 17:30 (In)</td>
+                    <td></td>
+                    <td>
+                        <button class="btn btn-sm" ng-click="syncNow('syncIn', 1)">
+                            <i class="glyphicon glyphicon-refresh"></i>
+                            Sync
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Day 08:30 - 17:30 (Out)</td>
+                    <td></td>
+                    <td>
+                        <button class="btn btn-sm" ng-click="syncNow('syncOut', 1)">
+                            <i class="glyphicon glyphicon-refresh"></i>
+                            Sync
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Night 20:30 - 05:30 (In)</td>
+                    <td></td>
+                    <td>
+                        <button class="btn btn-sm" ng-click="syncNow('syncIn', 2)">
+                            <i class="glyphicon glyphicon-refresh"></i>
+                            Sync
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Night 20:30 - 05:30 (Out)</td>
+                    <td></td>
+                    <td>
+                        <button class="btn btn-sm" ng-click="syncNow('syncOut', 2)">
+                            <i class="glyphicon glyphicon-refresh"></i>
+                            Sync
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>SG-A 06:00 - 14:00 (In)</td>
+                    <td></td>
+                    <td>
+                        <button class="btn btn-sm" ng-click="syncNow('syncIn', 3)">
+                            <i class="glyphicon glyphicon-refresh"></i>
+                            Sync
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>SG-A 06:00 - 14:00 (Out)</td>
+                    <td></td>
+                    <td>
+                        <button class="btn btn-sm" ng-click="syncNow('syncOut', 3)">
+                            <i class="glyphicon glyphicon-refresh"></i>
+                            Sync
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>SG-B 14:00 - 22:00 (In)</td>
+                    <td></td>
+                    <td>
+                        <button class="btn btn-sm" ng-click="syncNow('syncIn', 4)">
+                            <i class="glyphicon glyphicon-refresh"></i>
+                            Sync
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>SG-B 14:00 - 22:00 (Out)</td>
+                    <td></td>
+                    <td>
+                        <button class="btn btn-sm" ng-click="syncNow('syncOut', 4)">
+                            <i class="glyphicon glyphicon-refresh"></i>
+                            Sync
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>SG-C 22:00 - 06:00 (In)</td>
+                    <td></td>
+                    <td>
+                        <button class="btn btn-sm" ng-click="syncNow('syncIn', 5)">
+                            <i class="glyphicon glyphicon-refresh"></i>
+                            Sync
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>SG-C 22:00 - 06:00 (Out)</td>
+                    <td></td>
+                    <td>
+                        <button class="btn btn-sm" ng-click="syncNow('syncOut', 5)">
+                            <i class="glyphicon glyphicon-refresh"></i>
+                            Sync
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>SG-D 08:30 - 17:30 (In)</td>
+                    <td></td>
+                    <td>
+                        <button class="btn btn-sm" ng-click="syncNow('syncIn', 6)">
+                            <i class="glyphicon glyphicon-refresh"></i>
+                            Sync
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>SG-D 08:30 - 17:30 (Out)</td>
+                    <td></td>
+                    <td>
+                        <button class="btn btn-sm" ng-click="syncNow('syncOut', 6)">
+                            <i class="glyphicon glyphicon-refresh"></i>
+                            Sync
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

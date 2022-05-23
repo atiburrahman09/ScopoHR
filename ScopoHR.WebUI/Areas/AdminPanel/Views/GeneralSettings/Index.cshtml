@@ -1,0 +1,390 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" ng-controller="settingsController" ng-cloak ng-init="init()">
+    <div class="content-wrapper">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-8 column">
+                    <div class="box box-solid" style="height:850px">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">General Settings</h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="nav-tabs-custom">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#department" data-toggle="tab" ng-click="show = 1">Department</a></li>
+                                    <li><a href="#designation" data-toggle="tab" ng-click="show = 2">Designation</a></li>
+                                    <li><a href="#salaryType" data-toggle="tab" ng-click="show = 3">Salary Type</a></li>
+                                    <li><a href="#leaveType" data-toggle="tab" ng-click="show = 4">Leave Type</a></li>
+                                    <li><a href="#officeTiming" data-toggle="tab" ng-click="show = 5">Working Shifts</a></li>
+                                    <li><a href="#production" data-toggle="tab" ng-click="show = 6">Production Floor Line</a></li>
+                                    <li><a href="#grace" data-toggle="tab" ng-click="show = 7">Grace</a></li>
+                                    <li><a href="#attendanceBonus" data-toggle="tab" ng-click="show = 8">Attendance Bonus</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="active tab-pane parent" id="department">
+                                        <ul class="nav nav-pills nav-stacked" style="height: 700px !important; overflow: auto;">
+                                            <li ng-repeat="d in departmentList" ng-class="{active:d.selected}">
+                                                <a href="" ng-click="departmentSelected(departmentList.indexOf(d))">
+                                                    <i class="fa fa-file-text-o"> {{d.DepartmentName}} - {{d.DepartmentNameBangla}}</i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="tab-pane " id="designation" style="max-height: 600px !important; overflow: auto;">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Designation Name</th>
+                                                    <th>Designation Name(Bangla)</th>
+                                                    <th>Department Name</th>
+                                                    <th>Is Over Time Applicable</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr href="" ng-click="designationSelected(designationList.indexOf(dg))" ng-repeat="dg in designationList" ng-class="{active:dg.selected}">
+                                                    <td>
+                                                        {{dg.DesignationName}}
+                                                    </td>
+                                                    <td>
+                                                        {{dg.DesignationNameBangla}}
+                                                    </td>
+                                                    <td>
+                                                        {{dg.DepartmentName}}
+                                                    </td>
+                                                    <td>
+                                                        {{dg.IsOverTimeApplicable}}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="tab-pane " id="salaryType" style="max-height: 600px !important; overflow: auto;">
+                                        <ul class="nav nav-pills nav-stacked">
+                                            <li ng-repeat="st in salaryTypeList" ng-class="{active:st.selected}">
+                                                <a href="" ng-click="salaryTypeSelected(salaryTypeList.indexOf(st))">
+                                                    <i class="fa fa-file-text-o"> {{st.SalaryTypeName}}</i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="tab-pane" id="leaveType" style="max-height: 600px !important; overflow: auto;">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Leave Type Name</th>
+                                                    <th>Leave Days</th>
+                                                    <th>Is Forward</th>
+                                                    <th>Payable To Next Year</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr href="" ng-click="leaveTypeSelected(leaveTypeList.indexOf(lt))" ng-repeat="lt in leaveTypeList" ng-class="{active:lt.selected}">
+                                                    <td>
+                                                        {{lt.LeaveTypeName}}
+                                                    </td>
+                                                    <td>
+                                                        {{lt.LeaveDays}}
+                                                    </td>
+                                                    <td>
+                                                        {{lt.IsForward}}
+                                                    </td>
+                                                    <td>
+                                                        {{lt.IsPayableToNextYear}}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="tab-pane" id="officeTiming" style="max-height: 600px !important; overflow: auto;">
+                                        <div class="box-body">
+                                            <ul class="nav nav-pills nav-stacked" style="height: 700px !important; overflow: auto;">
+                                                <li  ng-repeat="sh in shiftList" ng-class="{active:sh.selected}">
+                                                    <a href="" ng-click="shiftSelected($index, sh, prevSh, prevShIndex);">
+                                                        <i class="fa fa-clock-o"></i>
+                                                        <span class="text-bold">Shift : {{sh.Name}}</span>
+                                                        <span class="badge">In Time : {{sh.InTime | date:'hh:mm:a'}}</span>
+                                                        <span class="badge">Out Time : {{sh.OutTime | date:'hh:mm:a'}}</span>
+                                                        
+                                                    </a>
+                                                </li>
+                                            </ul>                                          
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane" id="production" style="max-height: 600px !important; overflow: auto;">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Floor</th>
+                                                    <th>Line</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr href="" ng-click="floorLineSelected(floorLineList.indexOf(p))" ng-repeat="p in floorLineList" ng-class="{active:p.selected}">
+                                                    <td>
+                                                        {{p.Floor}}
+                                                    </td>
+                                                    <td>
+                                                        {{p.Line}}
+                                                    </td>
+
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="tab-pane" id="grace" style="max-height: 600px !important; overflow: auto;">
+                                        <form class="form-horizontal" ng-submit="saveGrace()" name="graceForm" novalidate>
+                                            <div class="form-group">
+                                                <label class="col-lg-5">Before In Time</label>
+                                                <div class="col-lg-7">
+                                                    <input type="number" class="form-control" ng-model="grace.BeforeInTimeGrace" required />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-lg-5">After In Time</label>
+                                                <div class="col-lg-7">
+                                                    <input type="number" class="form-control" ng-model="grace.AfterInTimeGrace" required />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-lg-5">Before Out Time</label>
+                                                <div class="col-lg-7">
+                                                    <input type="number" class="form-control" ng-model="grace.BeforeOutTimeGrace" required />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-lg-5">After Out Time</label>
+                                                <div class="col-lg-7">
+                                                    <input type="number" class="form-control" ng-model="grace.AfterOutTimeGrace" required />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-lg-5">Is Applicable</label>
+                                                <div class="col-lg-7">
+                                                    <input type="checkbox" ng-model="grace.IsApplicable" />
+                                                    <input type="submit" class="btn btn-success btn-flat pull-right" value="Save" />
+                                                </div>
+                                            </div>                                         
+
+                                        </form>
+                                    </div>
+
+                                    <div class="tab-pane" id="attendanceBonus" style="max-height: 600px !important; overflow: auto;">
+                                        <form class="form-horizontal" ng-submit="saveAttendanceBonus()" name="attendanceBonusForm" novalidate>
+                                            <div class="form-group">
+                                                <label class="col-lg-5">Attendance Bonus</label>
+                                                <div class="col-lg-7">
+                                                    <input type="number" class="form-control" ng-model="attendanceBonus.AttendanceBonus" required />
+                                                </div>
+                                            </div>                                         
+                                            <div class="form-group">
+                                                <label class="col-lg-5">Is Applicable</label>
+                                                <div class="col-lg-7">
+                                                    <input type="checkbox" ng-model="attendanceBonus.IsApplicable" />
+                                                    <input type="submit" class="btn btn-success btn-flat pull-right" value="Save" />
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 column">
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Create/Update</h3>
+                            <button data-ng-click="newClicked()" style="float:right" class="btn btn-sm btn-default btn-flat"> <i class="fa fa-plus text-green" aria-hidden="true"></i> New</button>
+                        </div>
+                        <div class="box-body" style="height:800px">
+                            <div id="departmentForm" ng-show="show==1">
+                                <form class="form-horizontal" ng-submit="addDepartment()" name="departmentForm" novalidate>
+                                    <div class="form-group">
+                                        <label class="col-lg-5">Department Name</label>
+                                        <div class="col-lg-7">
+                                            <input type="text" class="form-control" ng-model="department.DepartmentName" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-5">Department Name(Bangla)</label>
+                                        <div class="col-lg-7">
+                                            <input type="text" class="form-control" ng-model="department.DepartmentNameBangla" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <input type="submit" class="btn btn-success btn-flat pull-right" value="Save" />
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div id="designationForm" ng-show="show==2">
+                                <form class="form-horizontal" ng-submit="addDesignation()" name="designationForm" novalidate>
+                                    <div class="form-group">
+                                        <label class="col-lg-5">Designation Name</label>
+                                        <div class="col-lg-7">
+                                            <input type="text" class="form-control" ng-model="designation.DesignationName" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-5">Designation Name(Bangla)</label>
+                                        <div class="col-lg-7">
+                                            <input type="text" class="form-control" ng-model="designation.DesignationNameBangla" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-5">Department Name</label>
+                                        <div class="col-lg-7">
+                                            <select class="form-control" ng-model="designation.DepartmentID"
+                                                    ng-options="department.DepartmentID as department.DepartmentName for department in departmentList" required>
+                                                <option value="">Select Department</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-5">Is Over Time Applicable</label>
+                                        <div class="col-lg-7">
+                                            <input type="checkbox" ng-model="designation.IsOverTimeApplicable" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <input type="submit" class="btn btn-success btn-flat pull-right" value="Save" />
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div id="salaryTypeForm" ng-show="show==3">
+                                <form class="form-horizontal" ng-submit="addSalaryType()" name="salaryTypeForm" novalidate>
+                                    <div class="form-group">
+                                        <label class="col-lg-5">Salary type name</label>
+                                        <div class="col-lg-7">
+                                            <input type="text" class="form-control" ng-model="salaryType.SalaryTypeName" required ng-disabled="defaultSalaryTypes(salaryType.SalaryTypeID)" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <input type="submit" class="btn btn-success btn-flat pull-right" value="Save" />
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div ng-show="show==4">
+                                <form class="form-horizontal" ng-submit="addLeaveType()" name="leaveTypeForm" novalidate>
+                                    <div class="form-group">
+                                        <label class="col-lg-5">Leave type name</label>
+                                        <div class="col-lg-7">
+                                            <input type="text" class="form-control" ng-model="leaveType.LeaveTypeName" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-5">Leave days</label>
+                                        <div class="col-lg-7">
+                                            <input type="text" class="form-control" ng-model="leaveType.LeaveDays" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-5">Forward to next year</label>
+                                        <div class="col-lg-7">
+                                            <input type="checkbox" ng-model="leaveType.IsForward" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-5">Payable to next year</label>
+                                        <div class="col-lg-7">
+                                            <input type="checkbox" ng-model="leaveType.IsPayableToNextYear" />
+                                            <input type="submit" class="btn btn-success btn-flat pull-right" value="Save" />
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                            <div ng-show="show==5">
+                                <form class="form-horizontal" ng-submit="saveWorkShift()" name="officeForm" novalidate>
+                                    <div class="form-group">
+                                        <label class="col-lg-5">Shift Name</label>
+                                        <div class="col-lg-7">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" ng-model="workShift.Name" required>
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-clock-o"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-5">In Time</label>
+                                        <div class="col-lg-7">
+                                            <div class="input-group">
+                                                <input type="time" class="form-control" ng-model="workShift.InTime" required>
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-clock-o"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-5">Out Time</label>
+                                        <div class="col-lg-7">
+                                            <div class="input-group">
+                                                <input type="time" class="form-control" ng-model="workShift.OutTime" required>
+
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-clock-o"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <input type="submit" class="btn btn-success btn-flat pull-right" value="Save" />
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div ng-show="show==6">
+                                <form class="form-horizontal" ng-submit="addFloorLine()" name="floorLineForm" novalidate>
+                                    <div class="form-group">
+                                        <label class="col-lg-5">Floor</label>
+                                        <div class="col-lg-7">
+                                            <input type="text" class="form-control" ng-model="floorLine.Floor" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-5">Line</label>
+                                        <div class="col-lg-7">
+                                            <input type="text" class="form-control" ng-model="floorLine.Line" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <input type="submit" class="btn btn-success btn-flat pull-right" value="Save" />
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div ng-show="show==7">
+                               <p style="font-weight:bold;color:orangered" class="text-center">Please insert the GRACE time for In Time and Out Time.</p>
+                            </div>
+                            <div ng-show="show==8">
+                                <p style="font-weight:bold;color:orangered" class="text-center">Please insert the Attendance Bonus Amount that company wants to give.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

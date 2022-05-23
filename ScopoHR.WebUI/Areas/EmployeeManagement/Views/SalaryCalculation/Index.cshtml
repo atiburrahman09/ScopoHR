@@ -1,0 +1,115 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div ng-controller="salaryCalculationController" ng-init="init()">
+    <div class="col-sm-12">
+        <section class="box box-solid">
+            <header class="box-header with-border">
+                <h3 class="box-title">Salary Calculation</h3>
+            </header>
+            <div class="box-body">
+                <div class="form-horizontal">
+                    <form name="salaryCalculationForm">
+                        <div class="form-group">
+                            @*<div class="col-md-4">
+                                <label class="col-lg-12">Year</label>
+                                <div class="col-lg-12">
+                                    <select name="" class="form-control" ng-model="salary.Year" required>
+                                        <option value="" disabled>Select year</option>
+                                        <option value="2015">2015</option>
+                                        <option value="2016">2016</option>
+                                        <option value="2017">2017</option>
+                                        <option value="2018">2018</option>
+                                        <option value="2019">2019</option>
+                                        <option value="2020">2020</option>
+                                        <option value="2021">2021</option>
+                                        <option value="2022">2022</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2024">2024</option>
+                                    </select>
+                                </div>
+                            </div>*@
+                            @*<div class="col-md-4">
+                                <label class="col-lg-12">Month</label>
+                                <div class="col-lg-12">
+                                    <select name="" class="form-control" ng-model="salary.Month" required>
+                                        <option value="" disabled>Select month</option>
+                                        <option value="1">January</option>
+                                        <option value="2">February</option>
+                                        <option value="3">March</option>
+                                        <option value="4">April</option>
+                                        <option value="5">May</option>
+                                        <option value="6">June</option>
+                                        <option value="7">July</option>
+                                        <option value="8">August</option>
+                                        <option value="9">September</option>
+                                        <option value="10">October</option>
+                                        <option value="11">November</option>
+                                        <option value="12">December</option>
+                                    </select>
+                                </div>
+                            </div>*@
+                            <div class="col-md-3">
+                                <label class="col-lg-12">From Date</label>
+                                <div class="col-lg-12">
+                                    <input id="FromDate" type="text" class="form-control default-datepicker"
+                                           ng-model="salary.FromDate"
+                                           ng-blur="bindDate('FromDate','salary')" autocomplete="off"
+                                           required>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="col-lg-12">To Date</label>
+                                <div class="col-lg-12">
+                                    <input id="ToDate" type="text" class="form-control default-datepicker" autocomplete="off"
+                                           ng-model="salary.ToDate"
+                                           ng-blur="bindDate('ToDate','salary')"
+                                           required>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="col-lg-12">Working Shift</label>
+                                <div class="col-lg-12">
+                                    <select class="form-control" ng-model="salary.ShiftId"
+                                            ng-options="s.ShiftId as s.ShiftName for s in workShifts"
+                                            >
+                                        <option value="">Select Working Shift</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="col-lg-12">Employee Type</label>
+                                <div class="col-lg-12">
+                                    <select class="form-control" ng-model="salary.EmployeeType"
+                                            ng-options="e.EmployeeTypeID as e.EmployeeTypeName for e in employeeType"
+                                            >
+                                        <option value="">Select Employee Type</option>
+                                    </select>
+                                </div>
+                            </div>
+                          <div class="col-md-3">
+                              <label class="col-lg-12">Card No</label>
+                              <div class="col-lg-12">
+                                  <input type="text" class="form-control" ng-model="salary.CardNo" />
+                              </div>
+                          </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="box-footer">
+                <div class="pull-right">
+                    <button class="btn btn-flat btn-md btn-success" ng-click="calculateSalary()">
+                        <i class="fa fa-calculator"></i>
+                        Calculate
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+

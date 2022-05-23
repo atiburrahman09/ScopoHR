@@ -1,0 +1,64 @@
+﻿<div class="row" ng-controller="changeCardNoCtrl" ng-init="init()" ng-cloak>
+    <div class="col-md-3 column">
+        <div class="box box-solid">
+            <div class="box-body no-padding">
+                <div class="has-feedback">
+                    <input type="text" placeholder="Search Employee" class="form-control margin-bottom" ng-model="searchList"
+                           ng-keyup="advanceEmployeeSearch(searchList)" />
+                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                    <div class="col-sm-12">
+                        <span ng-if="isRecent" class="label label-default">
+                            Recent Employees
+                        </span>
+                        <span ng-if="!isRecent" class="label label-success">
+                            Showing Search Result
+                        </span>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <ul class="nav nav-pills nav-stacked" style="height:700px; overflow:auto">
+                    <li ng-repeat="e in employeeList | filter : searchList" ng-class="{active:e.selected}">
+                        <a href="" ng-click="employeeSelected(e)">
+                            <ul class="nav">
+                                <li><i class="glyphicon glyphicon-user" ng-class="{'text-blue':!e.selected}"></i> {{e.EmployeeName}}</li>
+                                <li>Card No: {{e.CardNo}}</li>
+                            </ul>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-9 column">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">Change Employee Card No</h3>
+            </div>
+            <form class="form-horizontal" name="changeCardNoForm"  ng-submit="changeCardNo()" novalidate>
+              <div class="box-body">
+                  <div class="form-group">
+                      <div class="col-sm-4">
+                          <label class="col-lg-4">Old Card No</label>
+                          <div class="col-lg-8">
+                              <input type="text" class="form-control" ng-model="employee.OldCardNo" required 
+                                     @*ng-blur="isUniqueCardNo(employee.CardNo)"*@ />
+                          </div>
+                      </div>
+                      <div class="col-sm-4">
+                          <label class="col-lg-4">New Card No</label>
+                          <div class="col-lg-8">
+                              <input type="text" class="form-control" ng-model="employee.NewCardNo" required
+                                     @*ng-blur="isUniqueCardNo(employee.CardNo)"*@ />
+                          </div>
+                      </div>
+                      <div class="col-sm-4">
+                          <button type="submit" class="btn btn-success btn-flat btn-sm"><i class="fa fa-save"></i> Save</button>
+                      </div>
+                  </div>
+              </div>
+                
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,84 @@
+﻿@model ScopoHR.Core.ViewModels.ReportFilteringViewModel
+@{
+    ViewBag.Title = "Weekly Report";
+}
+
+
+<div class="row">
+    <div class="col-sm-12 column">
+        <section class="box box-solid">
+            <header class="box-header with-border">
+                <h3 class="box-title">Audit Reports</h3>
+            </header>
+            <div class="box-body">
+                <div class="col-sm-12">
+                    <div class="form-horizontal">
+
+                        @using (Html.BeginForm("AuditReports", "Report", FormMethod.Post, new { target = "_blank" }))
+                        {
+                            <div class="form-group">
+                                <label class="col-sm-1">From Date</label>
+                                <div class="col-sm-2">
+                                    @Html.TextBoxFor(model => model.FromDate, new { @class = "form-control default-datepicker required", autocomplete = "off" })
+                                    @Html.ValidationMessageFor(model => model.FromDate)
+                                </div>
+
+                                <label class="col-sm-1">To Date</label>
+                                <div class="col-sm-2">
+                                    @Html.TextBoxFor(model => model.ToDate, new { @class = "form-control default-datepicker required", autocomplete = "off" })
+                                    @Html.ValidationMessageFor(model => model.ToDate)
+                                </div>
+                                <label class="col-sm-1">Shift</label>
+                                <div class="col-sm-2">
+                                    @Html.DropDownListFor(model => model.ShiftId, ViewBag.shiftList as SelectList, "Select Shift", new { @class = "form-control required" })
+                                    @Html.ValidationMessageFor(model => model.ShiftId)
+                                </div>
+                                <label class="col-sm-1">Floor</label>
+                                <div class="col-sm-2">
+                                    @Html.DropDownListFor(model => model.Floor, ViewBag.floorList as SelectList, "Select Floor", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ProductionFloorLineID)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                    <label class="col-sm-12">Report Type</label>
+                                    <div class="col-sm-12">
+                                        <label>
+                                            @Html.RadioButtonFor(model => model.Decision, 1, new { @class = "required" }) Detail Report
+                                        </label>
+                                        <br />
+                                        <label>
+                                           @Html.RadioButtonFor(model => model.Decision, 2, new { @class = "required" }) Total Hours
+                                        </label>
+                                        <br />
+                                        <label>
+                                            @Html.RadioButtonFor(model => model.Decision, 3, new { @class = "required" }) Number of Workers
+                                        </label>
+                                        <br />
+                                        <label>
+                                            @Html.RadioButtonFor(model => model.Decision, 4, new { @class = "required" }) Progresive Report
+                                        </label>
+                                        <br />
+                                        <label>
+                                            @Html.RadioButtonFor(model => model.Decision, 5, new { @class = "required" }) Audit Report Summary Per Day
+                                        </label>
+                                        @Html.ValidationMessageFor(model => model.Decision)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-2">
+                                    <button class="btn btn-warning btn-flat btn-block" type="reset">Reset</button>
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="submit" formtarget="_blank" class="btn btn-block btn-primary btn-flat" value="Preview" />
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+</div>

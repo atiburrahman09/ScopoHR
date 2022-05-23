@@ -1,0 +1,31 @@
+﻿@model ScopoHR.Core.ViewModels.ReportFilteringViewModel
+@{
+    ViewBag.Title = "EmployeeFinalBillPaymentReport";
+}
+<div class="col-sm-12">
+    <section class="box box-solid">
+        <header class="box-header with-border">
+            <h3 class="box-title">Employee Final Bill Payment Report</h3>
+        </header>
+        <div class="box-body">
+            <div class="form-horizontal">
+
+                @using (Html.BeginForm("GetEmployeeFinalBillPaymentReport", "Report", FormMethod.Post, new { target = "_blank" }))
+                {
+                    <div class="form-group">                      
+                        <label class="col-sm-12">Card No</label>
+                        <div class="col-sm-2">
+                            @Html.TextBoxFor(x => x.CardNo, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CardNo)
+                        </div>
+
+                        <div class="col-sm-1">
+                            <input type="submit" formtarget="_blank" class="btn btn-block btn-success" value="Get Report" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+    </section>
+</div>

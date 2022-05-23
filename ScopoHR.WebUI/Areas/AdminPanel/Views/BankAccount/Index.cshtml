@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row" ng-controller="bankAccountCtrl" ng-init="init()">
+    <div class="col-md-3 column">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">Account List</h3>
+            </div>
+            <div class="box-body ">
+                <div class="has-feedback">
+                    <input type="text" placeholder="Search Account" class="form-control margin-bottom" ng-model="searchList" />
+                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                </div>
+                <ul class="nav nav-pills nav-stacked" style="height:678px;overflow:auto">
+                    <li ng-repeat="a in accountList | filter : searchList" ng-class="{active:a.selected}">
+                        <a href="" ng-click="selected(a)">
+                            <ul class="nav">
+                                <li><i class="glyphicon glyphicon-user" ng-class="{'text-blue':!a.selected}"></i> {{a.CardNo}}</li>
+                                <li>Account No: {{a.AccountNo}}</li>
+                            </ul>                            
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-9 column">
+        <section class="box box-solid">
+            <header class="box-header with-border">
+                <h3 class="box-title">Bank Account</h3>
+            </header>
+            <form class="form-horizontal" name="bankAccountForm" ng-submit="saveAccount(account)" novalidate>
+                <div class="box-body">
+                    <div class="col-md-3">
+                        <label class="col-sm-12">Card No</label>
+                        <div class="col-sm-12">
+                            <div class="has-feedback">
+                                <input type="text" ng-model="account.CardNo"
+                                       placeholder="Enter name or card no"
+                                       uib-typeahead="emp as emp.EmployeeName + ' : '+ emp.CardNo for emp in getEmployeeByKeyword($viewValue)"
+                                       typeahead-on-select="employeeSelect($item, $model, $label)"
+                                       class="form-control">
+                                <span class="glyphicon glyphicon-search form-control-feedback text-muted"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="col-sm-12">Account No</label>
+                        <div class="col-lg-12">
+                            <input type="text" class="form-control" ng-model="account.AccountNo" required />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="col-sm-12">Bank Name</label>
+                        <div class="col-lg-12">
+                            <select class="form-control" ng-model="account.BankName"
+                                    ng-options="b.BankName as b.BankName for b in bankList"
+                                    required>
+                                <option value="">Select Bank</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="col-sm-12">Company</label>
+                        <div class="col-lg-12">
+                            <select class="form-control" ng-model="account.Company"
+                                    ng-options="c.Company as c.Company for c in companyList"
+                                    required>
+                                <option value="">Select Company</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <div class="form-group">
+                        <div class="col-sm-offset-6 col-sm-6">
+                            <div class="pull-right">
+                                <button type="reset" class="btn btn-warning btn-flat btn-sm"><i class="fa fa-close"></i> Reset</button>
+                                <button type="submit" class="btn btn-success btn-flat btn-sm"><i class="fa fa-save"></i> Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+        <!-- /. box -->
+    </div>
+</div>

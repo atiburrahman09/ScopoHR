@@ -1,0 +1,39 @@
+﻿@model ScopoHR.Core.ViewModels.ReportFilteringViewModel
+@{
+    ViewBag.Title = "GetEmployeeLeaveHistory";
+}
+
+<div class="col-sm-12">
+    <section class="box box-solid">
+        <header class="box-header with-border">
+            <h3 class="box-title">Employee Leave History Report</h3>
+        </header>
+        <div class="box-body">
+            <div class="form-horizontal">
+
+                @using (Html.BeginForm("GetEmployeeLeaveHistoryReport", "Report", FormMethod.Post, new { target = "_blank" }))
+                {
+                    <div class="form-group">
+
+                        <label class="col-sm-12">Card No</label>
+                        @*<div class="col-sm-2">
+                                @Html.DropDownList("EmployeeID", ViewBag.employeeList as SelectList, "Select Employee", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.EmployeeID)
+                            </div>*@
+
+                        <div class="col-sm-2">
+                            @Html.TextBoxFor(x => x.CardNo, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CardNo)
+                        </div>
+
+                        <div class="col-sm-1">
+                            <input type="submit" formtarget="_blank" class="btn btn-block btn-success" value="Get Report" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+    </section>
+</div>
+

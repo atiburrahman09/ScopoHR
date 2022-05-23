@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    @*<base href="https://demos.telerik.com/kendo-ui/grid/column-menu">*@
+    <style>
+        html {
+            font-size: 14px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+    <title></title>
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.3.1017/styles/kendo.common-material.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.3.1017/styles/kendo.material.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.3.1017/styles/kendo.material.mobile.min.css" />
+
+    <script src="https://kendo.cdn.telerik.com/2018.3.1017/js/jquery.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2018.3.1017/js/kendo.all.min.js"></script>
+
+
+</head>
+<body>
+
+    <div id="example">
+        <div id="grid">
+
+        </div>
+
+        <script>
+            $(document).ready(function () {
+                $("#grid").kendoGrid({
+                    toolbar: ["excel"],
+                    excel: {
+                        fileName: new Date().toLocaleDateString() + "EmployeeDetails",
+                        filterable: true
+                    },
+                    dataSource: {
+                        type: "json",
+                        transport: {
+                            read: "\GetEmployeeDataDynamicReport"
+                        },
+                        schema: {
+                            model: {
+                                fields: {
+                                    CardNo: { type: "string" },
+                                    EmployeeName: { type: "string" },
+                                    Gender: { type: "string" },
+                                    Grade: { type: "int" },
+                                    DepartmentName: { type: "string" },
+                                    DesignationName: { type: "string" },
+                                    Floor: { type: "string" },                                    
+                                    BasicSalary: { type: "decimal" },
+                                    HouseRent: { type: "decimal" },
+                                    MedicalAllowance: { type: "decimal" },
+                                    FoodAllowance: { type: "decimal" },
+                                    Conveyance: { type: "decimal" },
+                                    MedicalLeave: { type: "int" },
+                                    CasualLeave: { type: "int" },
+                                    MaternityLeave: { type: "int" },
+                                    compensatoryleave: { type: "int" },
+                                    SL: { type: "int" },
+                                    SH: { type: "int" },
+                                    earnedleave: { type: "int" },
+                                    JoinDate: { type: "Date"},
+                                    TicketNo: { type: "int" },
+                                    FatherName: { type: "string" },
+                                    MotherName: { type: "string" },
+                                    MobileNo: { type: "string" },
+                                    PresentAddress: { type: "string" },
+                                    PermanentAddress: { type: "string" }
+                                }
+                            }
+                        },
+                        serverPaging: true,
+                        serverFiltering: true,
+                        serverSorting: true
+                    },
+                    pageSize: 30,
+                    height: 1020,
+                    sortable: true,
+                    filterable: true,
+                    columnMenu: true,
+                    pageable: true,
+                    columns: [{
+                        field: "CardNo",
+                        title: "Card No"
+                    },
+                        {
+                            field: "EmployeeName",
+                            title: "Employee Name"
+                        },
+                    {
+                        field: "Gender",
+                        title: "Gender"
+                    }, {
+                        field: "Grade",
+                        title: "Grade"
+                    }, {
+                        field: "DepartmentName",
+                        title: "Dpt_Name"
+                    }, {
+                        field: "DesignationName",
+                        title: "Desg_Name"
+                    }, {
+                        field: "Floor",
+                        title: "Floor"
+                    }, {
+                        field: "JoinDate",
+                        title: "Join Date",
+                        format: "{0:MM/dd/yyyy}",
+                        editor: customDateTimePickerEditor
+                    }, {
+                        field: "BasicSalary",
+                        title: "Basic Salary"
+                    }, {
+                        field: "HouseRent",
+                        title: "House Rent"
+                    }, {
+                        field: "MedicalAllowance",
+                        title: "Med_Allowance"
+                    }, {
+                        field: "FoodAllowance",
+                        title: "Food Allowance"
+                    }, {
+                        field: "Conveyance",
+                        title: "Conveyance"
+                    }, {
+                        field: "MedicalLeave",
+                        title: "ML"
+                    }, {
+                        field: "CasualLeave",
+                        title: "CL"
+                    }, {
+                        field: "MaternityLeave",
+                        title: "MT"
+                    }, {
+                        field: "compensatoryleave",
+                        title: "CP"
+                    }, {
+                        field: "SL",
+                        title: "SL"
+                    }, {
+                        field: "SH",
+                        title: "SH"
+                    }, {
+                        field: "earnedleave",
+                        title: "EL"
+                    }, {
+                        field: "TicketNo",
+                        title: "Ticket No"
+                    }, {
+                        field: "FatherName",
+                        title: "Father Name"
+                    }, {
+                        field: "MotherName",
+                        title: "Mother Name"
+                    }, {
+                        field: "MobileNo",
+                        title: "Mobile No"
+                    }, {
+                        field: "PresentAddress",
+                        title: "Present Address"
+                    }, {
+                        field: "PermanentAddress",
+                        title: "Permanent Address"
+                    }
+
+                    ]
+                });
+
+                function customDateTimePickerEditor(container, options) {
+                    console.log("test");
+                    $('<input required name="' + options.field + '"/>')
+                      .appendTo(container)
+                      .kendoDateTimePicker({});
+                }
+            });
+        </script>
+    </div>
+
+
+</body>
+</html>

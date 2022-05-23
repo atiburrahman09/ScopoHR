@@ -1,0 +1,42 @@
+﻿@model ScopoHR.Core.ViewModels.ReportFilteringViewModel
+@{
+    ViewBag.Title = "SalarySummaryReport";
+}
+
+<div class="col-sm-12">
+    <section class="box box-solid">
+        <header class="box-header with-border">
+            <h3 class="box-title">Salary Sheet Report</h3>
+        </header>
+        <div class="box-body">
+            <div class="form-horizontal">
+
+                @using (Html.BeginForm("GetSalarySummaryReport", "Report", FormMethod.Post, new { target = "_blank" }))
+                {
+                    <div class="form-group">                      
+                        <label class="col-sm-1">Year</label>
+                        <div class="col-sm-2">
+                            @Html.DropDownListFor(model => model.Year, ViewBag.yearList as SelectList, "Select Year", new { @class = "form-control", required = "required" })
+                            @Html.ValidationMessageFor(model => model.Year)
+                        </div>
+                        <label class="col-sm-1">Month</label>
+                        <div class="col-sm-2">
+                            @Html.DropDownListFor(model => model.Month, ViewBag.MonthList as SelectList, "Select Month", new { @class = "form-control", required = "required" })
+                            @Html.ValidationMessageFor(model => model.Month)
+                        </div>
+                        
+                        <div class="col-sm-2 pull-right">
+                            <input type="submit" formtarget="_blank" class="btn btn-block btn-success" value="Get Report" />
+                        </div>
+                    </div>
+
+
+                }
+            </div>
+        </div>
+
+    </section>
+</div>
+
+
+

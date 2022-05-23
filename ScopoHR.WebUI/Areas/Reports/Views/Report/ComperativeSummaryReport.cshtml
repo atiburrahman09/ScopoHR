@@ -1,0 +1,62 @@
+﻿@model ScopoHR.Core.ViewModels.ReportFilteringViewModel
+@{
+    ViewBag.Title = "ComperativeSummaryReport";
+}
+
+<div class="col-sm-12">
+    <section class="box box-solid">
+        <header class="box-header with-border">
+            <h3 class="box-title">Comperative Summary Report</h3>
+        </header>
+        <div class="box-body">
+            <div class="form-horizontal">
+
+                @using (Html.BeginForm("GetComperativeSummaryReport", "Report", FormMethod.Post, new { target = "_blank" }))
+                {
+                    <div class="form-group">
+                        <label class="col-sm-1">Year</label>
+                        <div class="col-sm-2">
+                            @Html.DropDownListFor(model => model.FirstYear, ViewBag.yearList as SelectList, "Select Year", new { @class = "form-control", required = "required" })
+                            @Html.ValidationMessageFor(model => model.FirstYear)
+                        </div>
+                        <label class="col-sm-1">First Month</label>
+                        <div class="col-sm-2">
+                            @Html.DropDownListFor(model => model.FirstMonth, ViewBag.MonthList as SelectList, "Select Month", new { @class = "form-control", required = "required" })
+                            @Html.ValidationMessageFor(model => model.FirstMonth)
+                        </div>
+                        <label class="col-sm-1">Year</label>
+                        <div class="col-sm-2">
+                            @Html.DropDownListFor(model => model.SecondYear, ViewBag.yearList as SelectList, "Select Year", new { @class = "form-control", required = "required" })
+                            @Html.ValidationMessageFor(model => model.SecondYear)
+                        </div>
+                        <label class="col-sm-1">Second Month</label>
+                        <div class="col-sm-2">
+                            @Html.DropDownListFor(model => model.SecondMonth, ViewBag.MonthList as SelectList, "Select Month", new { @class = "form-control", required = "required" })
+                            @Html.ValidationMessageFor(model => model.SecondMonth)
+                        </div>
+                       
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1">Shift</label>
+                        <div class="col-sm-2">
+                            @Html.DropDownListFor(model => model.ShiftId, ViewBag.shiftList as SelectList, "Select Shift", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ShiftId)
+                        </div>
+                        <label class="col-sm-1">Floor</label>
+                        <div class="col-sm-2">
+                            @Html.DropDownListFor(model => model.Floor, ViewBag.floorList as SelectList, "Select Floor", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ProductionFloorLineID)
+                        </div>
+                        <div class="col-sm-2 pull-right">
+                            <input type="submit" formtarget="_blank" class="btn btn-block btn-success" value="Get Report" />
+                        </div>
+                    </div>
+
+
+                }
+            </div>
+        </div>
+
+    </section>
+</div>
+

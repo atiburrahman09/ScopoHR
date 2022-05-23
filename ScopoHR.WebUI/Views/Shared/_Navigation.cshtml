@@ -1,0 +1,377 @@
+﻿<nav class="navbar navbar-static-top">
+    <div class="navbar-header pull-left">
+        <a class="navbar-brand" href="~/Home/Index" style="color: orange;"><img src="~/Content/logo.png" style="height:35px;margin:-7px;" /></a>
+    </div>
+
+    <ul class="nav navbar-nav">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle text-menu" data-toggle="dropdown" aria-expanded="false">Employee<span class="caret"></span></a>
+            <ul class="dropdown-menu text-menu-items" role="menu">
+                @if (User.IsInRole(ScopoHR.Core.Common.AppRoles.EmployeeSetup) || User.IsInRole(ScopoHR.Core.Common.AppRoles.SuperUser) || User.IsInRole(ScopoHR.Core.Common.AppRoles.Admin))
+                {
+                    <li><a href="~/EmployeeManagement/Employees/Index">Employee Setup</a></li>
+                    <li><a href="~/EmployeeManagement/DocumentUpload/Index">Document Upload</a></li>
+                }
+
+                @if (User.IsInRole(ScopoHR.Core.Common.AppRoles.ChangeEmployeeCardNo) || User.IsInRole(ScopoHR.Core.Common.AppRoles.SuperUser) || User.IsInRole(ScopoHR.Core.Common.AppRoles.Admin))
+                {
+                    <li><a href="~/EmployeeManagement/Employees/ChangeCardNo">Change Employee Card No</a></li>
+                }
+
+                @if (User.IsInRole(ScopoHR.Core.Common.AppRoles.InActiveEmployee) || User.IsInRole(ScopoHR.Core.Common.AppRoles.SuperUser) || User.IsInRole(ScopoHR.Core.Common.AppRoles.Admin))
+                {
+                    <li><a href="~/EmployeeManagement/InActiveEmployee/Index">In Active Employee</a></li>
+                }
+
+                @if (User.IsInRole(ScopoHR.Core.Common.AppRoles.SalaryIncrement) || User.IsInRole(ScopoHR.Core.Common.AppRoles.SuperUser) || User.IsInRole(ScopoHR.Core.Common.AppRoles.Admin))
+                {
+                    <li><a href="~/EmployeeManagement/IncrementSalary/Index">Salary Increment</a></li>
+                    <li><a href="~/EmployeeManagement/IncrementSalary/SalaryIncrement">Increment History</a></li>
+                }
+
+                @if (User.IsInRole(ScopoHR.Core.Common.AppRoles.Promotion) || User.IsInRole(ScopoHR.Core.Common.AppRoles.SuperUser) || User.IsInRole(ScopoHR.Core.Common.AppRoles.Admin))
+                {
+                    <li><a href="~/EmployeeManagement/Promotion/Index">Promotion</a></li>
+                }
+            </ul>
+        </li>
+
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle text-menu" data-toggle="dropdown" aria-expanded="false">Attendance<span class="caret"></span></a>
+            <ul class="dropdown-menu text-menu-items" role="menu">
+                @if (User.IsInRole(ScopoHR.Core.Common.AppRoles.EmployeeAttendance) || User.IsInRole(ScopoHR.Core.Common.AppRoles.SuperUser) || User.IsInRole(ScopoHR.Core.Common.AppRoles.Admin))
+                {
+                    <li><a href="~/EmployeeManagement/Attendance/Index">Employee Attendance</a></li>
+                    <li><a href="~/EmployeeManagement/Attendance/AttendanceLocationWise">Update Attendance Location Wise</a></li>
+                }
+
+                @if (User.IsInRole(ScopoHR.Core.Common.AppRoles.OneTimeEntryUpdate) || User.IsInRole(ScopoHR.Core.Common.AppRoles.SuperUser) || User.IsInRole(ScopoHR.Core.Common.AppRoles.Admin))
+                {
+                    <li><a href="~/EmployeeManagement/OneTimePunch/Index">One Time Entry Update</a></li>
+                }
+
+                @if (User.IsInRole(ScopoHR.Core.Common.AppRoles.Security) || User.IsInRole(ScopoHR.Core.Common.AppRoles.SuperUser) || User.IsInRole(ScopoHR.Core.Common.AppRoles.Admin))
+                {
+                    <li class="text-menu"><a href="~/EmployeeManagement/SecurityGuard/Index">Security Guard Roster</a></li>
+                }
+            </ul>
+        </li>
+
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle text-menu" data-toggle="dropdown" aria-expanded="false">Leave<span class="caret"></span></a>
+            <ul class="dropdown-menu text-menu-items" role="menu">
+                @if (User.IsInRole(ScopoHR.Core.Common.AppRoles.LeaveApplication) || User.IsInRole(ScopoHR.Core.Common.AppRoles.SuperUser) || User.IsInRole(ScopoHR.Core.Common.AppRoles.Admin))
+                {
+                    <li><a href="~/LeaveManagement/LeaveApplications/Index">Leave Application</a></li>
+
+                }
+                @if (User.IsInRole(ScopoHR.Core.Common.AppRoles.LeaveApprover))
+                {
+                    <li><a href="~/LeaveManagement/LeaveApproval/Index">Leave Approval</a></li>
+                }
+
+                @if (User.Identity.Name == "1706206" || User.Identity.Name == "1706209" || User.Identity.Name == "superuser" || User.Identity.Name == "1701103")
+                {
+                    <li><a href="~/Common/Maternity/Index">Maternity</a></li>
+                }
+            </ul>
+        </li>
+
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle text-menu" data-toggle="dropdown" aria-expanded="false">Task<span class="caret"></span></a>
+            <ul class="dropdown-menu text-menu-items" role="menu">
+                @if (User.IsInRole(ScopoHR.Core.Common.AppRoles.Task) || User.IsInRole(ScopoHR.Core.Common.AppRoles.SuperUser) || User.IsInRole(ScopoHR.Core.Common.AppRoles.Admin))
+                {
+                    <li><a href="~/TaskManagement/Tasks/Index">Task</a></li>
+
+                }
+                @if (User.IsInRole(ScopoHR.Core.Common.AppRoles.Task) || User.IsInRole(ScopoHR.Core.Common.AppRoles.SuperUser) || User.IsInRole(ScopoHR.Core.Common.AppRoles.Admin))
+                {
+                    <li><a href="~/TaskManagement/Project/Index">Project Setup</a></li>
+
+                }
+                @if (User.IsInRole(ScopoHR.Core.Common.AppRoles.Task) || User.IsInRole(ScopoHR.Core.Common.AppRoles.SuperUser) || User.IsInRole(ScopoHR.Core.Common.AppRoles.Admin))
+                {
+                    <li><a href="~/TaskManagement/Client/Index">Client Setup</a></li>
+
+                }
+            </ul>
+        </li>
+
+        @if (User.IsInRole(ScopoHR.Core.Common.AppRoles.Notice) || User.IsInRole(ScopoHR.Core.Common.AppRoles.SuperUser) || User.IsInRole(ScopoHR.Core.Common.AppRoles.Admin))
+        {
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle text-menu" data-toggle="dropdown" aria-expanded="false">Notice<span class="caret"></span></a>
+                <ul class="dropdown-menu text-menu-items" role="menu">
+                    <li><a href="~/Notice/Notice/NoticeAssign">Notice</a></li>
+                    <li><a href="~/Notice/Notice/DropOutListReport">Send Notice</a></li>
+                </ul>
+            </li>
+        }
+
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle text-menu" data-toggle="dropdown" aria-expanded="false">Deduction<span class="caret"></span></a>
+            <ul class="dropdown-menu text-menu-items" role="menu">
+                @if (User.IsInRole(ScopoHR.Core.Common.AppRoles.AdvanceSalary) || User.IsInRole(ScopoHR.Core.Common.AppRoles.SuperUser) || User.IsInRole(ScopoHR.Core.Common.AppRoles.Admin))
+                {
+                    <li><a href="~/Loan/Loan/Index">Loan</a></li>
+                }
+                @if (User.IsInRole(ScopoHR.Core.Common.AppRoles.AdvanceSalary) || User.IsInRole(ScopoHR.Core.Common.AppRoles.SuperUser) || User.IsInRole(ScopoHR.Core.Common.AppRoles.Admin))
+                {
+                    <li><a href="~/Loan/Tax/Index">Tax</a></li>
+
+                }
+                @if (User.IsInRole(ScopoHR.Core.Common.AppRoles.AdvanceSalary) || User.IsInRole(ScopoHR.Core.Common.AppRoles.SuperUser) || User.IsInRole(ScopoHR.Core.Common.AppRoles.Admin))
+                {
+                    <li><a href="~/Loan/Fine/Index">Fine</a></li>
+                }
+            </ul>
+        </li>
+
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle text-menu" data-toggle="dropdown" aria-expanded="false">Administrative<span class="caret"></span></a>
+            <ul class="dropdown-menu text-menu-items" role="menu">
+                @if (User.IsInRole(ScopoHR.Core.Common.AppRoles.SalaryCalculation) || User.IsInRole(ScopoHR.Core.Common.AppRoles.SuperUser) || User.IsInRole(ScopoHR.Core.Common.AppRoles.Admin))
+                {
+                    <li><a href="~/EmployeeManagement/SalaryCalculation/Index">Salary Calculation</a></li>
+                }
+
+                @if (User.IsInRole(ScopoHR.Core.Common.AppRoles.Settings) || User.IsInRole(ScopoHR.Core.Common.AppRoles.SuperUser) || User.IsInRole(ScopoHR.Core.Common.AppRoles.Admin))
+                {
+                    <li class="text-menu"><a href="~/AdminPanel/GeneralSettings/Index">Settings</a></li>
+                }
+
+                @if (User.IsInRole(ScopoHR.Core.Common.AppRoles.PasswordReset) || User.IsInRole(ScopoHR.Core.Common.AppRoles.SuperUser) || User.IsInRole(ScopoHR.Core.Common.AppRoles.Admin))
+                {
+                    <li class="text-menu"><a href="~/AdminPanel/BankAccount">Bank Account</a></li>
+                }
+
+                @if (User.Identity.Name == "superuser" || User.Identity.Name == "1701103")
+                {
+                    <li><a href="~/Common/License/Index">License</a></li>
+                    <li><a href="~/Common/Prescription/Index">Prescription</a></li>
+                    <li><a href="~/Common/Medicine/Index">Medicine</a></li>
+                }
+            </ul>
+        </li>
+
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle text-menu" data-toggle="dropdown" aria-expanded="false">Authentication<span class="caret"></span></a>
+            <ul class="dropdown-menu text-menu-items" role="menu">
+                @if (User.IsInRole(ScopoHR.Core.Common.AppRoles.ManageBranch) || User.IsInRole(ScopoHR.Core.Common.AppRoles.SuperUser) || User.IsInRole(ScopoHR.Core.Common.AppRoles.Admin))
+                {
+                    <li class="text-menu"><a href="~/AdminPanel/Branch">Branch Setup</a></li>
+                }
+
+                @if (User.IsInRole(ScopoHR.Core.Common.AppRoles.ManageUsers) || User.IsInRole(ScopoHR.Core.Common.AppRoles.SuperUser) || User.IsInRole(ScopoHR.Core.Common.AppRoles.Admin))
+                {
+                    <li class="text-menu"><a href="~/AdminPanel/UserManagement">User Setup</a></li>
+                }
+
+                @if (User.IsInRole(ScopoHR.Core.Common.AppRoles.PasswordReset) || User.IsInRole(ScopoHR.Core.Common.AppRoles.SuperUser) || User.IsInRole(ScopoHR.Core.Common.AppRoles.Admin))
+                {
+                    <li class="text-menu"><a href="~/Account/ResetPassword">Password Reset</a></li>
+                }
+            </ul>
+        </li>
+        
+        @if (User.IsInRole(ScopoHR.Core.Common.AppRoles.Director) || User.IsInRole(ScopoHR.Core.Common.AppRoles.SuperUser) || User.IsInRole(ScopoHR.Core.Common.AppRoles.Reports) || User.IsInRole(ScopoHR.Core.Common.AppRoles.Admin))
+        {
+            <li>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports <b class="caret"></b></a>
+                <ul class="dropdown-menu multi-level">
+                    <li class="dropdown-submenu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Employee</a>
+                        <ul class="dropdown-menu">
+                            @if (User.Identity.Name == "1306510" || User.Identity.Name == "superuser" || User.Identity.Name == "1701103")
+                            {
+                                <li class="text-menu"><a href="~/Reports/Report/EmployeeIdCard">Employee Id Card</a></li>
+                            }
+                            @if (User.Identity.Name == "1306510" || User.Identity.Name == "superuser" || User.Identity.Name == "1701103" || User.Identity.Name == "3001101")
+                            {
+                                <li class="text-menu"><a href="~/Reports/Report/AllEmployeeDetails">Employee Details</a></li>
+                                <li class="text-menu"><a href="~/Reports/Report/DropedNewJoinEmployeesInfoReport">Droped - New Join</a></li>
+                                <li class="text-menu"><a href="~/Reports/Report/DropOutreport">Drop Out Running</a></li>
+                                <li class="text-menu"><a href="~/Reports/Report/DropedOutEmployeesReport">Drop Out Previous</a></li>
+                                <li class="text-menu"><a href="~/Reports/Report/NewRecruitment">New Recruitment Report</a></li>
+                            }
+
+                            @if (User.Identity.Name == "superuser" || User.Identity.Name == "1701103")
+                            {                                
+                                <li class="text-menu"><a href="~/Reports/Report/EmployeeBioData">Employee Bio Data</a></li>                                
+                                <li class="text-menu"><a href="~/Reports/Report/PromotionReport">Promotion</a></li>
+                                <li class="text-menu"><a href="~/Reports/Report/IncrementReport">Increment</a></li>                                
+                                <li class="text-menu"><a href="~/Reports/Report/RegisterOfWorkerReport">Register Of Workers</a></li>
+                                <li class="text-menu"><a href="~/Reports/Report/EmployeeAllHistoryData">Service Book </a></li>
+                                <li class="text-menu"><a href="~/Reports/Report/EmployeeFinalBillPaymentReport">Employee Final Bill Payment </a></li>
+                                
+                            }
+                        </ul>
+                    </li>
+
+                    <li class="divider"></li>
+
+                    <li class="dropdown-submenu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Attendance</a>
+                        <ul class="dropdown-menu">
+                            @if (User.Identity.Name == "1706115" || User.Identity.Name == "1706302" || User.Identity.Name == "1706305" || User.Identity.Name == "superuser" || User.Identity.Name == "1701103" || User.Identity.Name == "3001101")
+                            {
+                                <li class="text-menu"><a href="~/Reports/Report/EmployeeAttendaceDetailsReport">Individual Report</a></li>
+                            }
+
+                            @if (User.Identity.Name == "1706115" || User.Identity.Name == "superuser" || User.Identity.Name == "1701103")
+                            {
+                                <li class="text-menu"><a href="~/Reports/Report/AbsentReport">Daily Absent Report</a></li>
+                                <li class="text-menu"><a href="~/Reports/Report/OneTimeEntryReport">Daily One Time Entry Report</a></li>
+                            }
+
+                            @if (User.Identity.Name == "1706305" || User.Identity.Name == "1706115" || User.Identity.Name == "superuser" || User.Identity.Name == "1701103" || User.Identity.Name == "4001101" || User.Identity.Name == "3001102" || User.Identity.Name == "1706300")
+                            {
+                                <li class="text-menu"><a href="~/Reports/Report/AttendanceSummaryReport">Daily Attendance Summary</a></li>
+
+                            }
+
+                            @if (User.Identity.Name == "1706305" || User.Identity.Name == "superuser" || User.Identity.Name == "1701103" || User.Identity.Name == "1706115" || User.Identity.Name == "4001101" || User.Identity.Name == "3001102")
+                            {
+                                <li class="text-menu"><a href="~/Reports/Report/AuditReports">Details Working Report</a></li>
+                            }
+
+                            @if (User.Identity.Name == "superuser" || User.Identity.Name == "1701103")
+                            {
+                                <li class="text-menu"><a href="~/Reports/DailyAttendance/Index">Daily Attendance Report</a></li>
+                                <li class="text-menu"><a href="~/Reports/Report/SecurityGuardRosterReport">Security Roster </a></li>
+                            }
+                        </ul>
+                    </li>
+
+                    <li class="divider"></li>
+
+                    <li class="dropdown-submenu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Leave</a>
+                        <ul class="dropdown-menu">
+                            @if (User.Identity.Name == "1306510" || User.Identity.Name == "1706115" || User.Identity.Name == "superuser" || User.Identity.Name == "1701103")
+                            {
+                                <li class="text-menu"><a href="~/Reports/Report/EmployeeLeaveHistory">Employee Leave History</a></li>
+                            }
+
+                            @if (User.Identity.Name == "1706206" || User.Identity.Name == "1706209" || User.Identity.Name == "superuser" || User.Identity.Name == "1701103" || User.Identity.Name == "1706300" || User.Identity.Name == "3001102")
+                            {
+                                <li class="text-menu"><a href="~/Reports/Report/MaternityReport">Maternity</a></li>
+                                @*<li class="text-menu"><a href="~/Reports/Report/MaternityBillPayReport">Maternity Bill Payment Report</a></li>*@
+                            }
+
+                            @if (User.Identity.Name == "superuser" || User.Identity.Name == "1701103")
+                            {
+                                <li class="text-menu"><a href="~/Reports/Report/EmployeeLeavePostingSummaryReport">Employee Leave Posting Summary</a></li>
+                                <li class="text-menu"><a href="~/Reports/Report/EmployeeLeavePostingReport">Employee Leave Posting</a></li>
+                                <li class="text-menu"><a href="~/Reports/Report/EarnedLeaveCalculationReport">Earned Leave Calculation</a></li>
+                                <li class="text-menu"><a href="~/Reports/Report/EarnLeaveSummaryReport">Earned Leave Summary</a></li>
+                                <li class="text-menu"><a href="~/Reports/Report/LeaveApprovalReport">Leave Approval</a></li>
+                                <li class="text-menu"><a href="~/Reports/Report/LeaveCorrectionReport">Leave Correction </a></li>
+                                <li class="text-menu"><a href="~/Reports/Report/SubstituteHolidayReport">Substitute Holiday</a></li>
+                            }
+                        </ul>
+                    </li>
+
+                    <li class="divider"></li>
+
+                    <li class="dropdown-submenu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Salary</a>
+                        <ul class="dropdown-menu">
+                            @if (User.Identity.Name == "1701103" || User.Identity.Name == "superuser" || User.Identity.Name == "3002003")
+                            {
+                                <li class="text-menu"><a href="~/Reports/Report/SalarySheetReport">Workers Salary Sheet</a></li>
+                                <li class="text-menu"><a href="~/Reports/Report/StaffSalarySheetReport">Staff Salary Sheet</a></li>
+                            }
+
+                            @if (User.Identity.Name == "superuser" || User.Identity.Name == "1701103" || User.Identity.Name == "1707112" || User.Identity.Name == "1707113")
+                            {
+                                <li class="text-menu"><a href="~/Reports/Report/ComperativeSummaryReport">Comperative Summary</a></li>
+                            }
+
+                            @if (User.Identity.Name == "superuser" || User.Identity.Name == "1701103")
+                            {
+                                <li class="text-menu"><a href="~/Reports/Report/EmployeesPaySlip">Employees Pay Slip</a></li>
+                                <li class="text-menu"><a href="~/Reports/Report/BankSalaryPadReport">Bank Salary</a></li>
+                                <li class="text-menu"><a href="~/Reports/Report/SalarySummaryReport">Salary Summary </a></li>
+                                <li class="text-menu"><a href="~/Reports/Report/TiffinBill">Tiffin Bill</a></li>
+                                <li class="text-menu"><a href="~/Reports/Report/NightBill">Night Bill</a></li>
+                                <li class="text-menu"><a href="~/Reports/Report/HolidayBill">Holiday Bill</a></li>
+                                <li class="text-menu"><a href="~/Reports/Report/EidBonusReport">Eid Bonus</a></li>
+                            }
+                        </ul>
+                    </li>
+
+                    <li class="divider"></li>
+
+                    <li class="dropdown-submenu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Misc.</a>
+                        <ul class="dropdown-menu">
+                            @if (User.Identity.Name == "1706510" || User.Identity.Name == "superuser" || User.Identity.Name == "1701103" || User.Identity.Name == "1706115")
+                            {
+                                <li class="text-menu"><a href="~/Reports/Report/WorkerBusReport">Worker Bus Report </a></li>
+                            }
+
+                            @if (User.Identity.Name == "superuser" || User.Identity.Name == "1701103")
+                            {
+                            }
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        }
+    </ul>
+
+    <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+            <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="user-body">
+                        <div class="row">
+                            <ul class="nav nav-pills nav-stacked ng-scope">
+                                <li class="disabled">
+                                    <a href="" style="cursor: default !important;">
+                                        <ul class="nav">
+                                            <li class="ng-binding">
+                                                <i class="glyphicon glyphicon-user text-blue"></i> @ScopoHR.Core.Helpers.UserHelper.Instance.Get().UserId
+                                            </li>
+                                        </ul>
+                                    </a>
+                                </li>
+                                <li class="disabled">
+                                    <a href="" style="cursor: default !important;">
+                                        <ul class="nav">
+                                            <li class="ng-binding disabled">
+                                                <i class="fa fa-building-o text-green"></i> @ScopoHR.Core.Helpers.UserHelper.Instance.Get().BranchName
+                                            </li>
+                                        </ul>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Account/LogOff/" style="cursor: default !important;">
+                                        <ul class="nav">
+                                            <li class="ng-binding">
+                                                <i class="fa fa-sign-out text-orange"></i> <span>Log Out</span>
+                                            </li>
+                                        </ul>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+
+@*<li class="text-menu"><a href="~/Reports/Report/ExtraDelay">Employee Delay Report</a></li>
+<li class="text-menu"><a href="~/Reports/Report/OverTimeReport">Over Time Report</a></li>
+<li class="text-menu"><a href="~/Reports/Report/EmployeeMinimumWorkingHour">Employee Minimum Work Time Report</a></li>
+<li class="text-menu"><a href="~/Reports/Report/ExtraDelay">Employee Delay Report</a></li>
+<li><a href="~/EmployeeManagement/Salary/Index">Salary Sheet</a></li>*@

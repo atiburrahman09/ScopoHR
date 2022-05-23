@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row" ng-controller="mailController" ng-init="init()" ng-cloak>
+   
+
+    <div class="col-sm-9 column">
+        <div class="box box-solid">           
+            <form class="form-horizontal" name="clientSetupForm" novalidate ng-submit="saveClicked()">
+                <div class="box-footer">
+                    <div class="pull-right">
+                        <button type="submit" class="btn btn-success btn-flat btn-sm"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

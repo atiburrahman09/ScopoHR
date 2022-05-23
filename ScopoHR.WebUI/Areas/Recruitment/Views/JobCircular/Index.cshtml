@@ -1,0 +1,129 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<div class="row" ng-controller="jobCircularController" ng-init="init()">
+
+    <div class="content-wrapper">
+
+
+        <section class="content">
+            <div class="row">
+                <div class="col-md-3">
+
+
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">List</h3>
+                        </div>
+
+                        <div class="box-body">
+
+                            <ul class="nav nav-pills nav-stacked">
+                                <li ng-repeat="job in jobList">
+                                    <a href="" ng-click="jobSelected(jobList.indexOf(job))">
+                                        <i class="fa fa-file-text-o">{{job.JobTitle}}</i>
+                                            <span class="glyphicon glyphicon-remove" ng-click="DeleteJob(job)" style="float:right">
+                                            </span>
+                                    </a>
+
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-9">
+
+
+
+                    <form class="form-horizontal" name="jobForm" ng-submit="createJob()">
+                        <div class="box box-solid">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Create/Update</h3>
+                                <button data-ng-click="mode='create';init()" style="float:right" class="btn btn-sm btn-default btn-flat"> <i class="fa fa-plus text-green" aria-hidden="true"></i> New</button>
+                            </div>
+                            <div class="box-body">
+                                <div class="col-lg-12">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="col-lg-5">Job Title</label>
+                                            <div class="col-lg-7">
+                                                <input type="text" class="form-control" ng-model="job.JobTitle"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="col-lg-5">Job Description</label>
+                                            <div class="col-lg-7">
+                                                <textarea rows="4" cols="50" class="form-control" ng-model="job.JobDescription"> 
+                                                            </textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="col-lg-5">Deadline</label>
+                                            <div class="col-lg-7">
+                                                <input type="text" class="form-control" ng-model="job.DueDate" data-provide="datepicker" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="col-lg-5">Posted By</label>
+                                            <div class="col-lg-7">
+                                                <input type="text" class="form-control" disabled ng-model="job.CreatedBy"/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="col-lg-5">Posting Date</label>
+                                            <div class="col-lg-7">
+                                                <input type="text" class="form-control" ng-model="job.CreatedDate" id="pickdate" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                </div>
+                            </div>
+                            <div class="box-footer">
+                                <div class="form-group">
+                                    @*<div class="col-sm-offset-8 col-sm-2">
+                                            <button type="reset" class="btn btn-warning btn-flat btn-block">Reset</button>
+                                        </div>*@
+                                    <div class="col-sm-2">
+                                        <button type="submit" class="btn btn-success btn-flat btn-block">Create/Update</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+
+
+
+</div>
+

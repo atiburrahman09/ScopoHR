@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{11E5EE62-B351-4C28-99CA-0E19D027E5D5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ScopoHR.Core</RootNamespace>
+    <AssemblyName>ScopoHR.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.1.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.1\lib\BouncyCastle.Crypto.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MailKit, Version=1.16.0.0, Culture=neutral, PublicKeyToken=4e064fe7c44a8f1b, processorArchitecture=MSIL">
+      <HintPath>..\packages\MailKit.1.16.1\lib\net451\MailKit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="MimeKit, Version=1.16.0.0, Culture=neutral, PublicKeyToken=bede1c8a46c66814, processorArchitecture=MSIL">
+      <HintPath>..\packages\MimeKit.1.16.1\lib\net451\MimeKit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="QRCoder, Version=1.3.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.3.3\lib\net40\QRCoder.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.3.3\lib\net40\UnityEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\AppRoles.cs" />
+    <Compile Include="Helpers\CookieAccessor.cs" />
+    <Compile Include="Helpers\Helper.cs" />
+    <Compile Include="Helpers\UserHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BankAccountService.cs" />
+    <Compile Include="Services\FineService.cs" />
+    <Compile Include="Services\LicenseService.cs" />
+    <Compile Include="Services\LoanService.cs" />
+    <Compile Include="Services\ApplicationRoleService.cs" />
+    <Compile Include="Services\ApplicationUserService.cs" />
+    <Compile Include="Services\AttendanceService.cs" />
+    <Compile Include="Services\BranchService.cs" />
+    <Compile Include="Services\CardNoMappingService.cs" />
+    <Compile Include="Services\ClientService.cs" />
+    <Compile Include="Services\DailyReportService.cs" />
+    <Compile Include="Services\DepartmentService.cs" />
+    <Compile Include="Services\DesignationService.cs" />
+    <Compile Include="Services\DocumentService.cs" />
+    <Compile Include="Services\EmployeeService.cs" />
+    <Compile Include="Services\JobApplicationService.cs" />
+    <Compile Include="Services\JobCircularService.cs" />
+    <Compile Include="Services\LeaveApplicationService.cs" />
+    <Compile Include="Services\LeaveMappingService.cs" />
+    <Compile Include="Services\LeaveTypeService.cs" />
+    <Compile Include="Services\ManpowerPlanningService.cs" />
+    <Compile Include="Services\MaternityService.cs" />
+    <Compile Include="Services\MedicineService.cs" />
+    <Compile Include="Services\NoticeService.cs" />
+    <Compile Include="Services\OfficeTimingService.cs" />
+    <Compile Include="Services\OneTimePunchService.cs" />
+    <Compile Include="Services\OverTimeReportService.cs" />
+    <Compile Include="Services\PrescriptionService.cs" />
+    <Compile Include="Services\ProductionService.cs" />
+    <Compile Include="Services\ProjectService.cs" />
+    <Compile Include="Services\PromotionService.cs" />
+    <Compile Include="Services\ReportingService.cs" />
+    <Compile Include="Services\SalaryCalculationService.cs" />
+    <Compile Include="Services\SalaryIncrementService.cs" />
+    <Compile Include="Services\SalaryMappingService.cs" />
+    <Compile Include="Services\SalaryService.cs" />
+    <Compile Include="Services\SalaryTypeService.cs" />
+    <Compile Include="Services\SecurityGuardRosterService.cs" />
+    <Compile Include="Services\Sys_AttendanceBonusService.cs" />
+    <Compile Include="Services\Sys_GraceService.cs" />
+    <Compile Include="Services\TaskService.cs" />
+    <Compile Include="Services\TaxService.cs" />
+    <Compile Include="Services\UserBranchService.cs" />
+    <Compile Include="Services\UserLoginAuditService.cs" />
+    <Compile Include="Services\YearService.cs" />
+    <Compile Include="Services\WorkingShiftsService.cs" />
+    <Compile Include="ViewModels\AbsentReportViewModel.cs" />
+    <Compile Include="ViewModels\AdvanceSalaryViewModel.cs" />
+    <Compile Include="ViewModels\AppUserUpdateViewModel.cs" />
+    <Compile Include="ViewModels\AppUserViewModel.cs" />
+    <Compile Include="ViewModels\AspNetUserRoleViewModel.cs" />
+    <Compile Include="ViewModels\AttendanceSummaryViewModel.cs" />
+    <Compile Include="ViewModels\AttendanceViewModel.cs" />
+    <Compile Include="ViewModels\BankSalaryPadReportViewModel.cs" />
+    <Compile Include="ViewModels\BankSalaryViewModel.cs" />
+    <Compile Include="ViewModels\BranchViewModel.cs" />
+    <Compile Include="ViewModels\CardNoMappingViewModel.cs" />
+    <Compile Include="ViewModels\ChangeCardNoViewModel.cs" />
+    <Compile Include="ViewModels\ClientViewModel.cs" />
+    <Compile Include="ViewModels\ComperativeSummaryReportViewModel.cs" />
+    <Compile Include="ViewModels\DailyReportFilteringViewModel.cs" />
+    <Compile Include="ViewModels\DailyReportViewModel.cs" />
+    <Compile Include="ViewModels\DashboardViewModel.cs" />
+    <Compile Include="ViewModels\DepartmentViewModel.cs" />
+    <Compile Include="ViewModels\DesignationViewModel.cs" />
+    <Compile Include="ViewModels\DocumentViewModel.cs" />
+    <Compile Include="ViewModels\DropDownViewModel.cs" />
+    <Compile Include="ViewModels\DropedNewEmployeeInfoViewModel.cs" />
+    <Compile Include="ViewModels\DropOutReportViewModel.cs" />
+    <Compile Include="ViewModels\EarnedLeaveCalculationReportViewModel.cs" />
+    <Compile Include="ViewModels\EarnLeaveSummaryReportViewModel.cs" />
+    <Compile Include="ViewModels\EidBonusVIewModel.cs" />
+    <Compile Include="ViewModels\EmployeeAttendaceDetailsReportViewmodel.cs" />
+    <Compile Include="ViewModels\EmployeeBioDataViewModel.cs" />
+    <Compile Include="ViewModels\EmployeeDetailsViewModel.cs" />
+    <Compile Include="ViewModels\EmployeeDropDown.cs" />
+    <Compile Include="ViewModels\EmployeeFinalBillReportViewModel.cs" />
+    <Compile Include="ViewModels\EmployeeIdCardViewModel.cs" />
+    <Compile Include="ViewModels\EmployeeLeaveHistoryViewModel.cs" />
+    <Compile Include="ViewModels\EmployeeViewModel.cs" />
+    <Compile Include="ViewModels\FineViewModel.cs" />
+    <Compile Include="ViewModels\HolidayBillViewModel.cs" />
+    <Compile Include="ViewModels\InActiveEmployeeViewModel.cs" />
+    <Compile Include="ViewModels\IncrementReportViewModel.cs" />
+    <Compile Include="ViewModels\JobApplicationViewModel.cs" />
+    <Compile Include="ViewModels\JobCircularViewModel.cs" />
+    <Compile Include="ViewModels\LeaveApplicationViewModel.cs" />
+    <Compile Include="ViewModels\LeaveApprovalReportViewModel.cs" />
+    <Compile Include="ViewModels\LeaveMappingViewModel.cs" />
+    <Compile Include="ViewModels\LeaveTypeViewModel.cs" />
+    <Compile Include="ViewModels\LeaveViewModel.cs" />
+    <Compile Include="ViewModels\LicenseViewModel.cs" />
+    <Compile Include="ViewModels\LoanDetailsViewModel.cs" />
+    <Compile Include="ViewModels\LoanVIewModel.cs" />
+    <Compile Include="ViewModels\ManpowerPlanningViewModel.cs" />
+    <Compile Include="ViewModels\MaternityReportViewModel.cs" />
+    <Compile Include="ViewModels\MaternityViewModel.cs" />
+    <Compile Include="ViewModels\MedicineViewModel.cs" />
+    <Compile Include="ViewModels\MonthViewModel.cs" />
+    <Compile Include="ViewModels\NewRecruitmentViewModel.cs" />
+    <Compile Include="ViewModels\NoticeViewModel.cs" />
+    <Compile Include="ViewModels\OfficeTimingViewModel.cs" />
+    <Compile Include="ViewModels\OneTimeEntryReportViewModel.cs" />
+    <Compile Include="ViewModels\PrescriptionViewModel.cs" />
+    <Compile Include="ViewModels\ProductionFloorLineViewModel.cs" />
+    <Compile Include="ViewModels\ProjectViewModel.cs" />
+    <Compile Include="ViewModels\PromotionViewModel.cs" />
+    <Compile Include="ViewModels\PublishedNoticeViewModel.cs" />
+    <Compile Include="ViewModels\RegisterOfWorkerViewModel.cs" />
+    <Compile Include="ViewModels\ReportFilteringViewModel.cs" />
+    <Compile Include="ViewModels\SalaryCalculationViewModel.cs" />
+    <Compile Include="ViewModels\SalaryIncrementViewModel.cs" />
+    <Compile Include="ViewModels\SalaryMappingViewModel.cs" />
+    <Compile Include="ViewModels\SalarySheetViewModel.cs" />
+    <Compile Include="ViewModels\SalarySummaryViewModel.cs" />
+    <Compile Include="ViewModels\SalaryTypeViewModel.cs" />
+    <Compile Include="ViewModels\SectionViewModel.cs" />
+    <Compile Include="ViewModels\SecurityGuardRosterViewModel.cs" />
+    <Compile Include="ViewModels\SubstituteHolidayReportViewModel.cs" />
+    <Compile Include="ViewModels\Sys_AttendanceBonusViewModel.cs" />
+    <Compile Include="ViewModels\Sys_GraceViewModel.cs" />
+    <Compile Include="ViewModels\TaskViewModel.cs" />
+    <Compile Include="ViewModels\TaxViewModel.cs" />
+    <Compile Include="ViewModels\TiffinBillViewModel.cs" />
+    <Compile Include="ViewModels\UserBranchViewModel.cs" />
+    <Compile Include="ViewModels\WeeklyReportViewModel.cs" />
+    <Compile Include="ViewModels\WorkerBusReportViewModel.cs" />
+    <Compile Include="ViewModels\WorkerBusViewModel.cs" />
+    <Compile Include="ViewModels\WorkingShiftViewModel.cs" />
+    <Compile Include="ViewModels\YearMappingViewModel.cs" />
+    <Compile Include="ViewModels\YearViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NtitasCommon.Core\NtitasCommon.Core.csproj">
+      <Project>{8CE2C96B-1552-4C2B-A4C8-9F3EF08E06B2}</Project>
+      <Name>NtitasCommon.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ScopoHR.Domain\ScopoHR.Domain.csproj">
+      <Project>{eaf6016e-0bce-46a5-9a89-be19cf819e7f}</Project>
+      <Name>ScopoHR.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

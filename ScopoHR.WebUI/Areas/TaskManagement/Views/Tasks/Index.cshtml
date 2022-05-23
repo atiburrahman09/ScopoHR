@@ -1,0 +1,221 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" ng-controller="taskCtrl" ng-init="init()" ng-cloak>
+    <div class="col-md-2 column">
+        <div class="box box-solid">         
+            <div class="box-body no-padding">
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="" ng-class="{active:menus.current==='allTask'}">
+                        <a href="#" ng-click="navigateTo('allTask')">
+                            <i class="fa fa-file-text-o"></i> All Tasks
+                            <span class="pull-right">{{counts.AllTasks}}</span>
+                        </a>
+                    </li>
+                    <li class="" ng-class="{active:menus.current==='today'}">
+                        <a href="#" ng-click="navigateTo('today')">
+                            <i class="fa fa-file-text-o bg-blue"></i> Today
+                            <span class="pull-right">{{counts.Today}}</span>
+                        </a>
+                    </li>
+                    <li class="" ng-class="{active:menus.current==='overdue'}">
+                        <a href="#" ng-click="navigateTo('overdue')">
+                            <i class="fa fa-file-text-o bg-red"></i> Overdue
+                            <span class="pull-right">{{counts.Overdue}}</span>
+                        </a>
+                    </li>              
+                    <li>
+                        <a data-toggle="collapse" href="#priority-menu" aria-expanded="false" aria-controls="priority-menu">
+                            <i class="fa fa-file-text-o bg-orange"></i>
+                            Priority <i class="caret pull-right"></i>
+                        </a>
+                        <ul class="nav nav-stacked nav-pills collapse" id="priority-menu" style="padding: 20px !important; list-style: none;">
+                            <li ng-class="{active:menus.current==='pHigh'}"><a href="#" ng-click="navigateTo('pHigh')">High <label class="label label-danger pull-right">{{counts.PriorityH}} </label></a></li>
+                            <li ng-class="{active:menus.current==='pMedium'}"><a href="#" ng-click="navigateTo('pMedium')">Medium <label class="label label-warning pull-right">{{counts.PriorityM}} </label></a></li>
+                            <li ng-class="{active:menus.current==='pLow'}"><a href="#" ng-click="navigateTo('pLow')">Low <label class="label label-info pull-right">{{counts.PriorityL}} </label></a></li>
+                        </ul>
+                    </li>    
+                    <li class="" ng-class="{active:menus.current==='completed'}">
+                        <a href="#" ng-click="navigateTo('completed')">
+                            <i class="fa fa-file-text-o bg-green"></i> Completed
+                            <span class="pull-right">{{counts.Completed}}</span>
+                        </a>
+                    </li>           
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 column">
+        <div class="box box-solid">
+            @*<div class="box-header ">
+                <h3 class="box-title">Task List</h3>
+                <div class="pull-right">
+                    <button class="btn btn-sm btn-flat btn-default" ng-click="addNewTask()">
+                        <i class="fa fa-file-text-o bg-green"></i> Add Task
+                    </button>                    
+                </div>
+            </div>*@
+            <div class="box-body no-padding">           
+                <div class="table-responsive">
+                    <table class="table table-bordered table-condensed table-fixed-header no-wrap">
+                        <thead>
+                            <tr class="nt-table-header">
+                                <th>Title</th>                              
+                                <th>Assignee</th>
+                                <th>Owner</th>
+                                <th>Priority</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           <tr ng-repeat="task in taskList | filter:taskFilter track by $index" ng-class="{active:task.selected}" ng-click="selectTask(task, $index)">
+                               <td>
+                                   {{task.TaskTitle}}
+                               </td>                             
+                               <td>{{task.AssigneeName + ' : ' + task.AssigneeCardNo}}</td>
+                               <td>{{task.OwnerName + ' : ' + task.OwnerCardNo}}</td>
+                               <td>
+                                   <label class="label label-default" ng-if="task.Priority==0">Low</label>
+                                   <label class="label label-warning" ng-if="task.Priority==1">Medium</label>
+                                   <label class="label label-danger" ng-if="task.Priority==2">High</label>
+                               </td>
+                               <td>
+                                   <label class="label label-default" ng-if="task.Status==0">Not Started</label>
+                                   <label class="label label-warning" ng-if="task.Status==1">Started</label>
+                                   <label class="label label-success" ng-if="task.Status==2">Completed</label>
+                               </td>
+                           </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>   
+    <div class="col-md-4 column">
+        <form name="taskForm" class="form-horizontal" ng-submit="saveTask(task)" novalidate>
+            <div class="box box-solid">
+                <div class="box-body">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <button type="button" class="btn btn-sm btn-flat btn-default pull-right" ng-click="addNewTask()">
+                                <i class="fa fa-file-text-o bg-green"></i> Add Task
+                            </button>    
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-12">Task Title</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" ng-model="task.TaskTitle"
+                                   required
+                                   maxlength="200" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-12">Description</label>
+                        <div class="col-sm-12">
+                            <textarea rows="5" class="form-control" ng-model="task.Description"></textarea>
+                        </div>
+                    </div>   
+                    <div class="form-group">
+                        <label class="col-sm-12">Project Name</label>
+                        <div class="col-sm-12">
+                            <select ng-model="task.ProjectID" class="form-control" ng-options="project.ProjectID as project.ProjectName for project in projectList">
+                                <option value="">Select Project </option>
+                            </select>
+                        </div>
+                    </div> 
+                    <div class="form-group">   
+                        <label class="col-sm-12">Assignee</label>                                             
+                        <div class="col-sm-6">                           
+                            <div class="has-feedback">
+                                <input type="text" ng-model="task.TaskAssignee"
+                                       placeholder="Enter name or card no"
+                                       uib-typeahead="emp as emp.EmployeeName + ' : '+ emp.CardNo for emp in getEmployeeByKeyword($viewValue)"
+                                       typeahead-on-select="typeaheadOnSelect($item, $model, $label)"
+                                       class="form-control">
+                                <span class="glyphicon glyphicon-search form-control-feedback text-muted"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="text" readonly ng-model="task.AssigneeName" />
+                        </div>         
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6 no-padding">
+                            <label class="col-sm-12">Planned Hour</label>
+                            <div class="col-sm-12">
+                                <input type="number" class="form-control" ng-model="task.PlannedManHour"
+                                       required
+                                      />
+                            </div>
+                        </div>              
+                        <div class="col-sm-6 no-padding">
+                            <label class="col-sm-12">Priority</label>
+                            <div class="col-sm-12">
+                                <select ng-model="task.Priority" class="form-control"
+                                        ng-options="p.Value as p.Text for p in priorities" required>
+                                    <option value="">Set Priority</option>
+                                </select>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6 no-padding">
+                            <label class="col-sm-12">Planned Start Date</label>
+                            <div class="col-sm-12">
+                                <input id="PlannedStartDate" type="text" class="form-control default-datepicker" ng-model="task.PlannedStartDate"
+                                       required ng-blur="bindDate('PlannedStartDate', 'task')"/>
+                            </div>
+                        </div>     
+                        <div class="col-sm-6 no-padding">
+                            <label class="col-sm-12">Planned End Date</label>
+                            <div class="col-sm-12">
+                                <input id="PlannedEndDate" type="text" class="form-control default-datepicker" ng-model="task.PlannedEndDate"
+                                       required ng-blur="bindDate('PlannedEndDate', 'task')"/>
+                            </div>
+                        </div>             
+                    </div>         
+                    <div class="form-group" ng-if="edit">
+                        <div class="col-sm-6 no-padding">
+                            <label class="col-sm-12">Actual Start Date</label>
+                            <div class="col-sm-12">
+                                <input id="ActualStartDate" type="text" class="form-control default-datepicker" ng-blur="bindDate('ActualStartDate', 'task')" ng-model="task.ActualStartDate"
+                                        />
+                            </div>
+                        </div>
+                        <div class="col-sm-6 no-padding">
+                            <label class="col-sm-12">Actual End Date</label>
+                            <div class="col-sm-12">
+                                <input id="ActualEndDate" type="text" class="form-control default-datepicker" ng-model="task.ActualEndDate"
+                                       ng-blur="bindDate('ActualEndDate', 'task')" 
+                                       />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6 no-padding" ng-if="edit">
+                            <label class="col-sm-12">Actual Hour</label>
+                            <div class="col-sm-12">
+                                <input type="number" class="form-control" ng-model="task.ActualManHour"
+                                        />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-sm btn-flat btn-warning" ng-click="cancel()">
+                            <i class="fa fa-close"></i> Reset
+                        </button>
+                        <button type="submit" class="btn btn-sm btn-flat btn-success">
+                            <i class="fa fa-save"></i> Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>        
+    </div>
+</div>
+
+

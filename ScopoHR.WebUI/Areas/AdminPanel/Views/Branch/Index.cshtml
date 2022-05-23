@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="row" ng-controller="branchController" ng-init="init()" ng-cloak>
+    <div class="col-lg-3 col-sm-3 column">
+        <div class="box box-solid">
+            <header class="box-header with-border">
+                <h3 class="box-title">Branches</h3>
+            </header>
+            <div class="box-body">
+                <div class="col-sm-12">
+                    <div class="has-feedback">
+                        <input type="search" placeholder="Search" class="form-control margin-bottom" ng-model="searchItem" />
+                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                    </div>
+                    <div style="height:760px; overflow: auto;">
+                        <ul class="nav nav-pills nav-stacked"
+                            ng-repeat="item in branches | filter:searchItem">
+                            <li ng-class="{active:item.selected}"
+                                ng-click="selectBranch(item, $index)">
+                                <a href="">
+                                    <ul class="nav">
+                                        <li class="">
+                                            <i class="glyphicon glyphicon-apple"></i> {{item.Text}}                                            
+                                        </li>                                        
+                                    </ul>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9 col-sm-9 column">
+        <form class="form-horizontal" name="branchForm" ng-submit="saveBranch(branch)" novalidate>
+            <div class="box box-solid">
+                <header class="box-header with-border">
+                    <h3 class="box-title">Activity</h3>
+                </header>
+                <div class="box-body" style="height: 764px;">
+                    <div class="col-lg-offset-2 col-lg-8">
+                        <div class="form-group">
+                            <label class="col-sm-4">Branch Name</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" ng-model="branch.BranchName" required/>
+                            </div>
+                        </div>                    
+                        
+                        <div class="form-group">
+                            <label class="col-sm-4">Address</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" ng-model="branch.BranchAddress" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4">Email</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" ng-model="branch.BranchEmail" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4">Fax</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" ng-model="branch.BranchFax" required />
+                            </div>
+                        </div>                       
+                        <div class="form-group">
+                            <label class="col-sm-4">Phone</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" ng-model="branch.BranchPhone" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4">Is Company</label>
+                            <div class="col-sm-8">
+                                <input type="checkbox" class="" ng-model="branch.IsCompany"  />
+                            </div>                                                  
+                        </div> 
+                        <div class="form-group">
+                            <label class="col-sm-4">Is Head Office</label>
+                            <div class="col-sm-8">
+                                <input type="checkbox" class="" ng-model="branch.IsHeadOffice"  />
+                            </div> 
+                        </div>                       
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-warning btn-flat btn-sm" ng-click="resetForm()">Reset</button>
+                        <button type="submit" class="btn btn-success btn-flat btn-sm"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

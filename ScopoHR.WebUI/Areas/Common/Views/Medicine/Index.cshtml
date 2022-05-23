@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row" ng-controller="medicineCtrl" ng-init="init()" ng-cloak>
+    <div class="col-sm-3 column">
+        <div class="box box-solid">
+            <header class="box-header with-border">
+                <h3 class="box-title">Medicine List</h3>
+            </header>
+            <div class="box-body">
+                <div class="has-feedback">
+                    <input type="text" placeholder="Search" class="form-control margin-bottom" ng-model="search" />
+                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                </div>
+
+                <ul class="nav nav-pills nav-stacked" style="height:741px;overflow:auto">
+                    <li ng-repeat="m in medicineList | filter:search track by $index" ng-class="{active:m.selected}">
+                        <a href="#" ng-click="selectedMedicine(m)">
+                            <i class="fa fa-shirtsinbulk" aria-hidden="true"></i>{{m.MedicineName}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="col-sm-9 column">
+        <form name="medicineForm" class="form-horizontal" ng-submit="saveMedicine()" novalidate>
+            <div class="box box-solid">
+                <header class="box-header with-border">
+                    <h3 class="box-title">Save Medicine</h3>
+                </header>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label class="col-sm-2">Medicine Name</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" ng-model="medicine.MedicineName"
+                                   placeholder="Medicine Name" required/>
+                        </div>
+                        <label class="col-sm-2">Unit Price</label>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" ng-model="medicine.UnitPrice"
+                                   placeholder="Unit Price" />
+                        </div>                        
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <div class="pull-right">
+                        <button class="btn btn-default btn-sm btn-flat bg-green" type="submit"><i class="fa fa-floppy-o"> </i> Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+

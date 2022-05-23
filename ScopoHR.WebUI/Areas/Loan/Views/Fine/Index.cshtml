@@ -1,0 +1,80 @@
+﻿<div class="row" ng-controller="fineCtrl" ng-init="init()" ng-cloak>
+    <div class="col-md-4 column">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">Fine List</h3>
+            </div>
+            <br />
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <div class="has-feedback">
+                        <input type="text" ng-model="employee.CardNo"
+                               placeholder="Enter name or card no"
+                               uib-typeahead="emp as emp.EmployeeName + ' : '+ emp.CardNo for emp in getEmployeeByKeyword($viewValue)"
+                               typeahead-on-select="employeeSelected($item, $model, $label)"
+                               class="form-control">
+                        <span class="glyphicon glyphicon-search form-control-feedback text-muted"></span>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
+            <div class="box-body no-padding">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="f in fineList">
+                            <td>
+                                {{f.Date}}
+                            </td>
+                            <td>
+                                {{f.Amount}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8 column">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">Fine</h3>
+            </div>
+            <form class="form-horizontal" name="fineForm" novalidate ng-submit="saveInformation()">
+                <div class="box-body">
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <label class="col-lg-12">Date</label>
+                            <div class="col-lg-12 input-group">
+                                <input id="Date" type="text" class="form-control default-datepicker"
+                                       ng-model="fine.Date"
+                                       ng-blur="bind('Date','fine')"
+                                       required>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="col-lg-12">Amount</label>
+                            <div class="col-lg-12">
+                                <input type="number" placeholder="Amount" class="form-control" ng-model="fine.Amount" required />
+                            </div>
+                        </div>
+                      
+                        <div class="col-md-3">
+                            <label class="col-lg-12"> &nbsp</label>
+                            <button type="submit" class="btn btn-success btn-flat btn-sm"><i class="fa fa-save"></i> Save</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

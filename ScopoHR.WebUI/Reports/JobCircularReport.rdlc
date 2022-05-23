@@ -1,0 +1,1897 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <ReportItems>
+      <Textbox Name="Textbox2">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>অপর পৃষ্ঠায় বর্ণিত শর্তাবলি আপনি পড়ে সই করুন</Value>
+                <Style>
+                  <FontFamily>AdorshoLipi</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                  <TextDecoration>Underline</TextDecoration>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+              <LineHeight>20pt</LineHeight>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value />
+                <Style>
+                  <FontFamily>AdorshoLipi</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+              <LineHeight>20pt</LineHeight>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>অরুনিমা গ্রুপের পক্ষে</Value>
+                <Style>
+                  <FontFamily>AdorshoLipi</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+              <LineHeight>20pt</LineHeight>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value />
+                <Style>
+                  <FontFamily>AdorshoLipi</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+              <LineHeight>20pt</LineHeight>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>তারিখ</Value>
+                <Style>
+                  <FontFamily>AdorshoLipi</FontFamily>
+                  <FontWeight>Normal</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+              <LineHeight>20pt</LineHeight>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value />
+                <Style>
+                  <FontFamily>AdorshoLipi</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+              <LineHeight>20pt</LineHeight>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>প্রশাসন/সময়রক্ষক বিভাগ নিয়গপত্রের ফটোকপি শ্রমিক/কর্মচারী বাক্তিগত ফাইল এ সংরক্ষন করবেন এবং নিয়োগ পত্রটির মূলকপি শ্রমিক/কর্মচারী বুঝিয়া পেয়েছেন এই মর্মে স্বাক্ষর গ্রহন করবেন।</Value>
+                <Style>
+                  <FontFamily>AdorshoLipi</FontFamily>
+                  <FontWeight>Normal</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+              <LineHeight>20pt</LineHeight>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value />
+                <Style>
+                  <FontFamily>AdorshoLipi</FontFamily>
+                  <FontWeight>Normal</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+              <LineHeight>20pt</LineHeight>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>         শ্রমিক/কর্মচারী স্বাক্ষর</Value>
+                <Style>
+                  <FontFamily>AdorshoLipi</FontFamily>
+                  <FontWeight>Normal</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve"> </Value>
+                <Style>
+                  <FontFamily>AdorshoLipi</FontFamily>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+              <LineHeight>20pt</LineHeight>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox2</rd:DefaultName>
+        <Top>7.80902in</Top>
+        <Left>0.07167in</Left>
+        <Height>2.16319in</Height>
+        <Width>7.80333in</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox10">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>শ্রমিকের নামঃ </Value>
+                <Style>
+                  <FontFamily>AdorshoLipi</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!EmployeeName.Value</Value>
+                <Style>
+                  <FontFamily>verdana</FontFamily>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value />
+                <Style>
+                  <FontFamily>verdana</FontFamily>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <LineHeight>20pt</LineHeight>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>পিতার নামঃ </Value>
+                <Style>
+                  <FontFamily>AdorshoLipi</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!FatherName.Value</Value>
+                <Style>
+                  <FontFamily>verdana</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve">                       </Value>
+                <Style>
+                  <FontFamily>verdana</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>মাতার নাম  </Value>
+                <Style>
+                  <FontFamily>AdorshoLipi</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!MotherName.Value</Value>
+                <Style>
+                  <FontFamily>verdana</FontFamily>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <LineHeight>20pt</LineHeight>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value />
+                <Style>
+                  <FontFamily>verdana</FontFamily>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <LineHeight>20pt</LineHeight>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>স্বামী / স্ত্রীর নামঃ </Value>
+                <Style>
+                  <FontFamily>AdorshoLipi</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!SpouseName.Value</Value>
+                <Style>
+                  <FontFamily>verdana</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve">                </Value>
+                <Style>
+                  <FontFamily>verdana</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>জাতীয় পরিছয়পত্র/জন্ম সনদ নং  </Value>
+                <Style>
+                  <FontFamily>AdorshoLipi</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!NID.Value</Value>
+                <Style>
+                  <FontFamily>verdana</FontFamily>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <LineHeight>20pt</LineHeight>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value />
+                <Style>
+                  <FontFamily>verdana</FontFamily>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <LineHeight>20pt</LineHeight>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>বর্তমান ঠিকানাঃ </Value>
+                <Style>
+                  <FontFamily>AdorshoLipi</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!PresentAddress.Value</Value>
+                <Style>
+                  <FontFamily>verdana</FontFamily>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <LineHeight>20pt</LineHeight>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value />
+                <Style>
+                  <FontFamily>verdana</FontFamily>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <LineHeight>20pt</LineHeight>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>স্থায়ী ঠিকানাঃ </Value>
+                <Style>
+                  <FontFamily>AdorshoLipi</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!PermanentAddress.Value</Value>
+                <Style>
+                  <FontFamily>verdana</FontFamily>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <LineHeight>20pt</LineHeight>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value />
+                <Style>
+                  <FontFamily>verdana</FontFamily>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <LineHeight>20pt</LineHeight>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>পদবীঃ </Value>
+                <Style>
+                  <FontFamily>AdorshoLipi</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!DesignationName.Value</Value>
+                <Style>
+                  <FontFamily>verdana</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve"> </Value>
+                <Style>
+                  <FontFamily>verdana</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>কাজের ধরনঃ...........................যোগদানের তারিখঃ </Value>
+                <Style>
+                  <FontFamily>AdorshoLipi</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!JoinDate.Value</Value>
+                <Style>
+                  <FontFamily>verdana</FontFamily>
+                  <FontSize>11pt</FontSize>
+                  <Format>MM/dd/yy</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <LineHeight>20pt</LineHeight>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value />
+                <Style>
+                  <FontFamily>verdana</FontFamily>
+                  <FontSize>11pt</FontSize>
+                  <Format>MM/dd/yy</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <LineHeight>20pt</LineHeight>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>শ্রমিকের শ্রেণীঃ .....................বাৎসরিক মজুরী বৃদ্ধিঃ নূন্যতম মূল মজুরীর ৫% হারে      গ্রেডঃ </Value>
+                <Style>
+                  <FontFamily>AdorshoLipi</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Sum(Fields!SalaryGrade.Value, "JobCircular")</Value>
+                <Style>
+                  <FontFamily>verdana</FontFamily>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <LineHeight>20pt</LineHeight>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value />
+                <Style>
+                  <FontFamily>AdorshoLipi</FontFamily>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <LineHeight>20pt</LineHeight>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>এই নিয়োগঃ ........./......../২০...... তারিখ হতে তিন মাস পর্যন্ত শিক্ষানবিশ কাল হিসেবে গণ্য হবে, আপনার কাজের মূল্যায়ন করে নিয়মিত করণের বাবস্থা নেয়া হবে।</Value>
+                <Style>
+                  <FontFamily>AdorshoLipi</FontFamily>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <LineHeight>20pt</LineHeight>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value />
+                <Style>
+                  <FontFamily>AdorshoLipi</FontFamily>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <LineHeight>20pt</LineHeight>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>আপনার বেতন / ভাতাদি নিম্নরুপ হবেঃ</Value>
+                <Style>
+                  <FontFamily>AdorshoLipi</FontFamily>
+                  <FontSize>11pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <LineHeight>20pt</LineHeight>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox10</rd:DefaultName>
+        <Top>2.19444in</Top>
+        <Left>0.05083in</Left>
+        <Height>3.77083in</Height>
+        <Width>7.82417in</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Tablix Name="Tablix2">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>0.30208in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.39583in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>6.10542in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.25in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox12">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>০১.</Value>
+                              <Style>
+                                <FontFamily>AdorshoLipi</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox12</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox32">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>মূল মজুরীঃ</Value>
+                              <Style>
+                                <FontFamily>AdorshoLipi</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox32</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Basicsalary">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Basicsalary.Value</Value>
+                              <Style>
+                                <FontFamily>turagMJ</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <Format>#,0;(#,0)</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Basicsalary</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.25in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox17">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>০২.</Value>
+                              <Style>
+                                <FontFamily>AdorshoLipi</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox17</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox33">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>বাড়ী ভাড়াঃ</Value>
+                              <Style>
+                                <FontFamily>AdorshoLipi</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox33</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="HouseRent">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!HouseRent.Value</Value>
+                              <Style>
+                                <FontFamily>turagMJ</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <Format>#,0;(#,0)</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>HouseRent</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.25in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox20">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>০৩.</Value>
+                              <Style>
+                                <FontFamily>AdorshoLipi</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox20</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox34">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>চিকিৎসা ভাতাঃ</Value>
+                              <Style>
+                                <FontFamily>AdorshoLipi</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox34</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="MedicalAllowance">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!MedicalAllowance.Value</Value>
+                              <Style>
+                                <FontFamily>turagMJ</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <Format>#,0;(#,0)</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>MedicalAllowance</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.25in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox23">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>০৪. </Value>
+                              <Style>
+                                <FontFamily>AdorshoLipi</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox23</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox35">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>খাদ্য ভাতাঃ</Value>
+                              <Style>
+                                <FontFamily>AdorshoLipi</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox35</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="FoodAllowance">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!FoodAllowance.Value</Value>
+                              <Style>
+                                <FontFamily>turagMJ</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <Format>#,0;(#,0)</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>FoodAllowance</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.25in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox26">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>০৫. </Value>
+                              <Style>
+                                <FontFamily>AdorshoLipi</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox26</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox36">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>যাতায়াত ভাতাঃ</Value>
+                              <Style>
+                                <FontFamily>AdorshoLipi</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox36</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Conveyance">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Conveyance.Value</Value>
+                              <Style>
+                                <FontFamily>turagMJ</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <Format>#,0;(#,0)</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Conveyance</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.25in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox29">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>০৬. </Value>
+                              <Style>
+                                <FontFamily>AdorshoLipi</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox29</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox37">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>মোট মজুরী / বেতনঃ</Value>
+                              <Style>
+                                <FontFamily>AdorshoLipi</FontFamily>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox37</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox30">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>টাকা </Value>
+                              <Style>
+                                <FontFamily>SutonnyOMJ</FontFamily>
+                                <FontSize>12pt</FontSize>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Value xml:space="preserve"> </Value>
+                              <Style>
+                                <FontFamily>AdorshoLipi</FontFamily>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Value>=Sum(Fields!Basicsalary.Value, "JobCircular") +
+ Sum(Fields!Conveyance.Value, "JobCircular")+
+ Sum(Fields!FoodAllowance.Value, "JobCircular")+
+ Sum(Fields!MedicalAllowance.Value, "JobCircular")+
+ Sum(Fields!HouseRent.Value, "JobCircular")</Value>
+                              <Style>
+                                <FontFamily>turagMJ</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <Format>#,0;(#,0)</Format>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Value xml:space="preserve"> </Value>
+                              <Style>
+                                <FontFamily>turagMJ</FontFamily>
+                                <FontSize>12pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox30</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <Group Name="Details" />
+              <TablixMembers>
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+              </TablixMembers>
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName>JobCircular</DataSetName>
+        <Top>6.10292in</Top>
+        <Left>0.07167in</Left>
+        <Height>1.5in</Height>
+        <Width>7.80333in</Width>
+        <ZIndex>2</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
+      <Textbox Name="Textbox4">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value xml:space="preserve">                                                              </Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>    চাকুরীর শর্তাবলী</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>18pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>
+
+বাংলাদেশ শ্রম আইন ২০০৬,বাংলাদেশ শ্রম বিধিমালা ২০১৫ও অন্যান্য কারখানা বিধিমালা মোতাবেক অরুনিমা গ্রুপের  শ্রমিক / কর্মচারী ও মালিক পক্ষের স্বার্থ রক্ষাসহ গুনগত মানসম্পন্ন পণ্য উৎপাদন নিশ্চিত করা , সকলের মধ্যে সুসম্পর্ক ও সহযোগিতা বৃদ্ধির লক্ষ্যে নিম্নলিখিত শর্তাবলী প্রযোজ্য হবে।
+
+</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>নিয়োগ :</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>
+ 	বাংলাদেশের নাগরিকত্ব থাকতে হবে।
+ 	শারীরিক ও মানসিক ভাবে কর্মক্ষম ও সুস্বাস্থের অধিকারী হতে হবে।
+ 	শ্রমআইন অনুযায়ী নূণ্যতম বয়স থাকতে হবে। প্রয়োজন অনুযায়ী শিক্ষাগত ও পেশাগত যোগ্যতা থাকতে হবে।আলোচনা সাপেক্ষে মজুরী ও যোগদানের তারিখ নির্ধারন করা হবে।
+ 	সকল শ্রমিক / কর্মচারী নিয়োগকালীন সময়ে নিয়োগপত্রটি গ্রহন করবেন। প্রাথমিক ভাবে মনোনীত প্রার্থী হিসেবে আপনি যোগদানের ৩ দিনের ভিতর নিম্নলিখিত  কার্য সম্পাদন করবেন।
+ 	৫ কপি পাসপোর্ট সাইজের ফটো, ১ কপি ষ্ট্যাম্প সাইজের ফটো, কারখানার নির্ধারিত ফর্মে আবেদনপত্র, শিক্ষাগত যোগ্যতার সনদপত্র , জাতীয়তা সনদপত্র, চারিত্রিক সনদপত্রও যোগ্যতার সনদপত্র (যদি থাকে ) জমা দেবেন।
+১৮ বছর এর নিচে শিশু শ্রম সম্পূর্ণ ভাবে নিষিদ্ধ করা হয়েছে।
+
+</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>হাজিরা :</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>
+প্রতিদিনের হাজিরা (আগমন ও নির্গমন) ফিঙ্গার পাঞ্চ এবং ফেস মেশিনে ফেস (মুখমন্ডল)সনাক্তকরনের মাধ্যমে স্বয়ংক্রিয় ভাবে নিশ্চিত করা হয়।
+
+</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>কাজের সময় :</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>
+ 	সপ্তাহে ৬ দিন কার্যদিবস ধরা হয়।
+ 	সপ্তাহে একদিন সাপ্তাহিক ছুটি হিসেবে গন্য করা হয়।
+ 	প্রতিদিন মোট ৮ ঘন্টা কার্যঘন্টা হিসেবে গন্য করা হয়।
+ 	খাবার বিরতি (১ ঘন্টা ) হিসেবে ধরা হয়।
+ 	প্রতিদিন ৮ ঘন্টার অতিরিক্ত  কাজ করলে সে সময়টুকু অতিরিক্ত কাজ হিসেবে গন্য হয়।
+ 	প্রতি সপ্তাহে অতিরিক্ত কার্যঘন্টাসহ ৬০ ঘন্টার বেশী কাজ করা হয়না।
+ 	রমজানের সময় আলোচনা সাপেক্ষে কাজের সময় নির্ধারন করা হয়।
+
+</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>বেতন ভাতাদি ও অন্যান্য সুবিধাদি :</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>
+ 	নিম্নতম মজুরী ২০১৩ সালের ভিত্তিতে পরিচ্ছেদ (ক) অনুযায়ী ৭ টি গ্রেডে ও পরিচ্ছেদ (খ) ৪ টি গ্রেডে বেতন নির্ধারন করা হয়।
+ 	পরবর্তী মাসের ৭ম তারিখের মধ্যে বেতন ভাতাদি পরিশোধ করা হয়।
+ 	সপ্তাহে ৪৮ ঘন্টার বেশী কাজ করলে উক্ত অতিরিক্ত কাজের জন্য মজুরীর দ্বিগুন হারে ভাতা দেয়া হয়।
+
+ 	ওভারটাইমের হার (ঘন্টায়) =  
+
+ 	বেতন নেয়ার পূর্বে মজুরী পেস্লিপ প্রদান করা হয়।
+ 	কোম্পানীর প্রয়োজনে এবং শ্রমিকের স্বার্থে তার ইচ্ছায় ওভারটাইম করানো হয়।
+
+</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>কর্তন :</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>
+ 	শ্রমিক / কর্মচারী কর্তৃক কোম্পানীর কোন আর্থিক ক্ষতির কারণ হলে কারণ দর্শানোর সুযোগ দিয়ে জরিমানা করা যাবে যা মোট মজুরীর ১০% অধিক হবে না এবং ৬০ দিনের মধ্যে পরিশোধ করতে হবে।
+ 	কাজের দিনে বা কোন অংশে বিনা অনুমতিতে অনুপস্থিত থাকলে মজুরী কর্তন করা যাবে।
+ 	কর্তৃপক্ষ দেয় সুযোগ সুবিধা যেমন-অগ্রীম  উসুলের , সমবায় সমিতির , আয়কর বাবদ মজুরী হতে কর্তন করতে পারবে।
+
+</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>ছুটি :</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>
+১.	নৈমিত্তিক ছুটি :
+পূর্ণ বেতনে ১০ দিন নৈমিত্তিক  ছুটি ভোগ করা যাবে।নৈমিত্তিক ছুটি পরবর্তী বৎসরের জন্য জমা রাখা যাবে না।
+২.	অসুস্থতাজনিত ছুটি :
+পূর্ণ বেতনে ১৪ দিন পীড়া ছুটি ভোগ করা যাবে।যদি কেউ ১ দিনের অধিক পীড়া ছুটি ভোগ করেন তবে আবেদন পত্রের সাথে অবশ্যই চিকিৎসকের ব্যবস্থাপত্র কর্তৃপক্ষের নিকট জমা দিতে হয়। পীড়া ছুটি পরবর্তী বছরের জন্য জমা রাখা যাবে না।
+৩.	উৎসব ছুটি :
+পূর্ণ বেতনে ১১ দিন উৎসব ছুটি ভোগ করা যাবে।কর্তৃপক্ষ শ্রমিক,কর্মচারী/ অংশগ্রহণকারী কমিটিরসাথে আলোচনার পরিপ্রেক্ষিতে প্রতি বৎসর ৩১ ডিসেম্বরের মধ্যে পরবর্তী বৎসরের জন্য ১১ দিনের উৎসব ছুটির তালিকা প্রনয়ন করে থাকেন এবং নোটিশ বোর্ডে টাঙ্গিয়ে দেন।
+৪.	বার্ষিক ছুটি :
+প্রত্যেক শ্রমিক/ কর্মচারী , যারা অবিচ্ছিন্নভাবে চাকুরীর মেয়াদ ১ বৎসর পূর্ণ করেছে , তারা প্রতি ১৮ কর্মদিবসের জন্য ১ দিন অর্জিত ছুটি ভোগ করতে পারবে।অর্জিত ছুটি কোন অবস্থায় ৪০ দিনের বেশী জমা রাখা যাবে না।কর্তৃপক্ষ কোন কারনে অর্জিত ছুটি না-মঞ্জুর করিলে, উক্ত না- মঞ্জুরকৃত ছুটি সংশ্লিষ্ট শ্রমিক/ কর্মচারীর মোট ৪০ দিনের অর্জিত ছুটির অতিরিক্ত ছুটি হিসেবে গন্য হবে। কোন শ্রৃমিক / কর্মচারী চাহিলে তাহার অব্যয়িত অর্জিত ছুটির বিপরীতে নগদ অর্থ গ্রহন করিতে পারিবেন। তবে শর্ত থাকে যে, বৎসরান্তে অর্জিত ছুটির অর্ধেকের অধিক নগদায়ন করা যাইবে না এবং এইরুপ নগদায়ন বৎসরে মাত্র একবার করা যাইবে।
+৫.	মাতৃত্বজনিত ছুটি :
+একই মালিকের অধীন যে সব মহিলা শ্রমিক / কর্মচারীদের চাকুরীর বয়স ৬ মাস পূর্ণ হয়েছে , তারা উপযুক্ত ডাক্তারী পরীক্ষা সাপেক্ষে মূল বেতনে ১১২ দিনের মাতৃত্বজনিত ছুটি ও ভাতাদি ভোগ করতে পারবেন। শিশুর জন্মের পূর্বে ৮ সপ্তাহের ছুটি ও ভাতাদি এবং শিশুর জন্মের পরের ৮ সপ্তাহের ছুটি ও ভাতাদি ভোগ করবেন।মার্তৃত্বকালীন ছুটির জন্য চিকিৎসকের প্রত্যায়ন পত্রসহ আবেদন করতে হবে।২ টির বেশী সন্তান জীবিত থাকলে মাতৃত্বজনিত ভাতা পাওয়ার যোগ্য হবেন না, তবে এক্ষেত্রে তিনি কোন ছুটি পাইবার অধিকারী হইলে তাহা পাইবেন। 
+৬.	ক্ষতিপূরণমূলক সাপ্তাহিক ছুটি :
+শ্রমআইন ২০০৬ এর ১০৩ ধারা মোতাবেক শ্রমিকগন যদি তার প্রাপ্য সাপ্তাহিক ছুটি থেকে বঞ্চিত হন সে ক্ষেত্রে উক্ত শ্রমিককে পরবর্তী ৩ (তিন) কর্মদিবসের মধ্যে উক্তরুপ ছুটির দিনের সমসংখ্যক ছুটি মঞ্জুর করতে হবে।
+
+ছুটির অনুমোদন : সকল ছুটি ভোগ করার পূর্বে কর্তৃপর্ক্ষের মাধ্যমে অনুমোদন করে নিতে বলা হল। 
+
+</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>অবসান :</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>
+মালিককিংবা শ্রমিক / কর্মচারী চাকুরীর অবসান বা রিজাইন দিলে 
+ 	স্থায়ী শ্রমিক / কর্মচারীদের চাকুরীর অবসান করলে মালিক ১২০ দিনরে নোটিশ প্রদান বা সমপরিমান অর্থ ও সুবিধাদি প্রদান করবেন।
+ 	অস্থায়ী শ্রমিক / কর্মচারী চাকুরী অবসান করলে মালিক ৩০ দিনের নোটিশ প্রদান বা সমপরিমান অর্থ প্রদান করবেন।
+ 	স্থায়ী শ্রমিক / কর্মচারীর চাকুরীর অবসান করলে মালিককে ৬০ দিনের নোটিশ প্রদান করবেন বা সমপরিমান অর্থ প্রদান করবেন।
+ 	অস্থায়ী শ্রমিক / কর্মচারী চাকুরী অবসান করলে মালিককে ৩০ দিনের নোটিশ প্রদান করবেন বা সমপরিমান অর্থ প্রদান করবেন।
+
+</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>চাকুরী বাতিল :</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>
+কোন ধরনের অবহিতকরন ব্যতিরেকে এবং বিনা নোটিশে অথবা বিনা অনুমতিতে ১০ দিনের অধিক কর্মস্থলে অনুপস্থিত থাকিলে উক্ত শ্রমিককে ১০ দিনের সময় প্রদান করিয়া এই সম্পর্কে ব্যাখ্যা প্রদান করিতে এবং চাকুরীতে পুনরায় যোগদানের জন্য নোটিশ প্রদান করা হয় এবং এই রুপ ক্ষেত্রে উক্ত শ্রমিক নির্ধারিত সময়ের মধ্যে লিখিত ব্যাখ্যা প্রদান ও চাকুরীতে যোগদান না করিলে সংশ্লিষ্ট শ্রমিককে আতœপক্ষ সমর্থনের জন্য আরো ৭ দিন সময় প্রদান করা হয়। তাহাতেও যদি সংশ্লিষ্ট শ্রমিক চাকুুরীতে যোগদান অথবা আতœপক্ষ সমর্থন না করেন তবে, উক্ত শ্রমিক অনুপস্থিতির দিন হইতে চাকুরীতে ইস্তফা দিয়েছেন / চাকুরী বাতিল বলিয়া গন্য হইবে। 
+</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>নিরাপদ কর্মপরিবেশ :</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>
+সকল শ্রমিক / কর্মচারী শ্রমআইন ও কোম্পানী কর্তৃক গৃহীত পদক্ষেপ মেনে চলে নিরাপদ কর্মপরিবেশ সহায়ক অবস্থা বজায় রাখবেন।
+
+ 	সকল সুইং মেশিনে নিডিল গার্ড, আই গার্ড, পুলি কভার ও রাবার ম্যাট সংযুক্ত থাকবে।
+ 	সকল ওভারলক মেশিন অপারেটরগণ মাস্ক এবং  থ্রেড সাকিং অপারেটরগন ইয়ার প্লাগ ব্যবহার করবেন।
+ 	স্পটগান ব্যবহারের সময় গ্লাভস, গগলস ও মাস্ক ব্যবহার করবেন।
+ 	আয়রনম্যানগন পায়ের নীচে রাবার ম্যাট ব্যবহার করবেন।
+ 	নিডিল ভেঙ্গে গেলে উপযুক্ত মেকানিকের মাধ্যমে নিডেল পরিবর্তন করতে হবে।
+ 	প্রাথমিক চিকিৎসার বাক্স, অগ্নি নির্বাপক যন্ত্র, সার্কিট বক্সের সামনে প্রতিবন্ধকতা সৃষ্টি করা যাবে না।
+ 	কাপড়ের দাগ উঠানোর জন্য ব্যবহৃত রাসায়নিক দ্রব্য যেখানে সেখানে ব্যবহার করা যাবে না।
+ 	ফ্লোরে যাতাযাতের পথে কোন প্রতিবন্ধকতা সৃষ্টি করা যাবে না।
+ 	ব্যবহৃত কাটার, সিজার নাম লিখে রাখতে হবে ও রশি দিয়ে বেধেঁ মেশিনে অথবা হাতের সাথে আ্টকিয়ে রাখতে হবে।
+ 	ময়লা আবর্জনা যেখানে সেখানে  ফেলে ফ্লোর নোংরা করা যাবে না।
+ 	অগ্নি নির্বাপন মহড়ায় সকলকে স্বতঃস্ফূর্তভাবে অংশগ্রহণ করতে হবে।
+ 	অগ্নি নির্বাপক যন্ত্রের , প্রাথমিক চিকিৎসা বক্স , ফায়ার এলার্ম সুইচ এর স্থান বাধামুক্ত রাখতে হবে।
+
+</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>পরিষ্কার / পরিচ্ছন্নতা :</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>
+ 	যেখানে সেখানে থুথু ফেলা যাবে না এবং পরিষ্কার পরিচ্ছন্ পরিবেশ বজায় রাখতে হবে।
+ 	শ্রমিকগন তাহার কর্ম-কক্ষে বসিয়া কোন খাবার খাইতে পারিবেন না।</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value xml:space="preserve">
+</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>বোনাস :</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>
+ 	হাজিরা বোনাস হিসেবে ৫০০/- টাকা প্রদান করা হয়। তবে শর্ত থাকে যে, মাসে ১ দিন ও দেরী করে আসা যাবে না।বিনা অনুমতিতে ছুটি কাটানো যাবে না। বা দুপুরের পর বিনা অনুমতিতে অনুপস্থিত থাকা যাবে না।
+ 	কর্তৃপক্ষ যে কোন কারখানায় নির্ধারিত হারে হাজিরা বোনাস দেওয়ার অধিকার রাখেন।
+ 	চাকুরীর বয়স ১ বৎসর পূর্ণ হলে শ্রমিক / কর্মচারীকে বসরের ২ টি উৎসব বোনাস হিসেবে মূল বেতনের সমপরিমান টাকা প্রদান করা হয়। 
+
+</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>অনুযোগ / শাস্তিদান পদ্ধতি :</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>
+ 	বাংলাদেশ শ্রম আইন ২০০৬ এর ২৪ ধারা মোতাবেক কোন শ্রমিক / কর্মচারীর বিরুদ্ধে শাস্তির আদেশ প্রদান করতে হলে ঃ
+ 	অভিযোগ লিখিত আকারে করতে হবে।
+ 	অভিযোগের একটি কপি অভিযুক্ত ব্যক্তিকে দিতে হবে এবং তার জবাব দেয়ার জন্য অন্তত ৭ (সাত) দিন সময় দিতে হবে।
+ 	অভিযুক্ত ব্যক্তিকে শুনানীর সুযোগ দিতে হবে।
+ 	মালিক ও শ্রমিকের সম-সংখ্যক প্রতিনিধি সমন্বয়ে গঠিত তদন্ত কমিটির তদন্তের পর তাহাকে দোষী সাবস্ত করা যাবে।
+ 	মালিক বা ব্যবস্থাপক বরখাস্তের আদেশ অনুমোদন করবেন।
+ 	শ্রমিক কোন নোটিশ, চিঠি, অভিযোগ নামা, আদেশ বা অন্য কোন কাগজপত্র গ্রহণ করতে অস্বীকার করলে তা প্রদান করা হয়েছে বলে গন্য হবে যদি তার একটি কপি নোটিশ বোর্ডে প্রদর্শিত হয় এবং আরেকটি কপি শ্রমিকের ঠিকানায় রেজিষ্ট্রি ডাকযোগে প্রেরন করা হয়।</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>
+ 	অসদাচারনের জন্য তদন্ত সাপেক্ষে শ্রমিক/ কর্মচারীকে সাময়িকভাবে ৬০ দিন পর্যন্ত বরখাস্ত করা যাবে।সাময়িক বরখাস্তের আদেশ লিখিতভাবে শ্রমিককে প্রদান করতে হবে ও বরখাস্ত কালে অর্ধেক খোরাকী ভাতা প্রদান করতে হবে।
+ 	তদন্তের মাধ্যমে দোষী সাব্যস্ত শ্রমিক / কর্মচারীকে শাস্তির আদেশের একটি কপি প্রদান করতে হবে।
+
+</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>অভিযোগ পদ্ধতি :</Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>
+বাংলাদেশ শ্রমআইন ২০০৬ এর ৩৩ ধারা মোতাবেক লে-অফ, ছাটাই, ডিসচার্জ, বরখাস্ত, অপসারন অথবা অন্য যে কোন কারনে চাকুরীর অবসান হলে এবং ক্ষতিগ্রস্ত ব্যক্তির যদি কোন অভিযোগ থাকে ও প্রতিকার পেতে ইচ্ছুক হন তাহলে নিম্নলিখিত পদক্ষেপ গ্রহণ করবেনঃ
+ 	অভিযোগ কারন অবহিত হওয়ার তারিখ হতে ৩০ দিনের মধ্যে কর্তৃপক্ষের নিকট লিখিত ভাবে প্রতিকার পেতে ইচ্ছুক এই মর্মে রেজিষ্ট্রি চিঠি পেশ করবেন।
+ 	কর্তৃপক্ষ ১৫ দিনের  মধ্যে সিদ্ধান্ত দিতে ব্যর্থ হলে বা সিদ্ধান্তে অসন্তুষ্ট হলে শ্রমিক/ কর্মচারী ১৫ দিন অতিক্রম হওয়ার তারিখ হতে ৩০ দিনের মধ্যে লিখিতভাবে আদালতে অভিযোগ পেশ করতে পারবেন।
+ 	শ্রম আদালতের আদেশে কোন পক্ষ সংক্ষুব্ধ হলে আদেশের ৩০ দিনের মধ্যে ট্রাইব্যুনালের নিকট আপীল করতে পারবেন এবং এই আপিলের সিদ্ধান্তই চুড়ান্ত বলে গন্য হবে।
+
+বাংলাদেশ শ্রম আইন ২০০৬ এর ২৩ ধারা মোতাবেক নিম্নলিখিত কার্যাদী অসদাচারন বলে গন্য হবে ।
+নিম্নলিখিত কাজ অসদাচারন বলে গন্য হবে ঃ
+ 	একাকী বা সংঘবদ্ধভাবে কোন উর্দ্ধতন কর্মকর্তার আইনানুগ বা যুক্তিসংগত আদেশ ইচ্ছাকৃতভাবে পালন না করা বা অবাধ্যতা।
+ 	মালিকের সম্পত্তি চুরি করা।
+ 	মালিকের অধীন নিজের বা অন্য কোন শ্রমিকের চাকুরীর ব্যপারে ঘুষ বা অবৈধ পারিতোষিক গ্রহণ বা প্রদান।
+ 	ছুটি ব্যতিরিকে অভ্যাসগত অনুপস্থিতি বা ছুটি ব্যতিরেকে  ১০ দিনের বেশী অনুপস্থিত।
+ 	অভ্যাসগত বিলম্বে অনুপস্থিত।
+ 	হাঙ্গামামূলক বা উচ্ছৃক্সখল আচারন অথবা নিয়মানুবর্তিতা ধ্বংসকারী কোন কাজ।
+ 	শিল্প প্রতিষ্ঠানে প্রযোজ্য যে কোন আইন বা নিয়ম বা বিধান ভঙ্গ করার অভ্যাস।
+ 	কোন কাজে অভ্যাসগত গাফিলতি করা।
+ 	”অবৈধ ধর্মঘট” বা ধীরে কাজ করার জন্য অন্যদেরকে উস্কানী দেয়া।
+ 	মালিকের   অফিসিয়াল রেকর্ডের রদবদল, জালকরন, অন্যায় পরিবর্তন, হারিয়ে ফেলা।
+
+
+
+আমি ............................................................  এই নিয়োগ পত্রের  ১ম পুষ্ঠা  হতে ৪র্থ পৃষ্ঠা পর্যন্ত, উপরের উল্লেখিত শর্তাবলী পড়েছি/আমাকে পাঠ করে শুনানো হয়েছে, বুঝেছি এবং ইহাতে বর্ণিত সকল শর্তাদি সম্পুর্ণরুপে অবগত হয়ে মেনে নিয়ে, সজ্ঞানে স্বাক্ষর প্রদান করে নিয়োগ পত্রের মূল কপি গ্রহন করছি এবং অরুনিমা স্পোর্টসওয়্যার লিঃ-এ কাজে যোগদান করছি। 
+
+
+
+শ্রমিক/কর্মচারীর স্বাক্ষর                                                             তারিখ                                                                   বৃদ্ধাঙ্গুলের ছাপ </Value>
+                <Style>
+                  <FontFamily>SutonnyOMJ</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox4</rd:DefaultName>
+        <Top>11.15624in</Top>
+        <Left>0.05083in</Left>
+        <Height>32.94097in</Height>
+        <Width>7.80333in</Width>
+        <ZIndex>3</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox5">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>অরুনিমা গ্রুপ</Value>
+                <Style>
+                  <FontFamily>AdorshoLipi</FontFamily>
+                  <FontSize>18pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>দেওয়ান ইদ্রিস সড়ক, জিরাবো, আশুলিয়া, সাভার, ঢাকা-১৩৪১</Value>
+                <Style>
+                  <FontFamily>AdorshoLipi</FontFamily>
+                  <FontWeight>Normal</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>চাকুরীর নিয়োগপত্র</Value>
+                <Style>
+                  <FontFamily>AdorshoLipi</FontFamily>
+                  <FontSize>14pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <TextDecoration>Underline</TextDecoration>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>অরুনিমা গ্রুপের অধীন অরুনিমা স্পোর্টস ওয়্যার লিঃ- এ নিম্নে উল্লেখিত শর্তানুযায়ী আপনাকে নিয়োগপত্রটি প্রদান করা হল</Value>
+                <Style>
+                  <FontFamily>AdorshoLipi</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox5</rd:DefaultName>
+        <Top>0.06944in</Top>
+        <Left>0.05083in</Left>
+        <Height>2.05555in</Height>
+        <Width>7.82417in</Width>
+        <ZIndex>4</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+    </ReportItems>
+    <Height>44.18749in</Height>
+    <Style />
+  </Body>
+  <Width>8.125in</Width>
+  <Page>
+    <PageFooter>
+      <Height>0.375in</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="Textbox3">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>পৃষ্ঠা </Value>
+                  <Style>
+                    <FontFamily>AdorshoLipi</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+                <TextRun>
+                  <Value>=Globals!PageNumber</Value>
+                  <Style>
+                    <FontFamily>TuragMJ</FontFamily>
+                  </Style>
+                </TextRun>
+                <TextRun>
+                  <Value xml:space="preserve"> </Value>
+                  <Style>
+                    <FontFamily>TuragMJ</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+                <TextRun>
+                  <Value>এর </Value>
+                  <Style>
+                    <FontFamily>AdorshoLipi</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+                <TextRun>
+                  <Value>=Globals!TotalPages</Value>
+                  <Style>
+                    <FontFamily>TuragMJ</FontFamily>
+                  </Style>
+                </TextRun>
+                <TextRun>
+                  <Value xml:space="preserve"> </Value>
+                  <Style>
+                    <FontFamily>TuragMJ</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox3</rd:DefaultName>
+          <Top>0.125in</Top>
+          <Left>0.05083in</Left>
+          <Height>0.25in</Height>
+          <Width>7.92834in</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageFooter>
+    <PageHeight>11.69in</PageHeight>
+    <PageWidth>8.27in</PageWidth>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="ScopoHRDataSet">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>636e66a8-4cca-4ace-b11e-efaa76ff0501</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="JobCircular">
+      <Query>
+        <DataSourceName>ScopoHRDataSet</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="CardNo">
+          <DataField>CardNo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="EmployeeName">
+          <DataField>EmployeeName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MobileNo">
+          <DataField>MobileNo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DeoartmentName">
+          <DataField>DeoartmentName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DesignationName">
+          <DataField>DesignationName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Basicsalary">
+          <DataField>Basicsalary</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Conveyance">
+          <DataField>Conveyance</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="FoodAllowance">
+          <DataField>FoodAllowance</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="MedicalAllowance">
+          <DataField>MedicalAllowance</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="DateOfBirth">
+          <DataField>DateOfBirth</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="FatherName">
+          <DataField>FatherName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="GenderID">
+          <DataField>GenderID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="JoinDate">
+          <DataField>JoinDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="GrandFatherName">
+          <DataField>GrandFatherName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MaritalStatus">
+          <DataField>MaritalStatus</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="NID">
+          <DataField>NID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NomineeName">
+          <DataField>NomineeName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PermanentAddress">
+          <DataField>PermanentAddress</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PresentAddress">
+          <DataField>PresentAddress</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SpouseName">
+          <DataField>SpouseName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BloodGroup">
+          <DataField>BloodGroup</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MotherName">
+          <DataField>MotherName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="HouseRent">
+          <DataField>HouseRent</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="SalaryGrade">
+          <DataField>SalaryGrade</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>ScopoHRDataSet</rd:DataSetName>
+        <rd:SchemaPath>D:\Atib\Projects\Arunima\ScopoHR\ScopoHR.WebUI\Reports\ScopoHRDataSet1.xsd</rd:SchemaPath>
+        <rd:TableName>EmployeeBioData</rd:TableName>
+        <rd:TableAdapterFillMethod />
+        <rd:TableAdapterGetDataMethod />
+        <rd:TableAdapterName />
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>ff933b0c-4055-4ae4-a147-11c213368883</rd:ReportID>
+</Report>

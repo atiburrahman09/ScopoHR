@@ -1,0 +1,134 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row" ng-controller="dailyATReportCtrl" ng-init="initial()">
+
+    <div class="content-wrapper">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-4 column">
+                    <section class="box box-solid">
+                        <header class="box-header with-border">
+                            <h3 class="box-title">Daily Attendance Report</h3>
+                        </header>
+                        <div class="box-body">
+                            <form class="form-horizontal" ng-submit="getDailyATReport()" novalidate name="dailyATReportForm">
+                                <div class="box-body">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label class="col-lg-5">Date</label>
+                                            <div class="col-lg-7">
+                                                <input id="FromDate" type="text" class="form-control default-datepicker" autocomplete="off"
+                                                       ng-blur="bindDate('FromDate', 'dReport')"
+                                                       ng-model="dReport.FromDate" required />
+                                                @*<input type="text" class="form-control default-datepicker" ng-model="dReport.Date" />*@
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-5">Shift </label>
+                                            <div class="col-lg-7">
+                                                <select class="form-control" ng-model="dReport.ShiftId"
+                                                        ng-options="shift.Value as shift.Text for shift in workingShiftList">
+                                                    <option value="">Select Shift</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-5">Floor</label>
+                                            <div class="col-lg-7">
+                                                <select class="form-control" ng-model="dReport.FloorID"
+                                                        ng-options="floor.Floor as floor.Floor for floor in productionFloorList">
+                                                    <option value="">Select Floor</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                      
+                                    </div>
+                                </div>
+
+                                <div class="box-footer">
+                                    <div class="col-lg-12">
+                                        <div class="pull-right">
+                                            <input type="submit" class="btn btn-success" value="Get Report" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+
+                        </div>
+                    </section>
+                </div>
+
+                <div class="col-md-8 column" id="attendanceData">
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><button class="btn btn-flat btn-default" ng-click="download()"> <i class="glyphicon glyphicon-download text-green"></i> Download Excel</button></h3>
+                            <h3 class="box-title"><button class="btn btn-flat btn-default" ng-click="downloadPDF()"> <i class="glyphicon glyphicon-download text-green"></i> Download PDF</button></h3>
+
+                            <div class="box-tools pull-right">
+                                <div class="has-feedback">
+                                    <input type="text" class="form-control input-sm" placeholder="Search Report" ng-model="searchList">
+                                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="box-body container"  id="data">
+                            <table class="table table-bordered table-striped table-hover" id="reportTable">
+                                <thead>
+                                    <tr>
+                                        <th>Card No</th>
+                                        <th>Employee Name</th>
+                                        <th>Date</th>
+                                        <th>In Time</th>
+                                        <th>Out Time</th>
+                                        <th>Lunch Time</th>
+                                        <th>Total Minutes</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="r in dailyATReportList | filter : searchList" ng-class="{'text-red' : r.TotalHour > 9}">
+                                        <td>
+                                            {{r.CardNo}}
+                                        </td>
+                                        <td>
+                                            {{r.EmployeeName}}
+                                        </td>
+                                        <td>
+                                            {{r.Date}}
+                                        </td>
+                                        
+                                        <td>
+                                            {{r.InTime}}
+                                        </td>
+                                        <td>
+                                            {{r.OutTime}}
+                                        </td>
+                                        <td>
+                                            {{r.Status =="A" ? "": r.LunchTime}}
+                                        </td>
+                                        <td >
+                                            {{r.TotalMinutes ==0 ? "": r.TotalMinutes- r.LunchTime}}
+                                        </td>
+                                        <td>
+                                            {{r.Status}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+</div>

@@ -1,0 +1,241 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" ng-controller="attendanceCtrl" ng-init="initial()" ng-cloak>
+    <div class="col-md-9 column">
+        <form class="form-horizontal" name="updateAttendanceForm">
+            <div class="box box-solid">
+                <div class="box-body">
+                    <div class="col-sm-12" style="padding-right: 0px !important">
+                        <div class="pull-right">
+                            <div class="mailbox-controls">
+                                <div class="pull-right">
+                                    <button type="button" class="btn btn-default btn-flat btn-sm" ng-click="updateDailyAttendance()">
+                                        <i class="fa fa-save bg-success"></i>
+                                        Save
+                                    </button>
+                                    <!-- /.btn-group -->
+                                </div>
+                                <!-- /.pull-right -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body no-padding">
+                    <div class="col-sm-12 no-padding">
+                        <div class="table-responsive" style="max-height: 600px !important; overflow: auto;">
+                            <table class="table table-bordered table-condensed table-fixed-header no-wrap">
+                                <thead>
+                                    <tr class="nt-table-header">
+                                        <th>Card No</th>
+                                        <th>Employee Name</th>
+                                        <th>In Time Date</th>
+                                        <th>In Time</th>
+                                        <th>Out Time Date</th>
+                                        <th>Out Time</th>
+                                        <th>Remarks</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="data in attendanceList">
+                                        <td>
+                                            {{data.CardNo}}
+                                        </td>
+                                        <td>
+                                            {{data.EmployeeName}}
+                                        </td>
+                                        <td>
+                                            <div class="input-group">
+                                                <input id="InTimeDate" placeholder="Date" type="text"
+                                                       class="form-control default-datepicker" autocomplete="off"
+                                                       ng-blur="bindDateWithIndex('InTimeDate', 'data',$index)"
+                                                       ng-model="data.InTimeDate" required />
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control timepicker-picker usetwentyfour" ng-model="data.InTime" data-provide="timepicker" data-date-format="HH:mm" data-date-showmeridian="false"
+                                                       data-date-useseconds="false" showMeridian="false" required>
+                                                @*<input mdc-datetime-picker date="false" time="true" type="text" id="time2" edit-input="true" minutes="true"
+                                                    placeholder="Time"
+                                                    min-date="minDate" minute-steps="1"
+                                                    format="HH:mm"
+                                                    ng-model="data.InTime"
+                                                    class="form-control" >*@
+                                                @*<input ng-model="data.InTime" datetime-picker date-format="HH:mm" close-on-select="false" class="form-control" required/>*@
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-clock-o"></i>
+                                                </div>
+                                            </div>
+
+                                        </td>
+                                        <td>
+                                            <div class="input-group">
+                                                <input id="OutTimeDate" placeholder="Date" type="text"
+                                                       class="form-control default-datepicker" autocomplete="off"
+                                                       ng-blur="bindDateWithIndex('OutTimeDate', 'data',$index)"
+                                                       ng-model="data.OutTimeDate" />
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control bootstrap-timepicker timepicker" ng-model="data.OutTime" id="timepicker" data-provide="timepicker">
+                                                @*<input mdc-datetime-picker date="false" time="true" type="text" id="time2" edit-input="true" minutes="true"
+                                                    placeholder="Time"
+                                                    min-date="minDate" minute-steps="1"
+                                                    format="HH:mm"
+                                                    ng-model="data.OutTime"
+                                                    class="form-control" >*@
+                                                @*<input ng-model="data.OutTime" datetime-picker date-format="HH:mm" close-on-select="false" class="form-control" />*@
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-clock-o"></i>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <textarea class="form-control input-sm" ng-model="data.Remarks"></textarea>
+                                        </td>
+                                        @if (User.Identity.Name == "1701103")
+                                        {
+                                            <td>
+                                                <button type="button" class="btn btn-danger btn-block btn-sm btn-flat pull-right" ng-click="deleteAttendance(attendanceList)">
+                                                    Delete
+                                                </button>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-3 column">
+        <section class="box box-solid">
+            <form class="form-horizontal" name="forms.searchAttandenceForm" ng-submit="searchAttendance(searchAt)" novalidate
+                  ng-if="!newEntry">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label class="col-sm-12">Date</label>
+                        <div class="col-sm-12">
+                            <input id="FromDate" placeholder="Date" type="text"
+                                   class="form-control default-datepicker input-sm pull-right" autocomplete="off"
+                                   ng-blur="bindDate('FromDate', 'searchAt')"
+                                   ng-model="searchAt.FromDate" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-12">Card No</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control input-sm" ng-model="searchAt.CardNo" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-12">Floor</label>
+                        <div class="col-sm-12">
+                            <select class="form-control input-sm pull-right" ng-model="searchAt.FloorName"
+                                    ng-options="floor.Floor as floor.Floor for floor in productionFloorList">
+                                <option value="">Select Floor</option>
+                            </select>
+                        </div>
+                    </div>
+                    @*<div class="form-group">
+                            <label class="col-sm-6" for="absentOnly">Absent Only</label>
+                            <div class="col-sm-6">
+                                <input id="absentOnly" type="checkbox" class="" ng-model="searchAt.AbsentOnly"/>
+                            </div>
+                        </div>*@
+                    <div class="form-group">
+                        <div class="col-sm-offset-6 col-sm-3">
+                            <button type="reset" class="btn btn-warning btn-block btn-sm btn-flat pull-right">
+                                <i class="fa fa-close"></i> Reset
+                            </button>
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="submit" class="btn btn-primary btn-block btn-sm btn-flat pull-right">
+                                <i class="fa fa-search"></i> Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div flow-init="{target: getTarget(), singleFile:'true'}"
+                         flow-name="document"
+                         flow-file-added="checkExtension($file, $event, $flow)"
+                         flow-file-success="uploadSuccess($message)"
+                         flow-file-error="uploadError($message,$file)">
+
+                        <div class="form-group">
+                            <label class="col-sm-12">Upload From Csv</label>
+                            <div class="col-sm-12">
+                                <div class="col-sm-12 no-padding">
+                                    <label for="attendanceData" class="col-sm-6">Attendance Data</label>
+                                    <div class="col-sm-6 no-padding">
+                                        <input id="attendanceData" type="radio" name="csvType" value="attendanceData" ng-model="csvType" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 no-padding">
+                                    <label for="employeeData" class="col-sm-6">Employee Data</label>
+                                    <div class="col-sm-6 no-padding">
+                                        <input id="employeeData" type="radio" name="csvType" value="employeeData" ng-model="csvType" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 no-padding">
+                                    <label for="cardNoMapping" class="col-sm-6">CardNo Mapping</label>
+                                    <div class="col-sm-6 no-padding">
+                                        <input id="cardNoMapping" type="radio" name="csvType" value="cardNoMapping" ng-model="csvType" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="input-group" style="z-index: 1;">
+                                    <input type="text" readonly class="form-control input-sm" ng-model="document.files[0].name">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default btn-flat btn-sm" type="button" ng-click="enableFileBrowser('fileBrowser')">Browse File</button>
+                                    </span>
+                                </div>
+                                <input id="fileBrowser" type="hidden" data-flow-btn />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 pull-right">
+                                <button type="button" class="btn btn-primary btn-flat btn-sm pull-right"
+                                        ng-if="csvType==='attendanceData'"
+                                        ng-click="uploadItem(document, categories.AttendanceCsvFile)">
+                                    <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload
+                                </button>
+                                <button type="button" class="btn btn-primary btn-flat btn-sm pull-right"
+                                        ng-if="csvType==='employeeData'"
+                                        ng-click="uploadItem(document, categories.EmployeeCsvFile)">
+                                    <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload
+                                </button>
+                                <button type="button" class="btn btn-primary btn-flat btn-sm pull-right"
+                                        ng-if="csvType==='cardNoMapping'"
+                                        ng-click="uploadItem(document, categories.CardNoMappingFile)">
+                                    <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+
+

@@ -1,0 +1,93 @@
+﻿<!-- Bootstrap 3.3.6 -->
+<script src="~/Content/theme/bootstrap/js/bootstrap.min.js"></script>
+<script src="~/Content/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+
+<!-- SlimScroll -->
+<script src="~/Content/theme/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="~/Content/theme/plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="~/Content/theme/dist/js/app.min.js"></script>
+
+<!-- AdminLTE for demo purposes -->
+<script src="~/Content/theme/dist/js/demo.js"></script>
+<script src="~/Content/theme/plugins/select2/select2.full.min.js"></script>
+
+<!--Utilities-->
+<script src="~/Scripts/app/utilities.js"></script>
+
+<!-- Angular js-->
+<script src="~/Scripts/moment.min.js"></script>
+<script type="text/javascript" src="~/Scripts/angular/angular.min.js"></script>
+<script src="~/Scripts/angular/angular-animate.min.js"></script>
+<script src="~/Scripts/angular-ui/angular-ui.min.js"></script>
+<script src="~/Scripts/angular-ui/ui-bootstrap.min.js"></script>
+<script src="~/Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+<script src="~/Scripts/angular-select/select.min.js"></script>
+<script src="~/Scripts/alertify/alertify.js"></script>
+<script src="~/Scripts/alertify/ngAlertify.js"></script>
+<script src="~/Scripts/ng-infinite-scroll.js"></script>
+<script src="~/Scripts/angular/angular-sanitize.min.js"></script>
+
+<!--Date Time Picker-->
+<script src="~/Scripts/bootstrap-timepicker.js"></script>
+<script src="~/Scripts/datetimepicker.js"></script>
+@*<link href="~/Scripts/angularjs-datetime-picker.css" rel="stylesheet" />*@
+<!--loading bar-->
+<script src="~/Scripts/angular-loading-bar/loading-bar.min.js"></script>
+
+
+<!--CK Editor-->
+<script src="~/Content/ckeditor/ckeditor.js"></script>
+<script src="//cdn.ckeditor.com/4.5.6/standard/ckeditor.js"></script>
+<script src="~/Scripts/angular/ng-ckeditor.min.js"></script>
+
+<!-- standard version -->
+<script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
+
+<!-- angular module -->
+<script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/ngAlertify.js"></script>
+<script src="~/Scripts/angucomplete-alt/angucomplete-alt.min.js"></script>
+<!--flow js-->
+<script src="~/Scripts/ng-flow/ng-flow-standalone.js"></script>
+<script src="~/Scripts/flow/ng-flow-standalone.min.js"></script>
+
+<!--Mentio-->
+<script src="https://jeff-collins.github.io/ment.io/dist/mentio.js"></script>
+
+
+
+<!--JS PDF-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
+<script src="~/Content/jspdf/jspdf.plugin.standard_fonts_metrics.js"></script>
+<script src="~/Content/jspdf/pollyfill.js"></script>
+<script src="~/Content/jspdf/addHtml.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/alasql/0.2.7/alasql.min.js"></script>
+
+
+
+@Html.Partial("_AppJs")
+
+<script>
+    //Timepicker
+    $(".timepicker").timepicker({
+        showInputs: false,
+        showMeridian: false,
+        format: 'HH:mm',
+        use24hours: true
+    });
+    $("#timepicker").timepicker({
+        showInputs: false,
+        showMeridian: false,
+        format: 'HH:mm',
+        use24hours: true
+    });
+
+    //Date picker
+    $('body').on('click', '.default-datepicker', function () {
+        $(this).datepicker({ autoclose: true }).focus();
+    })
+
+    $(".select2").select2();
+</script>

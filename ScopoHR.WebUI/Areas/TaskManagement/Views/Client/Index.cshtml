@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row" ng-controller="clientController" ng-init="init()" ng-cloak>
+    <div class="col-md-3 column">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">Clients</h3>
+            </div>
+            <div class="box-body no-padding">
+                <ul class="nav nav-pills nav-stacked" style="height:700px; overflow:auto">
+                    <li ng-repeat="c in clientList" ng-class="{active:c.selected}">
+                        <a href="" ng-click="clientSelected(c,$index)">
+                            <ul class="nav">
+                                <li><i class="glyphicon glyphicon-user" ng-class="{'text-blue':!c.selected}"></i> {{c.ClientName}}</li>
+                            </ul>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-9 column">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">Client Setup</h3>
+                <button class="btn btn-sm btn-flat btn-default" ng-click="resetForm()" style="float:right">
+                    <i class="glyphicon glyphicon-plus text-green"></i> New
+                </button>
+            </div>
+            <form class="form-horizontal" name="clientSetupForm" novalidate ng-submit="saveClicked()">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label class="col-sm-3">Client Name</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" ng-model="client.ClientName" required />
+                        </div>
+                        <label class="col-sm-3">Client Email</label>
+                        <div class="col-sm-3">
+                            <input type="email" class="form-control" ng-model="client.Email" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3">Web Address</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" ng-model="client.Website" />
+                        </div>
+                        <label class="col-sm-3">Mobile</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" ng-model="client.Mobile" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box-footer">
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-warning btn-flat btn-sm" ng-click="resetForm()"><i class="fa fa-close"></i> Reset</button>
+                        <button type="submit" class="btn btn-success btn-flat btn-sm"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

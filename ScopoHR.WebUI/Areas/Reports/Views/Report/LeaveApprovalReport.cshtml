@@ -1,0 +1,70 @@
+﻿@model ScopoHR.Core.ViewModels.ReportFilteringViewModel
+@{
+    ViewBag.Title = "LeaveApprovalReport";
+}
+
+
+
+<div class="col-sm-12">
+    <section class="box box-solid">
+        <header class="box-header with-border">
+            <h3 class="box-title">Leave Approval Report</h3>
+        </header>
+        <div class="box-body">
+            <div class="form-horizontal">
+
+                @using (Html.BeginForm("GetLeaveApprovalReport", "Report", FormMethod.Post, new { target = "_blank" }))
+                {
+                    <div class="form-group">
+                        <label class="col-sm-12">Card No</label>
+                        <div class="col-sm-3">
+                            @Html.TextBoxFor(x => x.CardNo, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CardNo)
+                        </div>
+                        <label class="col-sm-12">Leave Application</label>
+                        <div class="col-lg-3">
+                            @Html.DropDownListFor(model => model.LeaveApplicationID, Enumerable.Empty<SelectListItem>(), "", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.LeaveApplicationID)
+                        </div>
+
+                        <div class="col-sm-1">
+                            <input type="submit" formtarget="_blank" class="btn btn-block btn-success" value="Get Report" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+    </section>
+</div>
+
+
+
+
+<script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#CardNo').on('change', function () {
+
+                $.getJSON('\GetLeaveDetailsByCardNo', { cardNo: $(this).val() }, function (res) {
+                    console.log(res);
+                    $("#LeaveApplicationID").empty();
+                    $("#LeaveApplicationID").append("<option value='0'>--Select Leave--</option>");
+                    $.each(res, function (index, l) {
+                        $("#LeaveApplicationID").append("<option value='" + l.LeaveApplicationID + "'>" + l.LeaveTypeName + " - " + new Date(parseInt(l.FromDate.replace(/\/Date\(([0-9]+)[^+]\//i, "$1"))).toLocaleDateString("en-US") + " - " + new Date(parseInt(l.ToDate.replace(/\/Date\(([0-9]+)[^+]\//i, "$1"))).toLocaleDateString("en-US") + "</option>");
+                    });
+                    //console.log(res);
+                    //var purchaseOrderID = $('#PurchasOrderID');
+
+                    //purchaseOrderID.empty();
+                    //purchaseOrderID.append($('<option/>', { value: "", text: "" }));
+
+                    //$.each(res, function (index, itemData) {
+                    //    purchaseOrderID.append($('<option/>', { value: itemData.Value, text: itemData.Text }));
+                    //});
+
+                });
+            });
+        });
+
+</script>

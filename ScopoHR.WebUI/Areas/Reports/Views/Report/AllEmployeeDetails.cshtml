@@ -1,0 +1,99 @@
+﻿@model ScopoHR.Core.ViewModels.ReportFilteringViewModel
+@{
+    ViewBag.Title = "GetAllEmployeeDetails";
+}
+
+<div class="col-sm-12">
+    <section class="box box-solid">
+        <header class="box-header with-border">
+            <h3 class="box-title">All Employee Details Report</h3>
+        </header>
+        <div class="box-body">
+            <div class="form-horizontal">
+
+                @using (Html.BeginForm("GetAllEmployeeDetailsReport", "Report", FormMethod.Post, new { target = "_blank" }))
+                {
+
+                    <div class="form-group">
+                        <label class="col-sm-1">Shift</label>
+                        <div class="col-sm-2">
+                            @Html.DropDownListFor(model => model.ShiftId, ViewBag.shiftList as SelectList, "Select Shift", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ShiftId)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1">Floor</label>
+                        <div class="col-sm-2">
+                            @Html.DropDownListFor(model => model.Floor, ViewBag.floorList as SelectList, "Select Floor", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ProductionFloorLineID)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1">Joining From Date</label>
+                        <div class="col-sm-2">
+                            @Html.TextBoxFor(model => model.FromDate, new { @class = "form-control default-datepicker", autocomplete = "off" })
+                            @Html.ValidationMessageFor(model => model.FromDate)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1">Joining To Date</label>
+                        <div class="col-sm-2">
+                            @Html.TextBoxFor(model => model.ToDate, new { @class = "form-control default-datepicker", autocomplete = "off" })
+                            @Html.ValidationMessageFor(model => model.ToDate)
+                        </div>                       
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1">Department</label>
+                        <div class="col-sm-2">
+                            @Html.DropDownListFor(model => model.DepartmentID, ViewBag.DepartmentList as SelectList, "Select Department", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.DepartmentID)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1">Designation</label>
+                        <div class="col-sm-2">
+                            @Html.DropDownListFor(model => model.DesignationID, Enumerable.Empty<SelectListItem>(), "", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.DesignationID)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1">Salary Grade</label>
+                        <div class="col-sm-2">
+                            @Html.TextBoxFor(model => model.SalaryGrade, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.SalaryGrade)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1">Gender</label>
+                        <div class="col-sm-2">
+                            @Html.DropDownListFor(model => model.GenderID, ViewBag.GenderList as SelectList, "Select Gender", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.GenderID)
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="submit" formtarget="_blank" class="btn btn-block btn-success" value="Get Report" />
+                        </div>
+                    </div>
+
+                }
+            </div>
+        </div>
+
+    </section>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#DepartmentID').on('change', function () {
+
+            $.getJSON('\GetDesignationList', { departmentID: $(this).val() }, function (res) {
+                console.log(res);
+                $("#DesignationID").empty();
+                $("#DesignationID").append("<option value='0'>--Select Designation--</option>");
+                $.each(res, function (index, d) {
+                    $("#DesignationID").append("<option value='" + d.DesignationID + "'>" + d.DesignationName + "</option>");
+                });
+            });
+        });
+    });
+
+</script>

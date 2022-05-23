@@ -1,0 +1,483 @@
+﻿<div class="row" ng-controller="employeeCtrl" ng-init="init(@Newtonsoft.Json.JsonConvert.SerializeObject(User.Identity.Name))" ng-cloak>
+
+    <div class="col-md-3 column">
+        <div class="box box-solid">
+            <div class="box-body no-padding">
+                <div class="has-feedback">
+                    <input type="text" placeholder="Search Employee" class="form-control margin-bottom" ng-model="searchList"
+                           ng-keyup="advanceEmployeeSearch(searchList)" />
+                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                    <div class="col-sm-12">
+                        <span ng-if="isRecent" class="label label-default">
+                            Recent Employees
+                        </span>
+                        <span ng-if="!isRecent" class="label label-success">
+                            Showing Search Result
+                        </span>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <ul class="nav nav-pills nav-stacked" style="height:700px; overflow:auto">
+                    <li ng-repeat="e in employeeList | filter : searchList" ng-class="{active:e.selected}">
+                        <a href="" ng-click="employeeSelected(e)">
+                            <ul class="nav">
+                                <li><i class="glyphicon glyphicon-user" ng-class="{'text-blue':!e.selected}"></i> {{e.EmployeeName}}</li>
+                                <li>Card No: {{e.CardNo}}</li>
+                            </ul>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-9 column" ng-if="true">
+        <div class="box box-solid">
+            <div class="box-body">
+                <div class="pull-right">
+                    <button class="btn btn-sm btn-flat btn-default"
+                            ng-click="navigateTo('empNew', newEmployee)">
+                        <i class="glyphicon glyphicon-user text-blue"></i> New
+                    </button>
+                    <div class="btn-group" role="group">
+                        <button class="btn btn-sm btn-flat btn-default"
+                                ng-class="{'bg-blue-active':contexts.current==='empBasic'}"
+                                ng-click="navigateTo('empBasic')">
+                            <i class="glyphicon glyphicon-file"
+                               ng-class="{'text-grey':contexts.current!='empBasic'}"></i> Basic
+                        </button>
+                        <button class="btn btn-sm btn-flat btn-default"
+                                ng-class="{'bg-blue-active':contexts.current==='empDetail'}"
+                                ng-click="navigateTo('empDetail')">
+                            <i class="glyphicon glyphicon-user"
+                               ng-class="{'text-red':contexts.current !='empDetail'}"></i> Profile
+                        </button>
+                        <button class="btn btn-sm btn-flat btn-default"
+                                ng-class="{'bg-blue-active':contexts.current==='empSalary'}"
+                                ng-click="navigateTo('empSalary')">
+                            <i class="glyphicon glyphicon-usd"
+                               ng-class="{'text-green':contexts.current !='empSalary'}"></i> Salary
+                        </button>
+
+                        <button class="btn btn-sm btn-flat btn-default"
+                                ng-class="{'bg-blue-active':contexts.current==='empLeave'}"
+                                ng-click="navigateTo('empLeave')">
+                            <i class="glyphicon glyphicon-file"
+                               ng-class="{'text-green':contexts.current !='empLeave'}"></i> Leave
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <form class="form-horizontal" name="forms.employeeForm" novalidate ng-submit="handleFormSubmisstion()">
+                <!--Employee basic info area-->
+                <div class="box-body" ng-if="contexts.current==='empBasic' || contexts.current==='empNew'">
+                    <div class="form-group">
+                        <div class="col-sm-6">
+                            <label class="col-lg-12">Card No</label>
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control" ng-model="employee.CardNo" required ng-disabled="cardNoDisabled"
+                                       @*ng-blur="isUniqueCardNo(employee.CardNo)"*@ />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label class="col-lg-12">Employee Name</label>
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control" ng-model="employee.EmployeeName" required />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-6">
+                            <label class="col-lg-12">Department</label>
+                            <div class="col-lg-12">
+                                <select class="form-control" ng-model="employee.DepartmentID"
+                                        ng-options="department.DepartmentID as department.DepartmentName for department in departmentList"
+                                        ng-change="getDesignationList(employee.DepartmentID)"
+                                        required>
+                                    <option value="">Select Department</option>
+                                </select>
+                            </div>
+                            <label class="col-lg-12">Section</label>
+                            <div class="col-lg-12">
+                                <select class="form-control" ng-model="employee.SectionID"
+                                        ng-options="section.SectionID as section.SectionName for section in sectionList"
+                                        required>
+                                    <option value="">Select Section</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="col-lg-12">Designation</label>
+                            <div class="col-lg-12">
+                                <select class="form-control" ng-model="employee.DesignationID"
+                                        ng-options="designation.DesignationID as designation.DesignationName for designation in designationList"
+                                        required>
+                                    <option value="">Select Designation</option>
+                                </select>
+                            </div>
+
+                            <label class="col-lg-12">Salary Grade</label>
+                            <div class="col-lg-12">
+                                <select class="form-control" ng-model="employee.SalaryGrade"
+                                        ng-options="grade.id as grade.name for grade in salaryGrades">
+                                    <option value="">Select Grade</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-6">
+                            <label class="col-lg-12">Floor-Line</label>
+                            <div class="col-lg-12">
+                                <select class="form-control" ng-model="employee.ProductionFloorLineID"
+                                        ng-options="floor.ProductionFloorLineID as ('Floor: '+floor.Floor+'------Line: '+floor.Line) for floor in productionFloorList">
+                                    <option value="" disabled>Select Floor & Line</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="col-lg-12">Joining Date</label>
+                            <div class="col-lg-12">
+                                <input id="JoinDate" type="text" class="form-control default-datepicker"
+                                       ng-model="employee.JoinDate"
+                                       ng-blur="bindDate('JoinDate','employee')"
+                                       required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-6">
+                            <label class="col-sm-12">Gender</label>
+                            <div class="col-sm-12">
+                                <select class="form-control" ng-model="employee.GenderID"
+                                        ng-options="g.id as g.name for g in genders"
+                                        required>
+                                    <option value="">Select Gender</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label class="col-lg-12">Mobile No</label>
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control" ng-model="employee.MobileNo" required />
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-6">
+                            <label class="col-lg-12">Marital Status</label>
+                            <div class="col-lg-12">
+                                <select class="form-control" ng-model="employee.MaritalStatus"
+                                        ng-options="m.id as m.name for m in maritalStatus"
+                                        required>
+                                    <option value="">Select Marital Status</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="col-lg-12">Spouse Name</label>
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control" ng-model="employee.SpouseName"
+                                       ng-disabled="employee.MaritalStatus != 1"
+                                       ng-required="employee.MaritalStatus === 1" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6">
+                            <label class="col-lg-12">Working Shift</label>
+                            <div class="col-lg-12">
+                                <select class="form-control" ng-model="employee.ShiftId"
+                                        ng-options="s.ShiftId as s.ShiftName for s in workShifts"
+                                        required>
+                                    <option value="">Select Working Shift</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="col-lg-12">Employee Type</label>
+                            <div class="col-lg-12">
+                                <select class="form-control" ng-model="employee.EmployeeType"
+                                        ng-options="e.EmployeeTypeID as e.EmployeeTypeName for e in employeeType"
+                                        required>
+                                    <option value="">Select Employee Type</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6">
+                            <div class="col-sm-6">
+                                <div class="col-md-4">
+                                    <label class="col-lg-12">IsActive</label>
+                                    <div class="col-lg-12">
+                                        <input type="checkbox" ng-model="employee.IsActive" disabled />
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="col-lg-12">OT Applicable</label>
+                                    <div class="col-lg-12">
+                                        <input type="checkbox" ng-model="employee.OTApplicable" />
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="col-lg-12">Attendance Bonus</label>
+                                    <div class="col-lg-12">
+                                        <input type="checkbox" ng-model="employee.AttendanceBonusApplicable" />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+
+                        </div>
+                    </div>
+                </div>
+                <!--Employee detail area-->
+                <div class="box-body" ng-if="contexts.current==='empDetail' && employee.EmployeeID">
+                    <div class="form-group">
+                        <div class="col-sm-6">
+                            <div class="col-sm-4"
+                                 flow-init="{target: getTarget(), singleFile:'true'}"
+                                 flow-name="document"
+                                 flow-file-added="fileAdded(document, categories.ProfilePhoto)"
+                                 flow-file-success="uploadSuccess('Upload Successful', getEmployeeDocumentsById(employeeID))"
+                                 flow-file-error="uploadError($message,$file)">
+                                <label class="col-lg-12 no-padding">Profile Photo</label>
+                                <div class="input-group" style="z-index: 1;">
+                                    <span>
+                                        <img class="profile-user-img img-responsive no-margin" ng-if="!empDocs.ProfilePhoto"
+                                             ng-src="{{placeholderImage}}" alt="User profile picture"
+                                             ng-click="enableFileBrowser('Photo')">
+                                        <img class="profile-user-img img-responsive no-margin" ng-if="empDocs.ProfilePhoto"
+                                             ng-src="{{'../..'+empDocs.ProfilePhoto.Url}}" alt="User profile picture"
+                                             ng-click="enableFileBrowser('Photo')">
+                                    </span>
+                                </div>
+                                <input id="Photo" type="hidden" data-flow-btn />
+                            </div>
+                            <div class="col-sm-4"
+                                 flow-init="{target: getTarget(), singleFile:'true'}"
+                                 flow-name="document"
+                                 flow-file-added="fileAdded(document, categories.NomineePhoto)"
+                                 flow-file-success="uploadSuccess('Upload Successful', getEmployeeDocumentsById(employeeID))"
+                                 flow-file-error="uploadError($message,$file)">
+                                <label class="col-lg-12 no-padding">Nominee Photo</label>
+                                <div class="input-group" style="z-index: 1;">
+                                    <span>
+                                        <img class="profile-user-img img-responsive no-margin" ng-if="!empDocs.NomineePhoto"
+                                             ng-src="{{placeholderImage}}" alt="User profile picture"
+                                             ng-click="enableFileBrowser('NomineePhoto')">
+                                        <img class="profile-user-img img-responsive no-margin" ng-if="empDocs.NomineePhoto"
+                                             ng-src="{{'../..'+empDocs.NomineePhoto.Url}}" alt="User profile picture"
+                                             ng-click="enableFileBrowser('NomineePhoto')">
+                                    </span>
+                                </div>
+                                <input id="NomineePhoto" type="hidden" data-flow-btn />
+                            </div>
+                            <div class="col-sm-4"
+                                 flow-init="{target: getTarget(), singleFile:'true'}"
+                                 flow-name="document"
+                                 flow-file-added="fileAdded(document, categories.FingerPrint)"
+                                 flow-file-success="uploadSuccess('Upload Successful', getEmployeeDocumentsById(employeeID))"
+                                 flow-file-error="uploadError($message,$file)">
+                                <label class="col-lg-12 no-padding">Finger Print</label>
+                                <div class="input-group" style="z-index: 1;">
+                                    <span>
+                                        <img class="profile-user-img img-responsive no-margin" ng-if="!empDocs.FingerPrint"
+                                             ng-src="{{placeholderImage}}" alt="User profile picture"
+                                             ng-click="enableFileBrowser('FingerPrintPhoto')">
+
+                                        <img class="profile-user-img img-responsive no-margin" ng-if="empDocs.FingerPrint"
+                                             ng-src="{{'../..'+empDocs.FingerPrint.Url}}" alt="User profile picture"
+                                             ng-click="enableFileBrowser('FingerPrintPhoto')">
+                                    </span>
+                                </div>
+                                <input id="FingerPrintPhoto" type="hidden" data-flow-btn />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label class="col-lg-12">Nominee Name</label>
+                            <div class="col-lg-12 margin-bottom">
+                                <input type="text" class="form-control" ng-model="employee.NomineeName" />
+                            </div>
+
+                            <label class="col-lg-12">Grand Father Name</label>
+                            <div class="col-lg-12">
+                                <input class="form-control" type="text" ng-model="employee.GrandFathername" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6">
+                            <label class="col-lg-12">Father Name</label>
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control" ng-model="employee.FatherName" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="col-lg-12">Mother Name</label>
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control" ng-model="employee.MotherName" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6">
+                            <label class="col-lg-12">Present Address</label>
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control" ng-model="employee.PresentAddress" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="col-lg-12">Permanent Address</label>
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control" ng-model="employee.PermanentAddress" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-6">
+                            <label class="col-lg-12">Blood Group</label>
+                            <div class="col-lg-12">
+                                <select class="form-control"
+                                        ng-model="employee.BloodGroup"
+                                        ng-options="g.id as g.name for g in bloodGroups">
+                                    <option value="">Select Blood Group</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="col-lg-12">Date Of Birth</label>
+                            <div class="col-lg-12">
+                                <input id="DateOfBirth" type="text" class="form-control default-datepicker"
+                                       ng-model="employee.DateOfBirth"
+                                       ng-blur="bindDate('DateOfBirth','employee')">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-6">
+                            <label class="col-lg-12">Email</label>
+                            <div class="col-lg-12">
+                                <input type="email" class="form-control" name="email" ng-model="employee.Email" />
+                                <span class="error" ng-show="employeeForm.input.$error.email"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="col-lg-12">NID/Birth Certificate No</label>
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control" ng-model="employee.NID" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-6">
+                            <label class="col-sm-12">Report To</label>
+                            <div class="col-sm-6">
+                                <div class="has-feedback">
+                                    <input type="text" ng-model="employee.ReportToModel"
+                                           placeholder="Enter name or card no"
+                                           uib-typeahead="emp as emp.EmployeeName + ' : '+ emp.CardNo for emp in getEmployeeByKeyword($viewValue)"
+                                           typeahead-on-select="reportToOnSelect($item, $model, $label)"
+                                           class="form-control">
+                                    <span class="glyphicon glyphicon-search form-control-feedback text-muted"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="text" readonly ng-model="employee.ReportToName" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-6">
+                            <label class="col-sm-12">Reference</label>
+                            <div class="col-sm-6">
+                                <div class="has-feedback">
+                                    <input type="text" ng-model="employee.ReferenceModel"
+                                           placeholder="Enter name or card no"
+                                           uib-typeahead="emp as emp.EmployeeName + ' : '+ emp.CardNo for emp in getEmployeeByKeyword($viewValue)"
+                                           typeahead-on-select="referenceOnSelect($item, $model, $label)"
+                                           class="form-control">
+                                    <span class="glyphicon glyphicon-search form-control-feedback text-muted"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <input class="form-control" type="text" readonly ng-model="employee.ReferenceName" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Employee salary area-->
+                
+                <div class="box-body" ng-if="contexts.current==='empSalary'">
+                    <div ng-hide="salaryShow !=0 && userName != '1701103'">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="col-lg-5">Gross Salary</label>
+                                <div class="col-lg-7">
+                                    <input type="text" class="form-control" ng-model="grossSalary" ng-blur="calculateSalary(grossSalary)" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6" ng-repeat="st in salaryTypeList track by st.SalaryTypeID">
+                            <div class="form-group">
+                                <label class="col-lg-5">{{st.SalaryTypeName}}</label>
+                                <div class="col-lg-7">
+                                    <input type="number" class="form-control" ng-model="st.Amount" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="col-lg-5">OT Rate</label>
+                                <div class="col-lg-7">
+                                    {{((grossSalary - 1100) / 1.4) / 104 | number :2}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+                <!--Employee leave-->
+                <div class="box-body" ng-if="contexts.current==='empLeave'">
+                    <div class="col-lg-6" ng-repeat="lv in leaveMappings">
+                        <div class="form-group">
+                            <label class="col-lg-5">{{lv.LeaveTypeName}}</label>
+                            <div class="col-lg-7">
+                                <input type="number" class="form-control" ng-model="lv.LeaveDays" required
+                                       ng-disabled="lv.LeaveTypeName==='Earn Leave'" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body" ng-if="contexts.current">
+                    <div class="form-group">
+                        <div class="col-sm-offset-6 col-sm-6">
+                            <div class="pull-right">
+                                <button type="reset" class="btn btn-warning btn-flat btn-sm"><i class="fa fa-close"></i> Reset</button>
+                                <button type="submit" class="btn btn-success btn-flat btn-sm"><i class="fa fa-save"></i> Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" ng-controller="documentUploadCtrl" ng-init="init()" ng-cloak>    
+    <div class="col-sm-offset-3 col-sm-6">
+        <section class="box box-solid">
+            <div class="box-header">
+                <h3 class="box-title">Document upload</h3>
+            </div>
+            <form class="form-horizontal" name="forms.searchAttandenceForm" ng-submit="searchAttendance(searchAt)" novalidate
+                  ng-if="!newEntry">                
+                <div class="box-body">
+                    <div flow-init="{target: getTarget(), singleFile:'true'}"
+                         flow-name="document"
+                         flow-file-added="checkExtension($file, $event, $flow)"
+                         flow-file-success="uploadSuccess($message)"
+                         flow-file-error="uploadError($message,$file)">
+
+
+                        <div class="form-group">
+                            <label class="col-sm-3">Employee Name</label>
+                            <div class="col-sm-3">
+                                <div class="has-feedback">
+                                    <input type="text" ng-model="doc.Employee"
+                                           placeholder="Enter name or card no"
+                                           uib-typeahead="emp as emp.EmployeeName + ' : ' + emp.CardNo for emp in getEmployeeByKeyword($viewValue)"
+                                           typeahead-on-select="typeaheadOnSelect($item, $model, $label)"
+                                           class="form-control">
+                                    <span class="glyphicon glyphicon-search form-control-feedback text-muted"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <input class="form-control" type="text" ng-model="doc.EmployeeName" readonly required />
+                            </div>
+                        </div>
+                        <div class="form-group">  
+                            <div class="col-sm-6">                                
+                                <select class="form-control"
+                                        ng-model="doc.Type" ng-options="t.Value as t.Text for t in docTypes">
+                                    <option value="">Select document type</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="input-group" style="z-index: 1;">
+                                    <input type="text" readonly class="form-control input-sm" ng-model="document.files[0].name">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default btn-flat btn-sm" type="button" ng-click="enableFileBrowser('fileBrowser')">Browse File</button>
+                                    </span>
+                                </div>
+                                <input id="fileBrowser" type="hidden" data-flow-btn />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 pull-right">
+                                <button type="button" class="btn btn-primary btn-flat btn-sm pull-right"                                        
+                                        ng-click="uploadItem(document, categories.AttendanceCsvFile)">
+                                    <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload
+                                </button>                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+
+

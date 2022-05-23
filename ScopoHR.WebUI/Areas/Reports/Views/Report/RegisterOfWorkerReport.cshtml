@@ -1,0 +1,46 @@
+﻿@model ScopoHR.Core.ViewModels.ReportFilteringViewModel
+@{
+    ViewBag.Title = "RegisterOfWorkerReport";
+}
+
+<div class="col-sm-12">
+    <section class="box box-solid">
+        <header class="box-header with-border">
+            <h3 class="box-title">Register Of Worker Report</h3>
+        </header>
+        <div class="box-body">
+            <div class="form-horizontal">
+
+                @using (Html.BeginForm("GetRegisterOfWorkerReport", "Report", FormMethod.Post, new { target = "_blank" }))
+                {
+                    @*<div class="form-group">
+                            <label class="col-sm-1">Date</label>
+                            <div class="col-sm-2">
+                                @Html.TextBoxFor(model => model.FromDate, new { @class = "form-control default-datepicker required", @required = true })
+                                @Html.ValidationMessageFor(model => model.FromDate)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1">Shift</label>
+                            <div class="col-sm-2">
+                                @Html.DropDownListFor(model => model.ShiftId, ViewBag.shiftList as SelectList, "Select Shift", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ShiftId)
+                            </div>
+                        </div>*@
+                    <div class="form-group">
+                        <label class="col-sm-1">Card No</label>
+                        <div class="col-sm-2">
+                            @Html.TextBoxFor(x => x.CardNo, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CardNo)
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="submit" formtarget="_blank" class="btn btn-block btn-success" value="Get Report" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+    </section>
+</div>
+

@@ -1,0 +1,152 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" ng-controller="oneTimePunchCtrl" ng-init="initial()" ng-cloak>
+    <div class="col-md-9 column">
+        <form class="form-horizontal" name="updateOneTimePunchForm">
+            <div class="box box-solid">
+                <div class="box-body">
+                    <div class="col-sm-12" style="padding-right: 0px !important">
+                        <div class="pull-right">
+                            <div class="mailbox-controls">
+                                <div class="pull-right">
+                                    <button type="button" class="btn btn-default btn-flat btn-sm" ng-click="updateOneTimePunch()">
+                                        <i class="fa fa-save bg-success"></i>
+                                        Update
+                                    </button>
+                                    <!-- /.btn-group -->
+                                </div>
+                                <!-- /.pull-right -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body no-padding">
+                    <div class="col-sm-12 no-padding">
+                        <div class="table-responsive" style="max-height: 600px !important; overflow: auto;">
+                            <table class="table table-bordered table-condensed table-fixed-header no-wrap">
+                                <thead>
+                                    <tr class="nt-table-header">
+                                        <th>Card No</th>
+                                        <th>Employee Name</th>
+                                        <th>In Time Date</th>
+                                        <th>In Time</th>
+                                        <th>Out Time Date</th>
+                                        <th>Out Time</th>
+                                        <th>Remarks</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="data in oneTimePunchList">
+                                        <td>
+                                            {{data.CardNo}}
+                                        </td>
+                                        <td>
+                                            {{data.NameOfEmployee}}
+                                        </td>
+                                        <td>
+                                            <div class="input-group">
+                                                <input id="InTimeDate" placeholder="Date" type="text"
+                                                       class="form-control default-datepicker"
+                                                       ng-blur="bindDateWithIndex('InTimeDate', 'data',$index)"
+                                                       ng-model="data.InTimeDate" required />
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="input-group">
+                                                @*<input ng-model="data.InTime" datetime-picker date-format="HH:mm" close-on-select="false" class="form-control" />*@ 
+                                                <input type="text" class="form-control bootstrap-timepicker timepicker" ng-model="data.InTime" id="timepicker" data-provide="timepicker" required>
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-clock-o"></i>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="input-group">
+                                                <input id="OutTimeDate" placeholder="Date" type="text"
+                                                       class="form-control default-datepicker"
+                                                       ng-blur="bindDateWithIndex('OutTimeDate', 'data',$index)"
+                                                       ng-model="data.OutTimeDate" required/>
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="input-group">
+                                                @*<input ng-model="data.OutTime" datetime-picker date-format="HH:mm" close-on-select="false" class="form-control" required/>*@ 
+                                                <input type="text" class="form-control bootstrap-timepicker timepicker" ng-model="data.OutTime" id="timepicker" data-provide="timepicker">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-clock-o"></i>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <textarea class="form-control input-sm" ng-model="data.Remarks"></textarea>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-3 column">
+        <section class="box box-solid">
+            <form class="form-horizontal" name="forms.searchAttandenceForm" ng-submit="searchAttendance(searchAt)" novalidate >
+                <div class="box-body">
+                    <div class="form-group">
+                        <label class="col-sm-12">Date</label>
+                        <div class="col-sm-12">
+                            <input id="FromDate" placeholder="Date" type="text"
+                                   class="form-control default-datepicker input-sm pull-right"
+                                   ng-blur="bindDate('FromDate', 'searchAt')"
+                                   ng-model="searchAt.FromDate" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-12">Shift</label>
+                        <div class="col-sm-12">
+                            <select class="form-control input-sm pull-right" ng-model="searchAt.ShiftId"
+                                    ng-options="s.Value as s.Text for s in shiftList" required>
+                                <option value="">Select Shift</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-12">Floor</label>
+                        <div class="col-sm-12">
+                            <select class="form-control input-sm pull-right" ng-model="searchAt.FloorName"
+                                    ng-options="floor.Floor as floor.Floor for floor in productionFloorList">
+                                <option value="">Select Floor</option>
+                            </select>
+                        </div>
+                    </div>
+                  
+                    <div class="form-group">
+                        <div class="col-sm-offset-6 col-sm-3">
+                            <button type="reset" class="btn btn-warning btn-block btn-sm btn-flat pull-right">
+                                <i class="fa fa-close"></i> Reset
+                            </button>
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="submit" class="btn btn-primary btn-block btn-sm btn-flat pull-right">
+                                <i class="fa fa-search"></i> Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+
+
